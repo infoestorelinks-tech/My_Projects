@@ -1,0 +1,704 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PromptStudio AI — Business & Vision Prompt Generator</title>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#000000',
+              white: '#ffffff',
+              gray: '#71717a',
+              light: '#f4f4f5',
+              border: '#000000',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #000000;
+    }
+
+    .form-input {
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      color: #000000;
+      padding: 0.625rem 0.875rem;
+      border-radius: 0px;
+      outline: none;
+      transition: all 0.15s ease;
+      font-size: 0.875rem;
+    }
+    .form-input:focus {
+      box-shadow: 0 0 0 2px #000000;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.375rem;
+      color: #000000;
+    }
+
+    .select-card {
+      border: 1px solid #000000;
+      padding: 0.75rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: #ffffff;
+    }
+    .select-card:hover {
+      background-color: #f4f4f5;
+    }
+    .select-card.active {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .nav-link {
+      color: #71717a;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #000000;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white border-b-2 border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-black text-white flex items-center justify-center font-bold text-lg">P</div>
+        <span class="font-bold tracking-tight text-lg uppercase">PromptStudio AI</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-xs uppercase tracking-wider">
+        
+      </div>
+      <button onclick="resetForm()" class="text-xs uppercase font-bold border border-black px-3 py-1.5 hover:bg-black hover:text-white transition-all">
+        Reset Form
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: CONTINUOUS FORM -->
+      <div class="lg:col-span-7 space-y-10">
+
+        <div class="border-b-2 border-black pb-4">
+          <h1 class="text-3xl font-black uppercase tracking-tight">AI Vision & Image Prompt Generator</h1>
+          <p class="text-xs text-brand-gray mt-1">Single-page prompt builder with automatic Image Reference & Contact integration.</p>
+	  <p class="text-xs text-brand-gray mt-1">Yadagiri Pashikanti (MCA)</p>
+        </div>
+
+        <form id="promptForm" onsubmit="event.preventDefault();" class="space-y-10">
+
+          <!-- SECTION 1: BRAND ASSETS & CONTACT DETAILS -->
+          <section id="sec-assets" class="space-y-6 scroll-mt-24">
+            <div class="border-l-4 border-black pl-3">
+              <h2 class="text-xl font-bold uppercase tracking-tight">1. Brand Assets & Contact Information</h2>
+              <p class="text-xs text-brand-gray">Upload images to enable Vision-based prompt referencing.</p>
+            </div>
+
+            <!-- Image Asset Upload Area -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Brand Logo Upload -->
+              <div class="border-2 border-dashed border-black p-4 text-center hover:bg-zinc-50 transition-colors">
+                <i data-lucide="image" class="w-6 h-6 mx-auto mb-2 text-black"></i>
+                <label class="form-label cursor-pointer">
+                  <span>Upload Brand Logo Image</span>
+                  <input type="file" id="brandLogo" accept="image/*" class="hidden" onchange="handleFileUpload(event, 'logoPreview')" />
+                </label>
+                <p class="text-[10px] text-brand-gray">PNG, JPG or SVG</p>
+                <div id="logoPreview" class="mt-3 hidden">
+                  <img src="" alt="Logo Preview" class="h-14 mx-auto object-contain border border-black p-1 bg-white" />
+                  <span class="text-[10px] uppercase font-bold underline cursor-pointer mt-2 block" onclick="removeUpload('brandLogo', 'logoPreview')">Remove Image</span>
+                </div>
+              </div>
+
+              <!-- Founder / Owner Image Upload -->
+              <div class="border-2 border-dashed border-black p-4 text-center hover:bg-zinc-50 transition-colors">
+                <i data-lucide="user-check" class="w-6 h-6 mx-auto mb-2 text-black"></i>
+                <label class="form-label cursor-pointer">
+                  <span>Upload Owner / Founder Photo</span>
+                  <input type="file" id="ownerImage" accept="image/*" class="hidden" onchange="handleFileUpload(event, 'ownerPreview')" />
+                </label>
+                <p class="text-[10px] text-brand-gray">Headshot or Portrait Photo</p>
+                <div id="ownerPreview" class="mt-3 hidden">
+                  <img src="" alt="Owner Preview" class="h-14 w-14 rounded-full mx-auto object-cover border border-black" />
+                  <span class="text-[10px] uppercase font-bold underline cursor-pointer mt-2 block" onclick="removeUpload('ownerImage', 'ownerPreview')">Remove Photo</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Business Information -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Business Name *</label>
+                <input type="text" id="businessName" class="form-input" placeholder="e.g. Nexus Software" required oninput="generatePrompt()" />
+              </div>
+              <div>
+                <label class="form-label">Business Category *</label>
+                <select id="businessCategory" class="form-input" onchange="generatePrompt()">
+                  <option value="Technology & Software">Technology & Software</option>
+                  <option value="Ecommerce & Retail">Ecommerce & Retail</option>
+                  <option value="Education & Academics">Education & Academics</option>
+                  <option value="Healthcare & Wellness">Healthcare & Wellness</option>
+                  <option value="Real Estate & Construction">Real Estate & Construction</option>
+                  <option value="Restaurant & Hospitality">Restaurant & Hospitality</option>
+                  <option value="Fashion & Lifestyle">Fashion & Lifestyle</option>
+                  <option value="Finance & Legal">Finance & Legal</option>
+                  <option value="Personal Branding">Personal Branding / Creator</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label">Business Description</label>
+              <textarea id="businessDescription" rows="2" class="form-input" placeholder="Describe your business, main service, or product mission..." oninput="generatePrompt()"></textarea>
+            </div>
+
+            <!-- Founder / Ownership Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Owner / Founder Name</label>
+                <input type="text" id="ownerName" class="form-input" placeholder="e.g. Yadagiri Pashikanti" oninput="generatePrompt()" />
+              </div>
+              <div>
+                <label class="form-label">Owner Title / Designation</label>
+                <input type="text" id="ownerRole" class="form-input" placeholder="e.g. Founder & CEO" oninput="generatePrompt()" />
+              </div>
+            </div>
+
+            <!-- PROPERLY PLACED CONTACT & ADDRESS SECTION -->
+            <div class="border-2 border-black p-4 space-y-4 bg-zinc-50">
+              <span class="text-xs font-bold uppercase tracking-wider block border-b border-black pb-2">
+                Contact & Location Details (For Banner/Flyer Text Placement)
+              </span>
+              
+              <!-- Contact Inputs -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="form-label">Official Email</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="contact@company.com" oninput="generatePrompt()" />
+                </div>
+                <div>
+                  <label class="form-label">Phone / WhatsApp Number</label>
+                  <input type="tel" id="contactPhone" class="form-input" placeholder="+1 (555) 000-0000" oninput="generatePrompt()" />
+                </div>
+              </div>
+
+              <!-- Street Address -->
+              <div>
+                <label class="form-label">Street Address</label>
+                <input type="text" id="streetAddress" class="form-input" placeholder="123 Innovation Drive, Suite 400" oninput="generatePrompt()" />
+              </div>
+
+              <!-- City, State, Country, Postal Code Grid -->
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div>
+                  <label class="form-label">City</label>
+                  <input type="text" id="city" class="form-input" placeholder="City" oninput="generatePrompt()" />
+                </div>
+                <div>
+                  <label class="form-label">State</label>
+                  <input type="text" id="state" class="form-input" placeholder="State" oninput="generatePrompt()" />
+                </div>
+                <div>
+                  <label class="form-label">Country</label>
+                  <input type="text" id="country" class="form-input" placeholder="Country" oninput="generatePrompt()" />
+                </div>
+                <div>
+                  <label class="form-label">Postal Code</label>
+                  <input type="text" id="postalCode" class="form-input" placeholder="ZIP Code" oninput="generatePrompt()" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 2: TARGET AUDIENCE -->
+          <section id="sec-audience" class="space-y-6 scroll-mt-24">
+            <div class="border-l-4 border-black pl-3">
+              <h2 class="text-xl font-bold uppercase tracking-tight">2. Target Audience</h2>
+              <p class="text-xs text-brand-gray">Specify demographic context for AI composition.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="form-label">Target Age Group</label>
+                <select id="targetAge" class="form-input" onchange="generatePrompt()">
+                  <option value="All Ages">All Ages</option>
+                  <option value="18-24 (Gen Z)">18-24 (Gen Z)</option>
+                  <option value="25-34 (Young Professionals)" selected>25-34 (Young Professionals)</option>
+                  <option value="35-50 (Established Adults)">35-50 (Established Adults)</option>
+                  <option value="50+ (Seniors/Execs)">50+ (Seniors/Execs)</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Gender Focus</label>
+                <select id="targetGender" class="form-input" onchange="generatePrompt()">
+                  <option value="All Genders">All Genders</option>
+                  <option value="Female Centric">Female Centric</option>
+                  <option value="Male Centric">Male Centric</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Audience Location</label>
+                <input type="text" id="targetLocation" class="form-input" placeholder="e.g. Metro Cities, Global" oninput="generatePrompt()" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Audience Interests</label>
+                <input type="text" id="targetInterests" class="form-input" placeholder="e.g. Technology, Minimalist Aesthetics" oninput="generatePrompt()" />
+              </div>
+              <div>
+                <label class="form-label">Customer Pain Points</label>
+                <input type="text" id="targetPainPoints" class="form-input" placeholder="e.g. Complex tools, high costs" oninput="generatePrompt()" />
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 3: CAMPAIGN OBJECTIVE & OFFER DETAILS -->
+          <section id="sec-campaign" class="space-y-6 scroll-mt-24">
+            <div class="border-l-4 border-black pl-3">
+              <h2 class="text-xl font-bold uppercase tracking-tight">3. Campaign Strategy & Offer</h2>
+              <p class="text-xs text-brand-gray">Define the core objective and call-to-action text.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Campaign Objective</label>
+                <select id="campaignObjective" class="form-input" onchange="generatePrompt()">
+                  <option value="Brand Awareness">Brand Awareness</option>
+                  <option value="Product Launch">Product Launch</option>
+                  <option value="Sales & Promotional Offer">Sales & Promotional Offer</option>
+                  <option value="Corporate Branding">Corporate Branding</option>
+                  <option value="Social Media Campaign">Social Media Campaign</option>
+                  <option value="Event Promotion">Event Promotion</option>
+                  <option value="Recruitment Drive">Recruitment Drive</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Target Marketing Channel</label>
+                <select id="targetPlatform" class="form-input" onchange="generatePrompt()">
+                  <option value="Instagram Post (1:1)">Instagram Post (1:1)</option>
+                  <option value="Instagram Story / Reel Cover (9:16)">Instagram Story / Reel Cover (9:16)</option>
+                  <option value="LinkedIn Post Banner">LinkedIn Post Banner</option>
+                  <option value="Facebook Advertisement">Facebook Advertisement</option>
+                  <option value="YouTube Thumbnail (16:9)">YouTube Thumbnail (16:9)</option>
+                  <option value="Website Hero Banner">Website Hero Banner</option>
+                  <option value="Print Poster / Flyer">Print Poster / Flyer</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="form-label">Product / Service Name</label>
+                <input type="text" id="productName" class="form-input" placeholder="e.g. AI Engine Pro" oninput="generatePrompt()" />
+              </div>
+              <div>
+                <label class="form-label">Coupon / Offer Code</label>
+                <input type="text" id="offerCode" class="form-input" placeholder="e.g. LAUNCH50" oninput="generatePrompt()" />
+              </div>
+              <div>
+                <label class="form-label">Call To Action (CTA)</label>
+                <input type="text" id="ctaText" class="form-input" placeholder="e.g. Visit Website / Contact Us" oninput="generatePrompt()" />
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 4: VISUAL STYLE & AI MODEL ENGINE -->
+          <section id="sec-visuals" class="space-y-6 scroll-mt-24">
+            <div class="border-l-4 border-black pl-3">
+              <h2 class="text-xl font-bold uppercase tracking-tight">4. Visual Engine & Model Parameters</h2>
+              <p class="text-xs text-brand-gray">Select your target AI model and visual style options.</p>
+            </div>
+
+            <!-- Model Selection Radio Grid -->
+            <div>
+              <label class="form-label">Target AI Model Engine</label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <div class="select-card active flex flex-col justify-between text-center" onclick="setSelect('targetModel', 'Midjourney v6', this)">
+                  <span class="text-xs font-bold">Midjourney v6</span>
+                  <span class="text-[9px] opacity-75">Uses Image Prompt Weights</span>
+                </div>
+                <div class="select-card flex flex-col justify-between text-center" onclick="setSelect('targetModel', 'FLUX.1 Vision', this)">
+                  <span class="text-xs font-bold">FLUX.1 Vision</span>
+                  <span class="text-[9px] opacity-75">High Identity & Text Accuracy</span>
+                </div>
+                <div class="select-card flex flex-col justify-between text-center" onclick="setSelect('targetModel', 'DALL-E 3', this)">
+                  <span class="text-xs font-bold">DALL-E 3</span>
+                  <span class="text-[9px] opacity-75">Structured Context Realism</span>
+                </div>
+                <div class="select-card flex flex-col justify-between text-center" onclick="setSelect('targetModel', 'Stable Diffusion', this)">
+                  <span class="text-xs font-bold">Stable Diffusion</span>
+                  <span class="text-[9px] opacity-75">ControlNet / IP-Adapter Ready</span>
+                </div>
+              </div>
+              <input type="hidden" id="targetModel" value="Midjourney v6" />
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Design Aesthetic</label>
+                <select id="designStyle" class="form-input" onchange="generatePrompt()">
+                  <option value="Modern & Minimalist">Modern & Minimalist</option>
+                  <option value="Luxury & Corporate">Luxury & Corporate</option>
+                  <option value="High-Tech Futuristic">High-Tech Futuristic</option>
+                  <option value="Bold & Vibrant Advertising">Bold & Vibrant Advertising</option>
+                  <option value="Cinematic Studio Portrait">Cinematic Studio Portrait</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Rendering Type</label>
+                <select id="imageType" class="form-input" onchange="generatePrompt()">
+                  <option value="Commercial Photography">Commercial Photography</option>
+                  <option value="3D Digital Render">3D Digital Render</option>
+                  <option value="Flat Vector Graphic">Flat Vector Graphic</option>
+                  <option value="Editorial Studio Portrait">Editorial Studio Portrait</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="form-label">Camera Framing</label>
+                <select id="cameraAngle" class="form-input" onchange="generatePrompt()">
+                  <option value="Eye Level Portrait">Eye Level Portrait</option>
+                  <option value="Wide Angle Studio Shot">Wide Angle Studio Shot</option>
+                  <option value="Macro Product Detail Shot">Macro Product Detail</option>
+                  <option value="Low Angle Hero Framing">Low Angle Hero Framing</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Lighting Setup</label>
+                <select id="lighting" class="form-input" onchange="generatePrompt()">
+                  <option value="Soft Studio Key Lighting">Soft Studio Key Light</option>
+                  <option value="Golden Hour Natural Sunlight">Golden Hour Sunlight</option>
+                  <option value="Dramatic High-Contrast Lighting">Dramatic High-Contrast</option>
+                  <option value="Cinematic Neon Ambient">Cinematic Neon Ambient</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Aspect Ratio</label>
+                <select id="aspectRatio" class="form-input" onchange="generatePrompt()">
+                  <option value="16:9">16:9 (Landscape)</option>
+                  <option value="1:1">1:1 (Square)</option>
+                  <option value="9:16">9:16 (Vertical)</option>
+                  <option value="4:5">4:5 (Social Feed)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Brand Color Theme</label>
+                <input type="text" id="brandColors" class="form-input" placeholder="e.g. Monochrome, Black & White with Accent" oninput="generatePrompt()" />
+              </div>
+              <div>
+                <label class="form-label">Background / Environment</label>
+                <input type="text" id="environment" class="form-input" placeholder="e.g. Modern glass office, minimal white studio" oninput="generatePrompt()" />
+              </div>
+            </div>
+          </section>
+
+        </form>
+
+      </div>
+
+      <!-- RIGHT COLUMN: STICKY PROMPT OUTPUT & VISION INSTRUCTIONS -->
+      <div class="lg:col-span-5 lg:sticky lg:top-20 space-y-6">
+
+        <div class="border-2 border-black p-6 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] space-y-5">
+          <div class="flex items-center justify-between border-b-2 border-black pb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 bg-black animate-pulse"></span>
+              <h3 class="text-sm font-black uppercase tracking-wider">Generated Prompt Output</h3>
+            </div>
+            <span id="activeModelBadge" class="text-[10px] font-mono px-2 py-0.5 border border-black font-bold uppercase">Midjourney v6</span>
+          </div>
+
+          <!-- Prompt Output Textbox -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold uppercase">Ready-to-Use Prompt</span>
+              <span class="text-[10px] text-brand-gray font-mono" id="charCount">0 chars</span>
+            </div>
+            <div id="promptOutput" class="font-mono text-xs p-4 border-2 border-black bg-zinc-50 min-h-[220px] max-h-[340px] overflow-y-auto leading-relaxed select-all">
+              <!-- Auto generated content -->
+            </div>
+          </div>
+
+          <!-- Image Reference Status Indicator -->
+          <div id="imageRefNotice" class="p-2.5 border border-black text-[11px] font-mono bg-zinc-100 hidden">
+            <span class="font-bold uppercase block">Vision Asset Mode Active:</span>
+            <span id="imageRefText" class="text-zinc-700">Uploaded image references included in prompt instructions.</span>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="copyToClipboard()" class="w-full border-2 border-black bg-black text-white py-2.5 px-3 text-xs uppercase font-bold tracking-wider hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy Prompt</span>
+            </button>
+            <button onclick="exportTxt()" class="w-full border-2 border-black bg-white text-black py-2.5 px-3 text-xs uppercase font-bold tracking-wider hover:bg-zinc-100 transition-colors flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Export .TXT</span>
+            </button>
+          </div>
+
+          <!-- Toast Notification -->
+          <div id="toast" class="hidden text-center text-xs border border-black bg-black text-white p-2 font-mono">
+            Prompt copied to clipboard!
+          </div>
+
+        </div>
+
+        <!-- How to Use Vision/Image Prompts -->
+        <div class="border-2 border-black p-4 text-xs space-y-2 bg-white">
+          <p class="font-bold uppercase">How to use Uploaded Images in AI Tools:</p>
+          <ul class="list-disc pl-4 space-y-1 text-brand-gray text-[11px]">
+            <li><b>Midjourney:</b> Copy this prompt, upload your image to Discord, paste the image URL at the start of the prompt, or use <code>--iw 2.0</code>.</li>
+            <li><b>FLUX & ControlNet:</b> Upload your founder/logo image into the Image-to-Image / IP-Adapter tab and paste this prompt into the text field.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t-2 border-black bg-white mt-12 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs uppercase">
+      <div>
+        <p class="font-bold">PromptStudio AI - Designed & Developed By Yadagiri Pashikanti &copy; 2026. All rights reserved.</p>
+      </div>
+      <div class="flex items-center gap-6 text-brand-gray font-semibold">
+        <span>Privacy</span>
+        <span>Terms</span>
+        <span>Support</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    lucide.createIcons();
+
+    function handleFileUpload(event, previewId) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewContainer = document.getElementById(previewId);
+          const img = previewContainer.querySelector('img');
+          img.src = e.target.result;
+          previewContainer.classList.remove('hidden');
+          generatePrompt();
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function removeUpload(inputId, previewId) {
+      document.getElementById(inputId).value = '';
+      document.getElementById(previewId).classList.add('hidden');
+      generatePrompt();
+    }
+
+    function setSelect(hiddenInputId, value, element) {
+      document.getElementById(hiddenInputId).value = value;
+      const parent = element.parentElement;
+      const cards = parent.querySelectorAll('.select-card');
+      cards.forEach(card => card.classList.remove('active'));
+      element.classList.add('active');
+      document.getElementById('activeModelBadge').innerText = value;
+      generatePrompt();
+    }
+
+    function generatePrompt() {
+      // Basic Info
+      const businessName = document.getElementById('businessName').value.trim() || '[Business Name]';
+      const category = document.getElementById('businessCategory').value;
+      const desc = document.getElementById('businessDescription').value.trim();
+      const ownerName = document.getElementById('ownerName').value.trim();
+      const ownerRole = document.getElementById('ownerRole').value.trim();
+      
+      // Contact & Address Values
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const street = document.getElementById('streetAddress').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const state = document.getElementById('state').value.trim();
+      const country = document.getElementById('country').value.trim();
+      const postal = document.getElementById('postalCode').value.trim();
+
+      // Campaign & Strategy
+      const targetAge = document.getElementById('targetAge').value;
+      const targetGender = document.getElementById('targetGender').value;
+      const targetLocation = document.getElementById('targetLocation').value.trim();
+      const campaign = document.getElementById('campaignObjective').value;
+      const platform = document.getElementById('targetPlatform').value;
+      const productName = document.getElementById('productName').value.trim();
+      const offerCode = document.getElementById('offerCode').value.trim();
+      const ctaText = document.getElementById('ctaText').value.trim();
+
+      // Engine & Style
+      const model = document.getElementById('targetModel').value;
+      const style = document.getElementById('designStyle').value;
+      const imageType = document.getElementById('imageType').value;
+      const camera = document.getElementById('cameraAngle').value;
+      const lighting = document.getElementById('lighting').value;
+      const ar = document.getElementById('aspectRatio').value;
+      const colors = document.getElementById('brandColors').value.trim();
+      const env = document.getElementById('environment').value.trim();
+
+      // Image Upload State Checks
+      const hasLogo = !document.getElementById('logoPreview').classList.contains('hidden');
+      const hasOwnerPhoto = !document.getElementById('ownerPreview').classList.contains('hidden');
+
+      // Update Vision Asset Notice UI
+      const imageRefNotice = document.getElementById('imageRefNotice');
+      const imageRefText = document.getElementById('imageRefText');
+      if (hasLogo || hasOwnerPhoto) {
+        imageRefNotice.classList.remove('hidden');
+        let notices = [];
+        if (hasLogo) notices.push("Brand Logo Reference");
+        if (hasOwnerPhoto) notices.push("Owner Likeness Reference");
+        imageRefText.innerText = "Configured with " + notices.join(" + ");
+      } else {
+        imageRefNotice.classList.add('hidden');
+      }
+
+      // Build Vision Reference Prompts
+      let imageRefInstructions = '';
+      if (hasOwnerPhoto) {
+        imageRefInstructions += ` [IMAGE REFERENCE 1: Maintain exact facial features, likeness, and structure of uploaded founder photo (${ownerName || 'Owner'})].`;
+      }
+      if (hasLogo) {
+        imageRefInstructions += ` [IMAGE REFERENCE 2: Incorporate the exact uploaded brand logo vector graphic cleanly into the image composition].`;
+      }
+
+      // Build Address & Contact String
+      let addressParts = [street, city, state, postal, country].filter(Boolean);
+      let fullAddressStr = addressParts.join(', ');
+
+      let contactOverlayText = '';
+      if (email || phone || fullAddressStr) {
+        contactOverlayText = ` Marketing Layout Typography Overlay: Include readable text elements for `;
+        let details = [];
+        if (phone) details.push(`Phone: "${phone}"`);
+        if (email) details.push(`Email: "${email}"`);
+        if (fullAddressStr) details.push(`Address: "${fullAddressStr}"`);
+        contactOverlayText += details.join(', ') + '.';
+      }
+
+      // Construct Prompt Text
+      let mainSubject = `${imageType} for ${businessName}`;
+      if (productName) mainSubject += `, featuring ${productName}`;
+      if (desc) mainSubject += ` (${desc})`;
+
+      let campaignSection = `Campaign Objective: ${campaign} targeting ${targetAge} (${targetGender}${targetLocation ? ' in ' + targetLocation : ''}).`;
+      let styleSection = `Visual Style: ${style}. Composition: ${camera}, lit with ${lighting}. Environment: ${env || 'Clean studio setting'}.`;
+      let brandingSection = colors ? ` Color Palette: ${colors}.` : '';
+      let offerSection = (ctaText || offerCode) ? ` Display Offer Text: "${ctaText || ''}" ${offerCode ? 'Promo Code: ' + offerCode : ''}.` : '';
+
+      let basePrompt = `${imageRefInstructions} ${mainSubject}. ${campaignSection} ${styleSection}${brandingSection}${offerSection}${contactOverlayText} Optimized for ${platform}.`;
+
+      // Format for Selected AI Model
+      let finalPrompt = basePrompt.trim();
+
+      if (model === 'Midjourney v6') {
+        finalPrompt = `${finalPrompt} --ar ${ar} --v 6.0 --style raw --iw 2.0`;
+      } else if (model === 'FLUX.1 Vision') {
+        finalPrompt = `[FLUX VISION PROMPT] ${finalPrompt} Maintain strict identity match for image inputs. Aspect ratio ${ar}.`;
+      } else if (model === 'DALL-E 3') {
+        finalPrompt = `Create a realistic image for ${businessName}. ${finalPrompt} Ensure clear typography and structured spatial layout.`;
+      } else if (model === 'Stable Diffusion') {
+        finalPrompt = `${finalPrompt}, 8k resolution, highly detailed, master piece, ControlNet IP-Adapter identity preserved.`;
+      }
+
+      // Output to Screen
+      document.getElementById('promptOutput').innerText = finalPrompt;
+      document.getElementById('charCount').innerText = `${finalPrompt.length} chars`;
+    }
+
+    function copyToClipboard() {
+      const text = document.getElementById('promptOutput').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2500);
+      });
+    }
+
+    function exportTxt() {
+      const text = document.getElementById('promptOutput').innerText;
+      const element = document.createElement('a');
+      const file = new Blob([text], {type: 'text/plain'});
+      element.href = URL.createObjectURL(file);
+      element.download = `PromptStudio_Vision_${Date.now()}.txt`;
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    }
+
+    function resetForm() {
+      document.getElementById('promptForm').reset();
+      removeUpload('brandLogo', 'logoPreview');
+      removeUpload('ownerImage', 'ownerPreview');
+      generatePrompt();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      generatePrompt();
+    });
+  </script>
+</body>
+</html>
