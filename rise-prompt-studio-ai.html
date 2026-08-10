@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE Prompt Studio - AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2545;
+    --blue-700:#1D4ED8;
+    --blue-600:#2563EB;
+    --blue-500:#3B82F6;
+    --sky:#0EA5E9;
+    --blue-50:#EFF6FF;
+    --blue-100:#DBEAFE;
+    --white:#FFFFFF;
+    --ink:#0F172A;
+    --slate:#475569;
+    --slate-light:#94A3B8;
+    --line:#E2E8F0;
+    --amber:#F59E0B;
+    --radius:14px;
+    --shadow: 0 8px 30px rgba(15,42,90,0.10);
+    --shadow-lg: 0 18px 50px rgba(15,42,90,0.16);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 500px at 10% -10%, var(--blue-50), transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, #E0F2FE, transparent 55%),
+      var(--white);
+    line-height:1.5;
+  }
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif; margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  /* Header */
+  header.top{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1080px;margin:0 auto;}
+  .brandmark{display:flex;align-items:center;gap:10px;}
+  .logo-badge{
+    width:40px;height:40px;border-radius:10px;
+    background:linear-gradient(135deg,var(--navy),var(--blue-600));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Poppins',sans-serif;font-weight:800;font-size:16px;
+    box-shadow:var(--shadow);
+    flex-shrink:0;
+  }
+  .brand-text .name{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:var(--navy);letter-spacing:.2px;}
+  .brand-text .sub{font-size:11px;color:var(--slate);letter-spacing:.6px;text-transform:uppercase;}
+  .pill{
+    font-size:12px; font-weight:600; color:var(--blue-700);
+    background:var(--blue-50); border:1px solid var(--blue-100);
+    padding:6px 12px; border-radius:999px;
+  }
+
+  /* Hero */
+  .hero{padding:52px 0 30px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:36px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:700; letter-spacing:.6px; text-transform:uppercase;
+    color:var(--blue-700); background:var(--blue-50); border:1px solid var(--blue-100);
+    padding:6px 12px; border-radius:999px; margin-bottom:16px;
+  }
+  .hero h1{font-size:38px; line-height:1.15; color:var(--navy); font-weight:800;}
+  .hero h1 span{color:var(--blue-600);}
+  .hero p.lead{margin-top:14px; color:var(--slate); font-size:16px; max-width:52ch;}
+  .hero-visual{
+    border-radius:20px; overflow:hidden; box-shadow:var(--shadow-lg);
+    border:1px solid var(--line); position:relative; aspect-ratio:4/3;
+    background:linear-gradient(155deg, var(--navy) 0%, var(--blue-700) 60%, var(--sky) 100%);
+    padding:22px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .hero-visual::before{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,0.16) 1.5px, transparent 1.5px);
+    background-size:16px 16px; opacity:0.5;
+  }
+  .mock-topbar{position:relative; display:flex; gap:6px;}
+  .mock-topbar span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.35);}
+  .mock-card{
+    position:relative; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.25);
+    border-radius:14px; padding:16px; backdrop-filter:blur(6px);
+  }
+  .mock-card .mock-brand{font-family:'Poppins',sans-serif; color:#fff; font-weight:800; font-size:17px;}
+  .mock-card .mock-tag{color:#BFDBFE; font-size:11.5px; margin-top:2px;}
+  .mock-card .mock-line{height:8px; border-radius:4px; background:rgba(255,255,255,0.22); margin-top:12px;}
+  .mock-card .mock-line.w60{width:60%;}
+  .mock-card .mock-line.w80{width:80%;}
+  .mock-card .mock-line.w40{width:40%;}
+  .mock-badge{
+    position:relative; align-self:flex-start;
+    background:var(--amber); color:#3A2400; font-weight:700; font-size:11.5px;
+    padding:6px 12px; border-radius:999px;
+  }
+  .hero-visual .tag{
+    position:relative; align-self:flex-start;
+    background:rgba(255,255,255,0.16); color:#fff; font-size:12px; font-weight:600;
+    padding:7px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.25);
+  }
+
+  /* Sections */
+  section{padding:34px 0;}
+  .section-head{margin-bottom:20px;}
+  .section-head .kicker{font-size:12px; font-weight:700; color:var(--blue-600); letter-spacing:.6px; text-transform:uppercase;}
+  .section-head h2{font-size:24px; color:var(--navy); margin-top:6px;}
+  .section-head p{color:var(--slate); margin-top:6px; font-size:14.5px;}
+
+  /* Ad Panel - RISE Institute poster-style card */
+  .ad-panel{
+    border-radius:20px; overflow:hidden; border:1px solid var(--blue-100);
+    box-shadow:var(--shadow-lg);
+    background:linear-gradient(160deg, var(--navy) 0%, var(--blue-700) 55%, var(--sky) 100%);
+    color:#fff; position:relative;
+  }
+  .ad-panel::before{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    opacity:0.5;
+  }
+  .ad-inner{position:relative; padding:28px 26px 22px;}
+  .ad-ribbon{
+    display:inline-block; background:var(--amber); color:#3A2400; font-weight:700; font-size:11.5px;
+    letter-spacing:.4px; text-transform:uppercase; padding:5px 12px; border-radius:999px; margin-bottom:14px;
+  }
+  .ad-inner h3{font-size:26px; font-weight:800; font-family:'Poppins',sans-serif;}
+  .ad-inner .tagline{font-size:13.5px; color:#DCEAFE; margin-top:4px; letter-spacing:.3px;}
+  .ad-inner .loc{font-size:12.5px; color:#BFDBFE; margin-top:8px;}
+  .course-grid{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 20px;}
+  .course-chip{
+    font-size:12.5px; font-weight:600; background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.28); padding:7px 12px; border-radius:999px;
+    backdrop-filter:blur(2px);
+  }
+  .ad-cta-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center;}
+  .btn-whatsapp{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; color:var(--navy); font-weight:700; font-size:14px;
+    padding:11px 18px; border-radius:10px; text-decoration:none;
+    box-shadow:0 6px 20px rgba(0,0,0,0.18);
+  }
+  .btn-whatsapp:hover{background:#F0F7FF;}
+  .ad-contact{font-size:12.5px; color:#E0EFFF; line-height:1.6;}
+  .ad-contact b{color:#fff;}
+
+  /* Note callout */
+  .note{
+    display:flex; gap:14px; align-items:flex-start;
+    background:#FFFBEB; border:1px solid #FDE68A; border-radius:14px;
+    padding:16px 18px; margin-top:22px;
+  }
+  .note .ico{
+    width:34px;height:34px;border-radius:10px;background:#F59E0B;color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;
+  }
+  .note p{margin:0; font-size:13.5px; color:#78350F; line-height:1.55;}
+  .note strong{color:#78350F;}
+
+  /* Form card */
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:20px;
+    box-shadow:var(--shadow); padding:28px;
+  }
+  .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px 20px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field.full{grid-column:1 / -1;}
+  label{font-size:13px; font-weight:600; color:var(--navy);}
+  label .opt{color:var(--slate-light); font-weight:500;}
+  input[type=text], input[type=tel], input[type=email], textarea, select{
+    font-family:'Inter',sans-serif; font-size:14px; color:var(--ink);
+    border:1.5px solid var(--line); border-radius:10px; padding:11px 12px;
+    background:#F8FAFC; transition:border-color .15s, background .15s;
+    width:100%;
+  }
+  input:focus, textarea:focus, select:focus{
+    outline:none; border-color:var(--blue-500); background:#fff;
+    box-shadow:0 0 0 4px var(--blue-50);
+  }
+  textarea{resize:vertical; min-height:70px;}
+  .divider{
+    grid-column:1/-1; display:flex; align-items:center; gap:12px; margin:6px 0 -4px;
+  }
+  .divider span{font-size:12px; font-weight:700; color:var(--blue-700); text-transform:uppercase; letter-spacing:.5px; white-space:nowrap;}
+  .divider::after{content:""; flex:1; height:1px; background:var(--line);}
+
+  .color-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; grid-column:1/-1;}
+  .color-field{
+    display:flex; align-items:center; gap:10px; border:1.5px solid var(--line);
+    border-radius:10px; padding:9px 12px; background:#F8FAFC;
+  }
+  .color-field input[type=color]{
+    width:34px; height:34px; border:none; border-radius:8px; padding:0; background:none; cursor:pointer; flex-shrink:0;
+  }
+  .color-field .cinfo{display:flex; flex-direction:column;}
+  .color-field .cinfo label{font-size:11.5px;}
+  .color-field .cinfo .hex{font-size:12px; color:var(--slate); font-family:'JetBrains Mono',monospace;}
+
+  .actions{margin-top:26px; display:flex; justify-content:center;}
+  .btn-generate{
+    background:linear-gradient(135deg,var(--blue-600),var(--navy));
+    color:#fff; border:none; font-family:'Poppins',sans-serif; font-weight:700; font-size:15.5px;
+    padding:15px 40px; border-radius:12px; cursor:pointer;
+    box-shadow:0 12px 30px rgba(29,78,216,0.35);
+    transition:transform .12s ease, box-shadow .12s ease;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-generate:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(29,78,216,0.42);}
+  .btn-generate:active{transform:translateY(0);}
+
+  /* Output panel */
+  #outputPanel{display:none; margin-top:30px;}
+  .output-card{
+    background:var(--navy); border-radius:20px; padding:2px; box-shadow:var(--shadow-lg);
+    background:linear-gradient(135deg, var(--blue-700), var(--sky));
+  }
+  .output-inner{
+    background:#0B1730; border-radius:18px; padding:24px 24px 22px;
+  }
+  .output-head{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:14px;}
+  .output-head h3{color:#fff; font-size:17px; display:flex; align-items:center; gap:8px;}
+  .output-head .dot{width:9px;height:9px;border-radius:50%;background:#22C55E; display:inline-block; box-shadow:0 0 0 4px rgba(34,197,94,0.2);}
+  .btn-copy{
+    background:#fff; color:var(--navy); font-weight:700; font-size:13px; border:none;
+    padding:9px 16px; border-radius:9px; cursor:pointer; display:inline-flex; gap:7px; align-items:center;
+    transition:background .15s;
+  }
+  .btn-copy:hover{background:var(--blue-50);}
+  .btn-copy.copied{background:#22C55E; color:#fff;}
+  #promptOutput{
+    white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:13px; line-height:1.7;
+    color:#DCEAFE; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px; padding:18px; max-height:420px; overflow-y:auto;
+  }
+  .platform-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+  .platform-tags span{
+    font-size:11.5px; color:#93C5FD; background:rgba(59,130,246,0.14);
+    border:1px solid rgba(59,130,246,0.3); padding:5px 10px; border-radius:999px;
+  }
+
+  /* Feature cards (icon-based, no images) */
+  .feature-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px;}
+  .feature-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px;
+    box-shadow:var(--shadow);
+  }
+  .feature-card .fico{
+    width:42px; height:42px; border-radius:12px;
+    background:linear-gradient(135deg,var(--blue-600),var(--navy));
+    display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:12px;
+  }
+  .feature-card h4{font-size:15px; color:var(--navy); margin-bottom:6px;}
+  .feature-card p{font-size:13px; color:var(--slate); margin:0; line-height:1.6;}
+
+  /* Footer */
+  footer{
+    margin-top:50px; border-top:1px solid var(--line);
+    background:linear-gradient(180deg,#F8FAFC, #EFF6FF);
+  }
+  .foot-grid{
+    display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:30px;
+    padding:40px 0 24px;
+  }
+  .foot-col h4{color:var(--navy); font-size:14px; margin-bottom:12px;}
+  .foot-col p, .foot-col a{font-size:13px; color:var(--slate); line-height:1.8; text-decoration:none; display:block;}
+  .foot-col a:hover{color:var(--blue-600);}
+  .foot-bottom{
+    border-top:1px solid var(--line); padding:16px 0 26px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-size:12.5px; color:var(--slate-light);
+  }
+  .foot-bottom .dev{color:var(--navy); font-weight:700;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:30px;}
+    .form-grid{grid-template-columns:1fr;}
+    .color-row{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr; gap:22px; padding:32px 0 18px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .card{padding:20px;}
+    .btn-generate{width:100%; justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">
+    <div class="brandmark">
+      <div class="logo-badge">RP</div>
+      <div class="brand-text">
+        <div class="name">RISE Prompt Studio <span style="color:var(--blue-600)">– AI</span></div>
+        <div class="sub">AI Image Prompt Generator</div>
+      </div>
+    </div>
+    <span class="pill">By RISE Institute of Computer Science</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">● For every business category</span>
+        <h1>Turn your business details into a <span>ready-to-use AI image prompt</span></h1>
+        <p class="lead">Fill in your business, offers and contact details once — RISE Prompt Studio builds a structured, professional prompt you can paste into any AI image tool to design posters, social posts and ads.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="mock-topbar"><span></span><span></span><span></span></div>
+        <div class="mock-card">
+          <div class="mock-brand">Your Brand Name</div>
+          <div class="mock-tag">Your tagline goes here</div>
+          <div class="mock-line w80"></div>
+          <div class="mock-line w60"></div>
+          <div class="mock-line w40"></div>
+        </div>
+        <span class="mock-badge">✦ Offer Badge</span>
+        <span class="tag">✦ AI-ready prompt output</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AD PANEL -->
+  <section id="ad">
+    <div class="ad-panel">
+      <div class="ad-inner">
+        <span class="ad-ribbon">Admissions Open</span>
+        <h3>RISE Institute of Computer Science</h3>
+        <div class="tagline">Shaping careers in technology — Hanumakonda</div>
+        <div class="loc">📍 Naim Nagar, Hanumakonda, Telangana</div>
+
+        <div class="course-grid">
+          <span class="course-chip">C</span>
+          <span class="course-chip">C++</span>
+          <span class="course-chip">JAVA</span>
+          <span class="course-chip">PYTHON</span>
+          <span class="course-chip">DATA SCIENCE</span>
+          <span class="course-chip">PYTHON FULL STACK</span>
+          <span class="course-chip">WEB DESIGNING</span>
+          <span class="course-chip">TALLY WITH GST</span>
+          <span class="course-chip">MS OFFICE WITH INTERNET FUNDAMENTALS</span>
+        </div>
+
+        <div class="ad-cta-row">
+          <a class="btn-whatsapp" href="https://wa.me/917075949046?text=Hi%2C%20I%20am%20interested%20in%20admissions%20at%20RISE%20Institute%20of%20Computer%20Science." target="_blank" rel="noopener">
+            💬 Admissions Enquiry — Chat on WhatsApp
+          </a>
+          <div class="ad-contact">📞 <b>7075949046</b> &nbsp;·&nbsp; ✉ info.estorelinks@gmail.com &nbsp;·&nbsp; 🌐 www.risehnk.in</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <div class="ico">i</div>
+      <p><strong>Note:</strong> This app generates the <strong>design prompt only</strong>. After copying your prompt, open it in your preferred AI image tool (such as an AI image generator) and <strong>upload your business logo or other reference images there</strong> so the tool can place them on your final poster.</p>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="form">
+    <div class="section-head">
+      <div class="kicker">Step 1</div>
+      <h2>Enter your business details</h2>
+      <p>All fields marked <span style="color:#DC2626">*</span> are required to generate an accurate prompt.</p>
+    </div>
+
+    <div class="card">
+      <div class="form-grid">
+
+        <div class="divider"><span>Business Information</span></div>
+
+        <div class="field">
+          <label>Business / Brand Name *</label>
+          <input type="text" id="brandName" placeholder="e.g. Rise Institute of Computer Science">
+        </div>
+        <div class="field">
+          <label>Tagline / Slogan <span class="opt">(optional)</span></label>
+          <input type="text" id="tagline" placeholder="e.g. Shaping careers in technology">
+        </div>
+        <div class="field">
+          <label>Business Category / Industry *</label>
+          <select id="category">
+            <option value="">Select category</option>
+            <option>Education & Training Institute</option>
+            <option>Retail & Fashion</option>
+            <option>Restaurant & Food</option>
+            <option>Healthcare & Clinic</option>
+            <option>Real Estate</option>
+            <option>Salon & Beauty</option>
+            <option>Electronics & Mobile Store</option>
+            <option>Jewellery</option>
+            <option>Grocery & Supermarket</option>
+            <option>IT Services & Software</option>
+            <option>Automobile & Showroom</option>
+            <option>Event Management</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Type of Business *</label>
+          <select id="bizType">
+            <option value="">Select type</option>
+            <option>Proprietorship</option>
+            <option>Partnership Firm</option>
+            <option>Private Limited Company</option>
+            <option>Startup</option>
+            <option>Institute / Training Center</option>
+            <option>Franchise</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="divider"><span>Founder / Proprietor Details</span></div>
+
+        <div class="field">
+          <label>Founder / Mentor / Proprietor Name *</label>
+          <input type="text" id="founderName" placeholder="e.g. Yadagiri Pashikanti">
+        </div>
+        <div class="field">
+          <label>Designation <span class="opt">(optional)</span></label>
+          <input type="text" id="founderDesig" placeholder="e.g. Founder & Mentor">
+        </div>
+
+        <div class="divider"><span>Address Details</span></div>
+
+        <div class="field full">
+          <label>Business Address *</label>
+          <textarea id="address" placeholder="e.g. Naim Nagar, Hanumakonda, Telangana - 506001"></textarea>
+        </div>
+
+        <div class="divider"><span>Offerings</span></div>
+
+        <div class="field full">
+          <label>Offering Services / Key Products *</label>
+          <textarea id="services" placeholder="Comma separated, e.g. Python Full Stack, Data Science, Web Designing"></textarea>
+        </div>
+        <div class="field full">
+          <label>Offers & Discounts <span class="opt">(optional)</span></label>
+          <input type="text" id="offers" placeholder="e.g. Flat 20% off on early admissions">
+        </div>
+
+        <div class="divider"><span>Contact Details</span></div>
+
+        <div class="field">
+          <label>Phone Number *</label>
+          <input type="tel" id="phone" placeholder="e.g. 7075949046">
+        </div>
+        <div class="field">
+          <label>WhatsApp Number <span class="opt">(optional)</span></label>
+          <input type="tel" id="whatsapp" placeholder="e.g. 7075949046">
+        </div>
+        <div class="field">
+          <label>Email <span class="opt">(optional)</span></label>
+          <input type="email" id="email" placeholder="e.g. info@yourbusiness.com">
+        </div>
+        <div class="field">
+          <label>Website <span class="opt">(optional)</span></label>
+          <input type="text" id="website" placeholder="e.g. www.yourbusiness.com">
+        </div>
+
+        <div class="divider"><span>Image & Prompt Preferences</span></div>
+
+        <div class="field">
+          <label>Purpose of Poster *</label>
+          <select id="purpose">
+            <option value="">Select purpose</option>
+            <option>Brand Promotion</option>
+            <option>Marketing Campaign</option>
+            <option>Festive Promotion</option>
+            <option>Sale / Discount Offer</option>
+            <option>Social Media Engagement</option>
+            <option>New Product / Service Launch</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Platform / Aspect Ratio *</label>
+          <select id="platform">
+            <option value="">Select platform</option>
+            <option>Instagram Post (1:1)</option>
+            <option>Instagram Story / Reel (9:16)</option>
+            <option>Facebook Post (1.91:1)</option>
+            <option>WhatsApp Status (9:16)</option>
+            <option>LinkedIn Post (1.91:1)</option>
+            <option>YouTube Thumbnail (16:9)</option>
+            <option>Poster – A4 Portrait</option>
+            <option>Twitter / X Post (16:9)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Visual Theme</label>
+          <select id="visualTheme">
+            <option>Modern corporate studio</option>
+            <option>Festive celebration</option>
+            <option>Minimal clean workspace</option>
+            <option>Vibrant sale / promotional</option>
+            <option>Elegant luxury</option>
+            <option>Tech & digital futuristic</option>
+            <option>Warm traditional Indian festive</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Hero Visual Subject <span class="opt">(optional)</span></label>
+          <input type="text" id="heroSubject" placeholder="e.g. students learning on laptops in a bright classroom">
+        </div>
+
+        <div class="field full">
+          <label>Special Instructions <span class="opt">(optional)</span></label>
+          <textarea id="special" placeholder="Any extra design instructions for the AI tool"></textarea>
+        </div>
+
+        <div class="divider"><span>Choose Colours</span></div>
+
+        <div class="color-row">
+          <div class="color-field">
+            <input type="color" id="colorPrimary" value="#1D4ED8">
+            <div class="cinfo"><label>Primary Colour</label><span class="hex" id="hexPrimary">#1D4ED8</span></div>
+          </div>
+          <div class="color-field">
+            <input type="color" id="colorSecondary" value="#EFF6FF">
+            <div class="cinfo"><label>Background Colour</label><span class="hex" id="hexSecondary">#EFF6FF</span></div>
+          </div>
+          <div class="color-field">
+            <input type="color" id="colorText" value="#0B2545">
+            <div class="cinfo"><label>Text Colour</label><span class="hex" id="hexText">#0B2545</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <button class="btn-generate" id="generateBtn" type="button">✨ Generate Prompt</button>
+      </div>
+
+      <!-- OUTPUT PANEL -->
+      <div id="outputPanel">
+        <div class="output-card">
+          <div class="output-inner">
+            <div class="output-head">
+              <h3><span class="dot"></span>Your AI Image Prompt</h3>
+              <button class="btn-copy" id="copyBtn" type="button">📋 Copy Prompt</button>
+            </div>
+            <div id="promptOutput"></div>
+            <div class="platform-tags" id="platformTags"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feature highlights (icon-based, no photos) -->
+  <section>
+    <div class="section-head">
+      <div class="kicker">Why RISE Prompt Studio</div>
+      <h2>Built for every business, tuned for AI image tools</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="fico">🐍</div>
+        <h4>Works for tech & non-tech alike</h4>
+        <p>From Python/Data Science institutes to retail, food, healthcare and more — one form, any industry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="fico">🎨</div>
+        <h4>Your exact colour palette</h4>
+        <p>Pick primary, background and text colours — they're written straight into the generated prompt.</p>
+      </div>
+      <div class="feature-card">
+        <div class="fico">📋</div>
+        <h4>One-tap copy, ready to paste</h4>
+        <p>Copy the finished prompt and drop it into any AI image tool along with your logo.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h4>RISE Prompt Studio – AI</h4>
+        <p>A professional AI image-prompt generator built for every business category — from institutes to retail, food, healthcare and more.</p>
+      </div>
+      <div class="foot-col">
+        <h4>RISE Institute of Computer Science</h4>
+        <p>Founder / Mentor: Yadagiri Pashikanti (MCA)</p>
+        <p>📍 Naim Nagar, Hanumakonda, Telangana</p>
+        <p>📞 7075949046 &nbsp;|&nbsp; ✉ info.estorelinks@gmail.com</p>
+        <p>🌐 www.risehnk.in</p>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Admission Enquiry</h4>
+        <a href="https://wa.me/917075949046?text=Hi%2C%20I%20am%20interested%20in%20admissions%20at%20RISE%20Institute%20of%20Computer%20Science." target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+        <a href="tel:7075949046">📞 Call 7075949046</a>
+        <a href="mailto:info.estorelinks@gmail.com">✉ Email us</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 RISE Prompt Studio – AI. All rights reserved.</span>
+      <span>Developed by <span class="dev">Yadagiri Pashikanti (MCA)</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // live hex display for color pickers
+  ['Primary','Secondary','Text'].forEach(function(k){
+    var input = document.getElementById('color'+k);
+    var out = document.getElementById('hex'+k);
+    input.addEventListener('input', function(){ out.textContent = input.value.toUpperCase(); });
+  });
+
+  function val(id){ return document.getElementById(id).value.trim(); }
+
+  document.getElementById('generateBtn').addEventListener('click', function(){
+    var brandName = val('brandName');
+    var category = val('category');
+    var bizType = val('bizType');
+    var tagline = val('tagline') || '—';
+    var founderName = val('founderName');
+    var founderDesig = val('founderDesig');
+    var address = val('address');
+    var services = val('services');
+    var offers = val('offers') || 'No current offer specified';
+    var phone = val('phone');
+    var whatsapp = val('whatsapp');
+    var email = val('email');
+    var website = val('website');
+    var purpose = val('purpose');
+    var platform = val('platform');
+    var visualTheme = val('visualTheme');
+    var heroSubject = val('heroSubject') || 'the core products or services of the business, arranged neatly and attractively';
+    var special = val('special');
+
+    var missing = [];
+    if(!brandName) missing.push('Business / Brand Name');
+    if(!category) missing.push('Business Category');
+    if(!bizType) missing.push('Type of Business');
+    if(!founderName) missing.push('Founder / Proprietor Name');
+    if(!address) missing.push('Business Address');
+    if(!services) missing.push('Offering Services / Key Products');
+    if(!phone) missing.push('Phone Number');
+    if(!purpose) missing.push('Purpose of Poster');
+    if(!platform) missing.push('Platform / Aspect Ratio');
+
+    if(missing.length){
+      alert('Please fill in the following required fields before generating the prompt:\n\n• ' + missing.join('\n• '));
+      return;
+    }
+
+    var proprietorDetails = founderName + (founderDesig ? ' (' + founderDesig + ')' : '') + ', ' + bizType;
+    var contactBits = [];
+    contactBits.push('Phone: ' + phone);
+    if(whatsapp) contactBits.push('WhatsApp: ' + whatsapp);
+    if(email) contactBits.push('Email: ' + email);
+    if(website) contactBits.push('Website: ' + website);
+    var contactInfo = contactBits.join(' | ');
+
+    var primary = document.getElementById('colorPrimary').value.toUpperCase();
+    var secondary = document.getElementById('colorSecondary').value.toUpperCase();
+    var textColor = document.getElementById('colorText').value.toUpperCase();
+
+    var prompt =
+'Purpose: ' + purpose + '\n\n' +
+'A professional commercial promotional graphic poster for "' + brandName + '" in the ' + category + ' industry, optimized for ' + platform + '.\n\n' +
+'Visual Style & Background: ' + visualTheme + ' setting featuring ' + heroSubject + '. Modern corporate aesthetic with photorealistic lighting, 8k resolution, sharp focus.\n\n' +
+'Top Section: Prominently feature the brand name "' + brandName + '" and slogan "' + tagline + '". Leave clean space in top corner for logo integration.\n\n' +
+'Center Section: Display clear text overlays for key offerings: ' + services + '. Include a prominent callout badge displaying "' + offers + '".\n\n' +
+'Bottom Footer Section: Clean horizontal bar featuring proprietor details "' + proprietorDetails + '", contact details "' + contactInfo + '", and location "' + address + '".\n\n' +
+'Color Scheme: Dominant primary color ' + primary + ', background tones ' + secondary + ', and text elements in ' + textColor + '. High contrast, clean typography.' +
+(special ? ('\n\nAdditional Instructions: ' + special) : '') +
+'\n\nNote to designer/AI tool: Upload the business logo and any additional reference images directly in the AI image tool and blend them naturally into the top corner and background of this design.';
+
+    document.getElementById('promptOutput').textContent = prompt;
+
+    var tagsHtml = '<span>' + platform + '</span><span>' + purpose + '</span><span>' + category + '</span>';
+    document.getElementById('platformTags').innerHTML = tagsHtml;
+
+    var panel = document.getElementById('outputPanel');
+    panel.style.display = 'block';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    var copyBtn = document.getElementById('copyBtn');
+    copyBtn.textContent = '📋 Copy Prompt';
+    copyBtn.classList.remove('copied');
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var text = document.getElementById('promptOutput').textContent;
+    if(!text){ return; }
+    var btn = document.getElementById('copyBtn');
+
+    function markCopied(){
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(function(){
+        btn.textContent = '📋 Copy Prompt';
+        btn.classList.remove('copied');
+      }, 2000);
+    }
+
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(markCopied).catch(function(){
+        fallbackCopy(text, markCopied);
+      });
+    } else {
+      fallbackCopy(text, markCopied);
+    }
+  });
+
+  function fallbackCopy(text, cb){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch(e) { alert('Copy failed. Please select and copy the text manually.'); }
+    document.body.removeChild(ta);
+  }
+</script>
+
+</body>
+</html>
