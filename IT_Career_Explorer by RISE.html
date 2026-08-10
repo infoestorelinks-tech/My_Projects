@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IT Career Explorer - Discover your future in Information Technology. Career guidance for school, intermediate and degree students exploring IT careers, software jobs, AI careers, cyber security and more.">
+<meta name="keywords" content="IT Careers, Software Jobs, AI Careers, Cyber Security Careers, Career Guidance for Students, Technology Jobs in India, IT Career Guidance, Programming Careers">
+<meta name="author" content="Yadagiri P (MCA)">
+<meta property="og:title" content="IT Career Explorer - Discover Your Future in Information Technology">
+<meta property="og:description" content="Comprehensive IT career guidance for students. Explore 40+ career roles, roadmaps, skills, and resources.">
+<title>IT Career Explorer | Discover Your Future in Information Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --navy: #0A1628;
+  --navy-mid: #0F2040;
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --blue-pale: #EFF6FF;
+  --yellow: #F59E0B;
+  --yellow-light: #FDE68A;
+  --yellow-pale: #FFFBEB;
+  --white: #FFFFFF;
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-500: #64748B;
+  --gray-700: #334155;
+  --gray-900: #0F172A;
+  --green: #10B981;
+  --purple: #8B5CF6;
+  --red: #EF4444;
+  --orange: #F97316;
+  --teal: #0D9488;
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow: 0 4px 16px rgba(10,22,40,0.12);
+  --shadow-lg: 0 12px 40px rgba(10,22,40,0.18);
+  --shadow-xl: 0 24px 64px rgba(10,22,40,0.25);
+  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="dark"] {
+  --navy: #F8FAFC;
+  --navy-mid: #E2E8F0;
+  --blue-pale: #1E3A5F;
+  --yellow-pale: #2A1F00;
+  --white: #0F172A;
+  --gray-50: #1E293B;
+  --gray-100: #334155;
+  --gray-200: #475569;
+  --gray-300: #64748B;
+  --gray-500: #94A3B8;
+  --gray-700: #CBD5E1;
+  --gray-900: #F1F5F9;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--gray-900);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+img { max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { cursor: pointer; font-family: var(--font-body); border: none; outline: none; }
+input, textarea, select { font-family: var(--font-body); }
+.hidden { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* ===== NAVBAR ===== */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,22,40,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: var(--transition);
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 68px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+  color: var(--white);
+}
+.nav-logo .logo-icon {
+  width: 38px; height: 38px; background: linear-gradient(135deg, var(--blue), var(--yellow));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.nav-logo span { color: var(--yellow); }
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.8); font-size: 0.875rem; font-weight: 500;
+  padding: 8px 14px; border-radius: 8px; transition: var(--transition);
+  cursor: pointer;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--white); background: rgba(37,99,235,0.3);
+}
+.nav-links a.active { color: var(--yellow); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.btn-theme {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(255,255,255,0.1); color: var(--white); font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.btn-theme:hover { background: rgba(255,255,255,0.2); }
+.btn-search-nav {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(255,255,255,0.1); color: var(--white); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.btn-search-nav:hover { background: rgba(255,255,255,0.2); }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--white);
+  border-radius: 2px; transition: var(--transition);
+}
+.mobile-menu {
+  display: none; position: absolute; top: 68px; left: 0; right: 0;
+  background: rgba(10,22,40,0.98); padding: 16px 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block; color: rgba(255,255,255,0.8); padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.95rem;
+  font-weight: 500; cursor: pointer; transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--yellow); }
+
+/* ===== SEARCH MODAL ===== */
+.search-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+  align-items: flex-start; justify-content: center; padding-top: 80px;
+}
+.search-overlay.open { display: flex; }
+.search-box {
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 24px; width: 90%; max-width: 600px;
+  box-shadow: var(--shadow-xl);
+}
+.search-box h3 { font-family: var(--font-display); margin-bottom: 16px; color: var(--navy); }
+.search-input-wrap { display: flex; gap: 10px; }
+.search-input-wrap input {
+  flex: 1; padding: 12px 16px; border: 2px solid var(--gray-200);
+  border-radius: var(--radius); font-size: 1rem; background: var(--gray-50);
+  color: var(--gray-900); transition: border-color 0.2s;
+}
+.search-input-wrap input:focus { border-color: var(--blue); outline: none; }
+.search-input-wrap button {
+  padding: 12px 20px; background: var(--blue); color: white;
+  border-radius: var(--radius); font-weight: 600;
+}
+#search-results { margin-top: 16px; max-height: 300px; overflow-y: auto; }
+.search-result-item {
+  padding: 12px; border-radius: 8px; cursor: pointer;
+  transition: background 0.2s; border-bottom: 1px solid var(--gray-100);
+}
+.search-result-item:hover { background: var(--blue-pale); }
+.search-result-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
+.search-result-item p { font-size: 0.8rem; color: var(--gray-500); }
+.search-close { float: right; background: none; font-size: 1.4rem; color: var(--gray-500); margin-top: -8px; }
+
+/* ===== PAGE MANAGEMENT ===== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: var(--radius);
+  font-family: var(--font-display); font-weight: 600; font-size: 0.9rem;
+  transition: var(--transition); cursor: pointer;
+}
+.btn-primary {
+  background: var(--blue); color: white;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+}
+.btn-primary:hover {
+  background: #1D4ED8; transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,99,235,0.45);
+}
+.btn-yellow {
+  background: var(--yellow); color: var(--navy);
+  box-shadow: 0 4px 14px rgba(245,158,11,0.35);
+}
+.btn-yellow:hover {
+  background: #D97706; transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245,158,11,0.45);
+}
+.btn-outline {
+  background: transparent; color: white;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+.btn-ghost {
+  background: transparent; color: var(--blue); border: 2px solid var(--blue);
+}
+.btn-ghost:hover { background: var(--blue); color: white; }
+
+/* ===== SECTION HELPERS ===== */
+.section { padding: 80px 24px; }
+.section-sm { padding: 60px 24px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  display: inline-block; background: var(--blue-pale); color: var(--blue);
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 16px;
+}
+.section-title span { color: var(--blue); }
+.section-title .accent { color: var(--yellow); }
+.section-desc { font-size: 1.05rem; color: var(--gray-500); max-width: 600px; line-height: 1.7; }
+.text-center { text-align: center; }
+.text-center .section-desc { margin: 0 auto; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-40 { margin-top: 40px; }
+.mt-48 { margin-top: 48px; }
+.mb-40 { margin-bottom: 40px; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; background: linear-gradient(135deg, #0A1628 0%, #0F2040 50%, #0A1628 100%);
+  display: flex; align-items: center; position: relative; overflow: hidden;
+  padding: 100px 24px 60px;
+}
+.hero-canvas {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.4;
+}
+.hero-inner {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3);
+  color: var(--yellow); font-size: 0.8rem; font-weight: 600;
+  padding: 8px 16px; border-radius: 100px; margin-bottom: 20px;
+}
+.hero-badge .dot { width: 6px; height: 6px; background: var(--yellow); border-radius: 50%; animation: pulse 2s infinite; }
+.hero-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 900; color: white; line-height: 1.1; margin-bottom: 20px;
+}
+.hero-title .highlight {
+  background: linear-gradient(135deg, #60A5FA, #F59E0B);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-tagline {
+  font-size: 1.1rem; color: rgba(255,255,255,0.65); margin-bottom: 32px;
+  line-height: 1.7; max-width: 480px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--yellow);
+  display: block;
+}
+.hero-stat .lbl { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+}
+.hero-card-stack { position: relative; width: 340px; height: 380px; }
+.hcard {
+  position: absolute; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px); border-radius: var(--radius-lg);
+  padding: 20px; color: white;
+}
+.hcard-main {
+  top: 0; left: 0; right: 0;
+  background: linear-gradient(135deg, rgba(37,99,235,0.3), rgba(245,158,11,0.15));
+}
+.hcard-float1 {
+  bottom: 20px; left: -20px; width: 160px;
+  background: rgba(16,185,129,0.2); border-color: rgba(16,185,129,0.3);
+  animation: floatCard1 4s ease-in-out infinite;
+}
+.hcard-float2 {
+  bottom: 0; right: -20px; width: 150px;
+  background: rgba(139,92,246,0.2); border-color: rgba(139,92,246,0.3);
+  animation: floatCard2 5s ease-in-out infinite;
+}
+.hcard-icon { font-size: 2rem; margin-bottom: 10px; }
+.hcard-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+.hcard-sub { font-size: 0.8rem; opacity: 0.7; }
+.hcard-roles { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.role-chip {
+  font-size: 0.7rem; padding: 3px 10px; border-radius: 100px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ===== MARQUEE ===== */
+.marquee-wrap {
+  background: var(--blue); padding: 14px 0; overflow: hidden;
+  border-top: 3px solid var(--yellow); border-bottom: 3px solid var(--yellow);
+}
+.marquee-track {
+  display: flex; gap: 0; animation: marquee 30s linear infinite; white-space: nowrap;
+}
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: white; font-size: 0.85rem; font-weight: 600; padding: 0 28px;
+}
+.marquee-item .dot { color: var(--yellow); font-size: 1.2rem; }
+
+/* ===== WHY IT SECTION ===== */
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+.why-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg); padding: 28px;
+  transition: var(--transition); position: relative; overflow: hidden;
+}
+.why-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--yellow));
+  transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+}
+.why-card:hover::before { transform: scaleX(1); }
+.why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.why-icon {
+  width: 56px; height: 56px; border-radius: var(--radius); margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+}
+.why-card h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+  color: var(--navy); margin-bottom: 8px;
+}
+.why-card p { font-size: 0.875rem; color: var(--gray-500); line-height: 1.6; }
+
+/* ===== CATEGORIES ===== */
+.cats-bg { background: var(--gray-50); }
+.cat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 48px; }
+.cat-card {
+  background: var(--white); border-radius: var(--radius-lg); padding: 24px 20px;
+  text-align: center; cursor: pointer; border: 2px solid transparent;
+  transition: var(--transition); box-shadow: var(--shadow-sm);
+}
+.cat-card:hover, .cat-card.active {
+  border-color: var(--blue); transform: translateY(-4px); box-shadow: var(--shadow);
+}
+.cat-emoji { font-size: 2.2rem; margin-bottom: 10px; display: block; }
+.cat-name { font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; color: var(--navy); margin-bottom: 4px; }
+.cat-count { font-size: 0.75rem; color: var(--gray-500); }
+
+/* ===== STATS ===== */
+.stats-section { background: linear-gradient(135deg, var(--navy), #0F2040); padding: 80px 24px; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 48px; }
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900; color: var(--yellow); display: block; margin-bottom: 8px;
+}
+.stat-label { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+.stat-icon { font-size: 2rem; display: block; margin-bottom: 12px; }
+
+/* ===== CAREER ROLES PAGE ===== */
+.roles-hero {
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  padding: 120px 24px 60px; text-align: center;
+}
+.roles-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,3rem); font-weight: 900; color: white; margin-bottom: 12px; }
+.roles-hero p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 560px; margin: 0 auto 32px; }
+.category-filter {
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  max-width: 1000px; margin: 0 auto; padding: 24px;
+}
+.filter-btn {
+  padding: 8px 18px; border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+  background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200);
+  transition: var(--transition); cursor: pointer;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--blue); color: white; border-color: var(--blue);
+}
+.roles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 0 24px 80px; max-width: 1260px; margin: 0 auto; }
+.role-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200); overflow: hidden;
+  transition: var(--transition); cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.role-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--blue); }
+.role-card-header {
+  padding: 20px 20px 14px; display: flex; align-items: flex-start; gap: 14px;
+}
+.role-icon {
+  width: 48px; height: 48px; border-radius: var(--radius); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+}
+.role-card-header h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+  color: var(--navy); margin-bottom: 4px;
+}
+.role-cat-tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 8px;
+  border-radius: 100px; background: var(--blue-pale); color: var(--blue);
+}
+.role-card-body { padding: 0 20px 16px; }
+.role-desc { font-size: 0.82rem; color: var(--gray-500); margin-bottom: 12px; line-height: 1.6; }
+.role-salary {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; font-weight: 700; color: var(--green);
+  background: rgba(16,185,129,0.08); padding: 6px 12px; border-radius: 8px;
+  margin-bottom: 12px; width: fit-content;
+}
+.role-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.skill-tag {
+  font-size: 0.7rem; padding: 3px 9px; border-radius: 100px;
+  background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200);
+}
+.role-card-footer {
+  padding: 12px 20px; border-top: 1px solid var(--gray-100);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.role-growth { font-size: 0.75rem; color: var(--gray-500); }
+.role-arrow { color: var(--blue); font-size: 1.1rem; transition: transform 0.2s; }
+.role-card:hover .role-arrow { transform: translateX(4px); }
+
+/* ROLE DETAIL MODAL */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 3000;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 20px;
+  overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white); border-radius: var(--radius-lg);
+  max-width: 720px; width: 100%; max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-xl); position: relative;
+}
+.modal-header {
+  padding: 28px 28px 20px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  color: white;
+}
+.modal-header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.modal-icon { font-size: 2.5rem; }
+.modal-close {
+  width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.1);
+  color: white; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.2); }
+.modal-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
+.modal-cat { color: var(--yellow); font-size: 0.8rem; font-weight: 600; }
+.modal-body { padding: 24px 28px; }
+.modal-section { margin-bottom: 22px; }
+.modal-section-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.modal-section-title::after {
+  content: ''; flex: 1; height: 1px; background: var(--gray-200);
+}
+.modal-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.modal-tag {
+  font-size: 0.8rem; padding: 5px 12px; border-radius: 100px;
+  background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200);
+}
+.modal-salary-box {
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05));
+  border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius);
+  padding: 16px 20px;
+}
+.modal-salary-label { font-size: 0.75rem; color: var(--gray-500); margin-bottom: 4px; }
+.modal-salary-value { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: var(--green); }
+.modal-scope { font-size: 0.9rem; color: var(--gray-700); line-height: 1.7; }
+.growth-path { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.growth-step {
+  display: flex; align-items: center; gap: 8px; font-size: 0.82rem;
+}
+.growth-step .step-name {
+  background: var(--blue-pale); color: var(--blue); padding: 5px 12px; border-radius: 100px; font-weight: 600;
+}
+.growth-step .step-arrow { color: var(--gray-400); font-size: 1rem; }
+.courses-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.course-item {
+  font-size: 0.8rem; padding: 5px 12px; border-radius: var(--radius);
+  background: var(--yellow-pale); color: var(--gray-700); border: 1px solid rgba(245,158,11,0.2);
+}
+
+/* ===== COMPARISON TOOL ===== */
+.compare-section { background: var(--gray-50); padding: 60px 24px; }
+.compare-box {
+  background: var(--white); border-radius: var(--radius-lg); padding: 28px;
+  border: 1px solid var(--gray-200); max-width: 900px; margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+}
+.compare-selects { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.compare-selects select {
+  width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200);
+  border-radius: var(--radius); font-size: 0.9rem; background: var(--gray-50);
+  color: var(--gray-900); cursor: pointer;
+}
+.compare-selects select:focus { border-color: var(--blue); outline: none; }
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.compare-table th {
+  background: var(--navy); color: white; padding: 12px 16px;
+  font-family: var(--font-display); font-size: 0.85rem; text-align: left;
+}
+.compare-table th:first-child { border-radius: var(--radius) 0 0 0; }
+.compare-table th:last-child { border-radius: 0 var(--radius) 0 0; }
+.compare-table td {
+  padding: 12px 16px; border-bottom: 1px solid var(--gray-100);
+  font-size: 0.85rem; color: var(--gray-700);
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:nth-child(even) td { background: var(--gray-50); }
+.compare-placeholder { text-align: center; color: var(--gray-500); padding: 30px; font-size: 0.9rem; }
+
+/* ===== ROADMAP PAGE ===== */
+.roadmap-hero {
+  background: linear-gradient(135deg, #0F2040, #1a3060);
+  padding: 120px 24px 60px; text-align: center;
+}
+.roadmap-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; color: white; margin-bottom: 12px; }
+.roadmap-hero p { color: rgba(255,255,255,0.65); font-size: 1rem; max-width: 520px; margin: 0 auto; }
+.roadmap-tabs {
+  display: flex; gap: 0; background: var(--gray-100); padding: 4px;
+  border-radius: var(--radius); max-width: 500px; margin: 40px auto 0;
+}
+.roadmap-tab {
+  flex: 1; padding: 10px 16px; border-radius: 8px; font-size: 0.85rem;
+  font-weight: 600; color: var(--gray-500); transition: var(--transition); cursor: pointer;
+  text-align: center; background: transparent;
+}
+.roadmap-tab.active { background: white; color: var(--blue); box-shadow: var(--shadow-sm); }
+.roadmap-content { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+.roadmap-panel { display: none; }
+.roadmap-panel.active { display: block; }
+.timeline { position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 32px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(180deg, var(--blue), var(--yellow)); border-radius: 2px;
+}
+.tl-item { display: flex; gap: 24px; margin-bottom: 40px; position: relative; }
+.tl-dot {
+  width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; z-index: 1; border: 3px solid white; box-shadow: var(--shadow);
+}
+.tl-content {
+  flex: 1; background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.tl-content:hover { box-shadow: var(--shadow); transform: translateX(4px); }
+.tl-phase { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 6px; }
+.tl-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+.tl-items { display: flex; flex-direction: column; gap: 6px; }
+.tl-point {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 0.85rem; color: var(--gray-600);
+}
+.tl-point::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.tl-courses { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tl-course {
+  font-size: 0.75rem; padding: 3px 10px; border-radius: 100px;
+  background: var(--blue-pale); color: var(--blue); font-weight: 500;
+}
+
+/* ===== SKILLS PAGE ===== */
+.skills-hero {
+  background: linear-gradient(135deg, #0a2040, #0f1e3a);
+  padding: 120px 24px 60px; text-align: center;
+}
+.skills-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; color: white; margin-bottom: 12px; }
+.skills-hero p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto; }
+.skills-section { padding: 60px 24px; }
+.skills-category { margin-bottom: 56px; }
+.skills-cat-header {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+  padding-bottom: 14px; border-bottom: 2px solid var(--gray-100);
+}
+.skills-cat-icon {
+  width: 52px; height: 52px; border-radius: var(--radius); font-size: 1.6rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.skills-cat-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: var(--navy); }
+.skills-cat-sub { font-size: 0.85rem; color: var(--gray-500); }
+.skill-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.skill-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius); padding: 18px;
+  transition: var(--transition); cursor: default;
+}
+.skill-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--blue); }
+.skill-card-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.skill-card-name { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 4px; }
+.skill-card-level { font-size: 0.75rem; color: var(--gray-500); margin-bottom: 10px; }
+.skill-bar-wrap { height: 6px; background: var(--gray-100); border-radius: 3px; overflow: hidden; }
+.skill-bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--blue), var(--yellow)); transition: width 1s ease; }
+.skill-demand {
+  margin-top: 8px; font-size: 0.7rem; font-weight: 600; padding: 2px 8px;
+  border-radius: 100px; display: inline-block;
+}
+.demand-high { background: rgba(16,185,129,0.1); color: var(--green); }
+.demand-medium { background: rgba(245,158,11,0.1); color: var(--yellow); }
+
+/* ===== QUIZ PAGE ===== */
+.quiz-hero {
+  background: linear-gradient(135deg, #1a0a3e, #0a1628);
+  padding: 120px 24px 60px; text-align: center;
+}
+.quiz-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; color: white; margin-bottom: 12px; }
+.quiz-hero p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto; }
+.quiz-container { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+.quiz-progress-wrap { margin-bottom: 32px; }
+.quiz-progress-bar-track { height: 8px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
+.quiz-progress-bar { height: 100%; background: linear-gradient(90deg, var(--blue), var(--yellow)); transition: width 0.5s ease; border-radius: 4px; }
+.quiz-progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; color: var(--gray-500); font-weight: 600; }
+.quiz-card {
+  background: var(--white); border-radius: var(--radius-lg); padding: 36px;
+  border: 1px solid var(--gray-200); box-shadow: var(--shadow);
+}
+.quiz-q-num { font-size: 0.75rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.quiz-question { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 28px; line-height: 1.4; }
+.quiz-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.quiz-option {
+  padding: 14px 18px; border: 2px solid var(--gray-200); border-radius: var(--radius);
+  font-size: 0.9rem; color: var(--gray-700); cursor: pointer;
+  transition: var(--transition); text-align: left; background: var(--white);
+  display: flex; align-items: center; gap: 12px;
+}
+.quiz-option:hover { border-color: var(--blue); background: var(--blue-pale); color: var(--blue); }
+.quiz-option.selected { border-color: var(--blue); background: var(--blue); color: white; }
+.quiz-option .opt-letter {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--gray-100); color: var(--gray-500); font-weight: 700; font-size: 0.8rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: var(--transition);
+}
+.quiz-option.selected .opt-letter { background: rgba(255,255,255,0.2); color: white; }
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; }
+.quiz-results { text-align: center; }
+.quiz-results-icon { font-size: 4rem; margin-bottom: 20px; }
+.quiz-results h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+.quiz-results p { color: var(--gray-500); margin-bottom: 24px; }
+.quiz-career-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
+.quiz-career-card {
+  background: var(--blue-pale); border: 2px solid rgba(37,99,235,0.2);
+  border-radius: var(--radius); padding: 18px; text-align: center;
+}
+.quiz-career-card .qcc-icon { font-size: 2rem; margin-bottom: 8px; }
+.quiz-career-card .qcc-name { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+.quiz-career-card .qcc-match { font-size: 0.75rem; color: var(--blue); margin-top: 4px; }
+
+/* ===== RESOURCES PAGE ===== */
+.resources-hero {
+  background: linear-gradient(135deg, #0a2030, #0f2844);
+  padding: 120px 24px 60px; text-align: center;
+}
+.resources-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; color: white; margin-bottom: 12px; }
+.resources-hero p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto; }
+.resource-section { padding: 60px 24px; }
+.resource-section:nth-child(even) { background: var(--gray-50); }
+.resource-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 32px; }
+.resource-card {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+  padding: 22px; transition: var(--transition); cursor: default;
+}
+.resource-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--blue); }
+.resource-icon { font-size: 2rem; margin-bottom: 12px; }
+.resource-name { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; }
+.resource-desc { font-size: 0.82rem; color: var(--gray-500); line-height: 1.6; margin-bottom: 12px; }
+.resource-tag {
+  font-size: 0.7rem; padding: 3px 9px; border-radius: 100px;
+  display: inline-block; font-weight: 600;
+}
+.tag-free { background: rgba(16,185,129,0.1); color: var(--green); }
+.tag-paid { background: rgba(245,158,11,0.1); color: #D97706; }
+.tag-cert { background: rgba(139,92,246,0.1); color: var(--purple); }
+.pdf-section { background: var(--navy); padding: 60px 24px; }
+.pdf-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 32px; }
+.pdf-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 22px; text-align: center; color: white;
+  transition: var(--transition); cursor: pointer;
+}
+.pdf-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+.pdf-card .pdf-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+.pdf-card h4 { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
+.pdf-card p { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+.pdf-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--yellow); color: var(--navy);
+  font-size: 0.8rem; font-weight: 700; padding: 8px 16px; border-radius: 8px;
+  transition: var(--transition);
+}
+.pdf-btn:hover { background: #D97706; }
+
+/* ===== FAQ ===== */
+.faq-section { padding: 60px 24px; background: var(--gray-50); }
+.faq-list { max-width: 760px; margin: 40px auto 0; }
+.faq-item {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+  margin-bottom: 12px; overflow: hidden; transition: var(--transition);
+}
+.faq-item:hover { border-color: var(--blue); }
+.faq-q {
+  padding: 18px 22px; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; gap: 16px;
+}
+.faq-q span { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; color: var(--navy); }
+.faq-icon { color: var(--blue); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+  padding: 0 22px; font-size: 0.88rem; color: var(--gray-600); line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 18px; }
+
+/* ===== CONTACT PAGE ===== */
+.contact-hero {
+  background: linear-gradient(135deg, #0a1628, #0f2040);
+  padding: 120px 24px 60px; text-align: center;
+}
+.contact-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; color: white; margin-bottom: 12px; }
+.contact-hero p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto; }
+.contact-section { padding: 60px 24px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; max-width: 1000px; margin: 0 auto; }
+.contact-info h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+.contact-info p { color: var(--gray-500); font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; }
+.contact-info-items { display: flex; flex-direction: column; gap: 16px; }
+.contact-info-item {
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.contact-info-icon {
+  width: 44px; height: 44px; border-radius: var(--radius); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.contact-info-item h4 { font-weight: 600; font-size: 0.9rem; color: var(--navy); margin-bottom: 2px; }
+.contact-info-item p { font-size: 0.82rem; color: var(--gray-500); margin: 0; }
+.contact-form {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+  padding: 32px; box-shadow: var(--shadow);
+}
+.contact-form h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--navy); margin-bottom: 24px; }
+.form-group { margin-bottom: 18px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200);
+  border-radius: var(--radius); font-size: 0.9rem; background: var(--gray-50);
+  color: var(--gray-900); transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--blue); outline: none; background: white;
+}
+.form-group textarea { min-height: 110px; resize: vertical; }
+.form-submit {
+  width: 100%; padding: 14px; background: var(--blue); color: white;
+  border-radius: var(--radius); font-family: var(--font-display); font-weight: 700;
+  font-size: 1rem; transition: var(--transition);
+}
+.form-submit:hover { background: #1D4ED8; transform: translateY(-2px); }
+.form-success {
+  display: none; text-align: center; padding: 24px;
+  background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);
+  border-radius: var(--radius); margin-top: 16px;
+}
+.form-success.show { display: block; }
+.form-success .success-icon { font-size: 2.5rem; display: block; margin-bottom: 10px; }
+.form-success h4 { font-family: var(--font-display); font-weight: 700; color: var(--green); margin-bottom: 6px; }
+.form-success p { font-size: 0.85rem; color: var(--gray-500); }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--navy-mid); color: rgba(255,255,255,0.7);
+  padding: 56px 24px 32px;
+}
+[data-theme="dark"] .footer { background: #0a0f1a; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+.footer-brand h3 {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: white;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+}
+.footer-brand h3 span { color: var(--yellow); }
+.footer-brand p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; }
+.footer-developer {
+  background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.25);
+  border-radius: var(--radius); padding: 14px 16px;
+}
+.footer-developer h4 { color: var(--yellow); font-size: 0.8rem; font-weight: 700; margin-bottom: 4px; }
+.footer-developer p { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin: 0; line-height: 1.6; }
+.footer-col h4 { color: white; font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; margin-bottom: 16px; }
+.footer-col ul li { margin-bottom: 8px; }
+.footer-col ul li a { font-size: 0.83rem; color: rgba(255,255,255,0.6); transition: color 0.2s; cursor: pointer; }
+.footer-col ul li a:hover { color: var(--yellow); }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+.footer-bottom .footer-heart { color: var(--yellow); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes floatCard1 { 0%, 100% { transform: translateY(0px) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(-2deg); } }
+@keyframes floatCard2 { 0%, 100% { transform: translateY(0px) rotate(3deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+.fade-in-up { animation: fadeInUp 0.6s ease both; }
+.fade-in-up-delay { animation: fadeInUp 0.6s ease 0.2s both; }
+
+/* ===== BACK TO TOP ===== */
+.back-top {
+  position: fixed; bottom: 28px; right: 28px; z-index: 500;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--blue); color: white; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-lg); transition: var(--transition); opacity: 0;
+  pointer-events: none;
+}
+.back-top.visible { opacity: 1; pointer-events: auto; }
+.back-top:hover { background: #1D4ED8; transform: translateY(-4px); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-ctas { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-visual { display: none; }
+  .section-desc { max-width: 100%; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .section { padding: 60px 16px; }
+  .roles-grid { padding: 0 16px 60px; }
+  .compare-selects { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { justify-content: center; text-align: center; }
+}
+@media (max-width: 480px) {
+  .cat-cards { grid-template-columns: repeat(2, 1fr); }
+  .quiz-card { padding: 22px 18px; }
+  .modal { border-radius: 16px 16px 0 0; max-height: 95vh; }
+  .modal-overlay { align-items: flex-end; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <div class="logo-icon">💻</div>
+      IT Career <span>Explorer</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
+      <a onclick="showPage('careers')" id="nav-careers">IT Careers</a>
+      <a onclick="showPage('roadmap')" id="nav-roadmap">Roadmap</a>
+      <a onclick="showPage('skills')" id="nav-skills">Skills</a>
+      <a onclick="showPage('quiz')" id="nav-quiz">Career Quiz</a>
+      <a onclick="showPage('resources')" id="nav-resources">Resources</a>
+      <a onclick="showPage('contact')" id="nav-contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-search-nav" onclick="openSearch()" aria-label="Search careers">🔍</button>
+      <button class="btn-theme" onclick="toggleTheme()" aria-label="Toggle dark/light mode" id="themeBtn">🌙</button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle mobile menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a onclick="showPage('home');closeMobile()">🏠 Home</a>
+    <a onclick="showPage('careers');closeMobile()">💼 IT Careers</a>
+    <a onclick="showPage('roadmap');closeMobile()">🗺️ Roadmap</a>
+    <a onclick="showPage('skills');closeMobile()">🛠️ Skills</a>
+    <a onclick="showPage('quiz');closeMobile()">🧪 Career Quiz</a>
+    <a onclick="showPage('resources');closeMobile()">📚 Resources</a>
+    <a onclick="showPage('contact');closeMobile()">📬 Contact</a>
+  </div>
+</nav>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search careers">
+  <div class="search-box">
+    <button class="search-close" onclick="closeSearch()">✕</button>
+    <h3>🔍 Search IT Careers</h3>
+    <div class="search-input-wrap">
+      <input type="text" id="searchInput" placeholder="e.g. Data Scientist, Web Developer..." aria-label="Search careers" oninput="doSearch(this.value)">
+      <button onclick="doSearch(document.getElementById('searchInput').value)">Search</button>
+    </div>
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<!-- ROLE DETAIL MODAL -->
+<div class="modal-overlay" id="roleModal" role="dialog" aria-label="Career role details">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero section">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-inner">
+      <div class="hero-text fade-in-up">
+        <div class="hero-badge"><span class="dot"></span> India's #1 IT Career Guidance Platform</div>
+        <h1 class="hero-title">
+          Discover Your<br>
+          <span class="highlight">Future in IT</span>
+        </h1>
+        <p class="hero-tagline">Explore 40+ exciting career paths in Information Technology. Designed for school, intermediate, and degree students dreaming of a tech career in India and beyond.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-yellow" onclick="showPage('careers')">🚀 Explore Careers</button>
+          <button class="btn btn-outline" onclick="showPage('quiz')">🧪 Take Career Quiz</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="num">40+</span><span class="lbl">Career Paths</span></div>
+          <div class="hero-stat"><span class="num">₹3L–₹50L</span><span class="lbl">Salary Range</span></div>
+          <div class="hero-stat"><span class="num">10M+</span><span class="lbl">IT Jobs by 2030</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hcard hcard-main">
+            <div class="hcard-icon">🎯</div>
+            <div class="hcard-title">Find Your IT Career</div>
+            <div class="hcard-sub">Match your interests to the perfect tech role</div>
+            <div class="hcard-roles">
+              <span class="role-chip">AI Engineer</span>
+              <span class="role-chip">Full Stack Dev</span>
+              <span class="role-chip">Cloud Architect</span>
+              <span class="role-chip">Cyber Security</span>
+              <span class="role-chip">Data Scientist</span>
+            </div>
+          </div>
+          <div class="hcard hcard-float1">
+            <div class="hcard-icon">📈</div>
+            <div class="hcard-title">High Growth</div>
+            <div class="hcard-sub">IT sector growing 15% yearly</div>
+          </div>
+          <div class="hcard hcard-float2">
+            <div class="hcard-icon">💰</div>
+            <div class="hcard-title">Top Salaries</div>
+            <div class="hcard-sub">₹3L – ₹50L+ per year</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <!-- WHY IT -->
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <div class="text-center mb-40">
+        <div class="section-label">Why Choose IT?</div>
+        <h2 class="section-title" id="why-title">The IT Industry Offers <span>Unlimited Opportunities</span></h2>
+        <p class="section-desc">India's IT sector is the world's largest tech talent hub. From startups to MNCs, the opportunities are endless for skilled professionals.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(37,99,235,0.1)">💰</div>
+          <h3>High Salary Packages</h3>
+          <p>IT professionals earn among the highest salaries in India. Entry-level roles start at ₹3–6 LPA and senior roles can exceed ₹50 LPA at top companies.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(16,185,129,0.1)">🌍</div>
+          <h3>Global Work Opportunities</h3>
+          <p>IT skills are in demand worldwide. Work remotely for global companies or move to the US, UK, Canada, Germany, or Australia with ease.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(245,158,11,0.1)">📈</div>
+          <h3>Rapid Career Growth</h3>
+          <p>IT careers grow faster than any other industry. With continuous learning, you can move from junior to senior to managerial roles within 5–8 years.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(139,92,246,0.1)">🛡️</div>
+          <h3>Job Security</h3>
+          <p>With digital transformation across every industry, IT professionals are always in demand. The sector added 2.9 lakh jobs in 2024 alone.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(239,68,68,0.1)">🤖</div>
+          <h3>Work With Cutting-Edge Tech</h3>
+          <p>AI, Machine Learning, Blockchain, AR/VR — IT professionals get to work on technologies that are literally shaping the future of humanity.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(13,148,136,0.1)">🏠</div>
+          <h3>Remote Work Culture</h3>
+          <p>IT is the most remote-friendly industry. Many companies offer full remote or hybrid work, giving you freedom to work from anywhere in India or the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER CATEGORIES OVERVIEW -->
+  <section class="section cats-bg" aria-labelledby="cats-title">
+    <div class="container">
+      <div class="text-center mb-40">
+        <div class="section-label">Career Categories</div>
+        <h2 class="section-title" id="cats-title">Explore <span>9 Major</span> IT Domains</h2>
+        <p class="section-desc">The IT industry is vast. Click any category to explore careers, required skills, salaries and growth paths in that domain.</p>
+      </div>
+      <div class="cat-cards">
+        <div class="cat-card" onclick="showPage('careers','software')"><span class="cat-emoji">💻</span><div class="cat-name">Software Development</div><div class="cat-count">6 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','data')"><span class="cat-emoji">🤖</span><div class="cat-name">Data & AI</div><div class="cat-count">5 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','security')"><span class="cat-emoji">🔐</span><div class="cat-name">Cyber Security</div><div class="cat-count">4 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','cloud')"><span class="cat-emoji">☁️</span><div class="cat-name">Cloud Computing</div><div class="cat-count">5 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','network')"><span class="cat-emoji">🌐</span><div class="cat-name">Networking</div><div class="cat-count">2 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','database')"><span class="cat-emoji">🗄️</span><div class="cat-name">Database</div><div class="cat-count">2 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','testing')"><span class="cat-emoji">🧪</span><div class="cat-name">Testing / QA</div><div class="cat-count">3 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','design')"><span class="cat-emoji">🎨</span><div class="cat-name">UI/UX Design</div><div class="cat-count">3 careers</div></div>
+        <div class="cat-card" onclick="showPage('careers','emerging')"><span class="cat-emoji">🚀</span><div class="cat-name">Emerging Tech</div><div class="cat-count">6 careers</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section" aria-labelledby="stats-title">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label" style="background:rgba(245,158,11,0.2);color:var(--yellow)">Industry Numbers</div>
+        <h2 class="section-title" id="stats-title" style="color:white">India IT Industry — <span style="color:var(--yellow)">By The Numbers</span></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item"><span class="stat-icon">👥</span><span class="stat-num">55L+</span><span class="stat-label">IT Professionals in India</span></div>
+        <div class="stat-item"><span class="stat-icon">💸</span><span class="stat-num">₹245B</span><span class="stat-label">IT Export Revenue (2024)</span></div>
+        <div class="stat-item"><span class="stat-icon">📊</span><span class="stat-num">15%</span><span class="stat-label">Annual Sector Growth Rate</span></div>
+        <div class="stat-item"><span class="stat-icon">🏢</span><span class="stat-num">10,000+</span><span class="stat-label">IT Companies in India</span></div>
+        <div class="stat-item"><span class="stat-icon">🌍</span><span class="stat-num">#1</span><span class="stat-label">Global IT Services Provider</span></div>
+        <div class="stat-item"><span class="stat-icon">🤖</span><span class="stat-num">1M+</span><span class="stat-label">New AI Jobs by 2027</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="section" style="background:linear-gradient(135deg,#EFF6FF,#FFFBEB)" aria-labelledby="cta-title">
+    <div class="container text-center">
+      <div class="section-label">Start Your Journey</div>
+      <h2 class="section-title" id="cta-title">Ready to Find Your <span>Dream IT Career?</span></h2>
+      <p class="section-desc" style="margin:0 auto 32px">Take our free career quiz, explore all IT roles, or follow the step-by-step roadmap for your current education level.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="showPage('quiz')">🧪 Take Career Quiz</button>
+        <button class="btn btn-yellow" onclick="showPage('roadmap')">🗺️ View Roadmap</button>
+        <button class="btn btn-ghost" onclick="showPage('careers')">💼 Browse All Careers</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ TEASER -->
+  <section class="faq-section" aria-labelledby="faq-title">
+    <div class="container text-center">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title" id="faq-title">Frequently Asked <span>Questions</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Which IT course is best after 10th class?</span><span class="faq-icon">+</span></div><div class="faq-a">After 10th, you can join Polytechnic Diploma in Computer Science (3 years) or Intermediate (MPC/BiPC with Computer Science). You can also start learning basic programming (Python, HTML) on free platforms like freeCodeCamp and Codecademy alongside your studies.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>What degree is needed to become a Software Developer?</span><span class="faq-icon">+</span></div><div class="faq-a">A B.Tech/BE in Computer Science or IT is the most common path. However, BCA, B.Sc Computer Science, or even non-CS degrees work if you build strong coding skills. Many top developers are self-taught through online courses and personal projects.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How much does a fresher Software Engineer earn in India?</span><span class="faq-icon">+</span></div><div class="faq-a">Freshers typically earn ₹3–6 LPA at mid-level IT companies. At top product companies like Google, Microsoft, or Flipkart, fresher packages can range from ₹15–45 LPA. Skills, projects, and college reputation influence the package significantly.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Is coding required for all IT careers?</span><span class="faq-icon">+</span></div><div class="faq-a">Not at all! Many IT careers like UI/UX Design, Product Management, Cyber Security (non-coding roles), IT Project Management, Technical Writing, and IT Sales require minimal or no coding. However, basic coding knowledge is beneficial in any IT role.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>What is the scope of AI careers in India?</span><span class="faq-icon">+</span></div><div class="faq-a">AI is the fastest-growing IT domain in India. India is expected to have over 1 million AI-related jobs by 2027. AI Engineers, ML Engineers, and Data Scientists command salaries of ₹8–40 LPA even at the junior-mid level. The demand far exceeds supply currently.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Which programming language should a beginner learn first?</span><span class="faq-icon">+</span></div><div class="faq-a">Python is universally recommended for beginners due to its simple, English-like syntax. It's used in AI/ML, web development, data science, and automation. After Python basics, you can specialize: JavaScript for web, Java/Kotlin for apps, SQL for databases.</div></div>
+    </div>
+  </section>
+
+</div>
+<!-- END HOME -->
+
+<!-- ==================== CAREERS PAGE ==================== -->
+<div class="page" id="page-careers">
+
+  <div class="roles-hero">
+    <h1>💼 IT Career Roles Explorer</h1>
+    <p>Discover detailed information about every major IT career — skills, salaries, growth paths and more. Find your perfect match!</p>
+  </div>
+
+  <div class="category-filter" id="categoryFilter">
+    <button class="filter-btn active" onclick="filterRoles('all',this)">All (40+)</button>
+    <button class="filter-btn" onclick="filterRoles('software',this)">💻 Software Dev</button>
+    <button class="filter-btn" onclick="filterRoles('data',this)">🤖 Data & AI</button>
+    <button class="filter-btn" onclick="filterRoles('security',this)">🔐 Cyber Security</button>
+    <button class="filter-btn" onclick="filterRoles('cloud',this)">☁️ Cloud</button>
+    <button class="filter-btn" onclick="filterRoles('network',this)">🌐 Networking</button>
+    <button class="filter-btn" onclick="filterRoles('database',this)">🗄️ Database</button>
+    <button class="filter-btn" onclick="filterRoles('testing',this)">🧪 Testing</button>
+    <button class="filter-btn" onclick="filterRoles('design',this)">🎨 UI/UX</button>
+    <button class="filter-btn" onclick="filterRoles('management',this)">📋 Management</button>
+    <button class="filter-btn" onclick="filterRoles('emerging',this)">🚀 Emerging</button>
+  </div>
+
+  <div class="roles-grid" id="rolesGrid"></div>
+
+  <!-- COMPARISON TOOL -->
+  <div class="compare-section">
+    <div class="container">
+      <div class="text-center mb-40">
+        <div class="section-label">Career Comparison</div>
+        <h2 class="section-title">Compare <span>Two IT Careers</span></h2>
+        <p class="section-desc">Select any two IT roles to compare them side-by-side — skills, salaries, and growth scope.</p>
+      </div>
+      <div class="compare-box">
+        <div class="compare-selects">
+          <select id="compare1" onchange="updateComparison()"><option value="">Select Career 1</option></select>
+          <select id="compare2" onchange="updateComparison()"><option value="">Select Career 2</option></select>
+        </div>
+        <div id="compareResult"><p class="compare-placeholder">Select two careers above to compare them.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- END CAREERS -->
+
+<!-- ==================== ROADMAP PAGE ==================== -->
+<div class="page" id="page-roadmap">
+  <div class="roadmap-hero">
+    <h1>🗺️ Your IT Career Roadmap</h1>
+    <p>Follow a clear, step-by-step path from your current education level to a rewarding IT career. Designed for Indian students.</p>
+    <div class="roadmap-tabs">
+      <button class="roadmap-tab active" onclick="switchRoadmap('r10',this)">After 10th</button>
+      <button class="roadmap-tab" onclick="switchRoadmap('rinter',this)">After Inter</button>
+      <button class="roadmap-tab" onclick="switchRoadmap('rdegree',this)">After Degree</button>
+    </div>
+  </div>
+
+  <div class="roadmap-content">
+    <!-- AFTER 10TH -->
+    <div class="roadmap-panel active" id="r10">
+      <div class="text-center" style="margin-bottom:40px">
+        <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:8px">🎓 After 10th Class — IT Roadmap</h2>
+        <p style="color:var(--gray-500);font-size:0.9rem">Two main paths: Polytechnic Diploma or Intermediate. Both lead to strong IT careers.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">📚</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 1 — Choose Your Path</div>
+            <div class="tl-title">After 10th: Two Main Options</div>
+            <div class="tl-items">
+              <div class="tl-point">Option A: Intermediate (11th–12th) with MPC + Computer Science</div>
+              <div class="tl-point">Option B: Polytechnic Diploma in Computer Science (3 years)</div>
+              <div class="tl-point">Both paths lead to excellent IT careers — choose based on interest</div>
+              <div class="tl-point">If you love maths and theory, go Intermediate → B.Tech/BCA</div>
+              <div class="tl-point">If you want faster entry into work, Polytechnic gives lateral entry to B.Tech 2nd year</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#F59E0B,#FCD34D)">💻</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 2 — Start Learning Now (Free)</div>
+            <div class="tl-title">Basic Computer Skills to Build Alongside Studies</div>
+            <div class="tl-items">
+              <div class="tl-point">Learn touch typing — aim for 40+ words per minute</div>
+              <div class="tl-point">MS Office basics — Word, Excel, PowerPoint</div>
+              <div class="tl-point">Introduction to the Internet, email, and cloud tools (Google Drive)</div>
+              <div class="tl-point">Start Python basics on freeCodeCamp or Scratch for programming concepts</div>
+            </div>
+            <div class="tl-courses">
+              <span class="tl-course">freeCodeCamp</span>
+              <span class="tl-course">Khan Academy</span>
+              <span class="tl-course">Scratch.mit.edu</span>
+              <span class="tl-course">YouTube: CS50</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#10B981,#34D399)">🎯</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 3 — Intermediate / Diploma (2–3 years)</div>
+            <div class="tl-title">Build Your Foundation in Technology</div>
+            <div class="tl-items">
+              <div class="tl-point">Score well in core subjects (Maths, Science, Computer Science)</div>
+              <div class="tl-point">Learn HTML/CSS for web basics — build your first website</div>
+              <div class="tl-point">Practice Python/C++ programming — solve 100+ problems on HackerRank</div>
+              <div class="tl-point">Learn MS Excel advanced features — pivot tables, VLOOKUP</div>
+              <div class="tl-point">Take free certifications from Google, Microsoft, or NASSCOM</div>
+            </div>
+            <div class="tl-courses">
+              <span class="tl-course">Coursera (free audit)</span>
+              <span class="tl-course">W3Schools</span>
+              <span class="tl-course">HackerRank</span>
+              <span class="tl-course">Google Career Certificates</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA)">🏆</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 4 — Degree / Entry IT Job</div>
+            <div class="tl-title">Choose Your IT Specialization</div>
+            <div class="tl-items">
+              <div class="tl-point">Join B.Tech CSE / IT / BCA / B.Sc CS for deeper knowledge</div>
+              <div class="tl-point">Start your IT career after Polytechnic Diploma (junior developer roles)</div>
+              <div class="tl-point">Build a portfolio of 3–5 real projects to show employers</div>
+              <div class="tl-point">Apply for internships in your 1st or 2nd year of degree</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFTER INTERMEDIATE -->
+    <div class="roadmap-panel" id="rinter">
+      <div class="text-center" style="margin-bottom:40px">
+        <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:8px">🎓 After Intermediate — IT Roadmap</h2>
+        <p style="color:var(--gray-500);font-size:0.9rem">Choose the right degree and start building real IT skills that employers value.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">🎓</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 1 — Choose Your IT Degree</div>
+            <div class="tl-title">Best Degree Options for IT Careers</div>
+            <div class="tl-items">
+              <div class="tl-point">B.Tech/BE Computer Science & Engineering — Best for Software/AI roles</div>
+              <div class="tl-point">B.Tech Information Technology — Focus on systems and networks</div>
+              <div class="tl-point">BCA (Bachelor of Computer Applications) — 3-year practical focused</div>
+              <div class="tl-point">B.Sc Computer Science — Strong theoretical base, good for research</div>
+              <div class="tl-point">B.Sc Data Science — Specialized for Data/AI careers (newer, high demand)</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#F59E0B,#FCD34D)">💡</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 2 — 1st & 2nd Year (Build Foundations)</div>
+            <div class="tl-title">Master Core Programming and Tools</div>
+            <div class="tl-items">
+              <div class="tl-point">Master at least one language: Python, Java, or C++ (complete level)</div>
+              <div class="tl-point">Learn Data Structures and Algorithms — key for all top company interviews</div>
+              <div class="tl-point">Complete a full web development course (HTML, CSS, JavaScript basics)</div>
+              <div class="tl-point">Get comfortable with Linux/Terminal commands</div>
+              <div class="tl-point">Start using Git and GitHub for version control</div>
+            </div>
+            <div class="tl-courses">
+              <span class="tl-course">NPTEL</span>
+              <span class="tl-course">LeetCode</span>
+              <span class="tl-course">The Odin Project</span>
+              <span class="tl-course">Udemy</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#10B981,#34D399)">🔧</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 3 — 3rd Year (Specialize and Build Portfolio)</div>
+            <div class="tl-title">Pick Your Domain and Build Real Projects</div>
+            <div class="tl-items">
+              <div class="tl-point">Choose specialization: Web Dev / Data Science / Cyber Security / Cloud / Mobile</div>
+              <div class="tl-point">Build 3 real projects and host them on GitHub</div>
+              <div class="tl-point">Get your first certification (AWS Cloud Practitioner, Google IT Support, etc.)</div>
+              <div class="tl-point">Apply for internships on Internshala, LinkedIn, or company websites</div>
+              <div class="tl-point">Participate in hackathons (Smart India Hackathon, Flipkart Grid, etc.)</div>
+            </div>
+            <div class="tl-courses">
+              <span class="tl-course">AWS Free Tier</span>
+              <span class="tl-course">Kaggle</span>
+              <span class="tl-course">GitHub</span>
+              <span class="tl-course">Internshala</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA)">🚀</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 4 — Final Year (Job-Ready)</div>
+            <div class="tl-title">Prepare for Placements and Campus Interviews</div>
+            <div class="tl-items">
+              <div class="tl-point">Complete your final year project — make it industry-relevant (AI/Cloud/Mobile)</div>
+              <div class="tl-point">Prepare for campus recruitment: DSA, OS, DBMS, Networking, Aptitude</div>
+              <div class="tl-point">Register on LinkedIn, create a professional profile with your projects</div>
+              <div class="tl-point">Apply off-campus at TCS, Infosys, Wipro, Amazon, Flipkart, startups</div>
+              <div class="tl-point">Target ₹3–6 LPA service companies and ₹8–25 LPA product companies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFTER DEGREE -->
+    <div class="roadmap-panel" id="rdegree">
+      <div class="text-center" style="margin-bottom:40px">
+        <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:8px">🎓 After Degree — IT Roadmap</h2>
+        <p style="color:var(--gray-500);font-size:0.9rem">You have a degree. Now sharpen your edge with specialized skills and strategic career moves.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">🔍</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 1 — Assessment</div>
+            <div class="tl-title">Identify Your Skill Gaps and Target Role</div>
+            <div class="tl-items">
+              <div class="tl-point">Take our Career Quiz to identify your strongest IT domain</div>
+              <div class="tl-point">Compare your current skills with job descriptions on LinkedIn and Naukri</div>
+              <div class="tl-point">Identify your target role and top companies you want to work at</div>
+              <div class="tl-point">Set a realistic 6-month upskilling plan</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#F59E0B,#FCD34D)">📜</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 2 — Upskill with Certifications (3–6 months)</div>
+            <div class="tl-title">Industry-Recognized Certifications</div>
+            <div class="tl-items">
+              <div class="tl-point">Cloud: AWS Solutions Architect / GCP Associate / Azure Fundamentals</div>
+              <div class="tl-point">Data/AI: IBM Data Science, Google Data Analytics, TensorFlow Developer</div>
+              <div class="tl-point">Cyber Security: CompTIA Security+, CEH (Certified Ethical Hacker), CISSP</div>
+              <div class="tl-point">Web: Meta Front-End Developer, Full Stack on Coursera or Udemy</div>
+              <div class="tl-point">Management: PMP, Agile/Scrum Master (for PM/Product roles)</div>
+            </div>
+            <div class="tl-courses">
+              <span class="tl-course">Coursera</span>
+              <span class="tl-course">edX</span>
+              <span class="tl-course">Udemy</span>
+              <span class="tl-course">LinkedIn Learning</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#10B981,#34D399)">🏗️</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 3 — Build Portfolio</div>
+            <div class="tl-title">Create Real Projects That Impress Recruiters</div>
+            <div class="tl-items">
+              <div class="tl-point">Build 5 projects showcasing your target domain skills</div>
+              <div class="tl-point">Contribute to open-source projects on GitHub</div>
+              <div class="tl-point">Write technical blogs on Medium or Hashnode to showcase expertise</div>
+              <div class="tl-point">Deploy all projects live (Vercel, Netlify, AWS free tier)</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#EF4444,#F87171)">💼</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 4 — Higher Studies Option</div>
+            <div class="tl-title">M.Tech / MCA / MBA (Tech) for Advanced Roles</div>
+            <div class="tl-items">
+              <div class="tl-point">M.Tech CSE (GATE): Best for R&D, IIT, NIT level roles, ₹15–40 LPA starting</div>
+              <div class="tl-point">MCA (Master of Computer Applications): Strong coding + applications focus</div>
+              <div class="tl-point">M.Sc Data Science / AI: For specialized high-pay AI/ML roles</div>
+              <div class="tl-point">MBA (Tech/Business): For Product Manager, IT Manager, and leadership roles</div>
+              <div class="tl-point">Online Masters: Georgia Tech OMSCS ($8K total), IIT Madras BS Data Science</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA)">🌍</div>
+          <div class="tl-content">
+            <div class="tl-phase">Step 5 — Career Acceleration</div>
+            <div class="tl-title">Grow Fast in Your IT Career</div>
+            <div class="tl-items">
+              <div class="tl-point">Network actively on LinkedIn — connect with engineers at target companies</div>
+              <div class="tl-point">Attend tech meetups, DevFests, AWS Community Days in your city</div>
+              <div class="tl-point">Apply for remote global jobs after 2–3 years experience (3–5× salary)</div>
+              <div class="tl-point">Consider freelancing for extra income while building experience</div>
+              <div class="tl-point">Mentor juniors and speak at college tech fests to build your brand</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END ROADMAP -->
+
+<!-- ==================== SKILLS PAGE ==================== -->
+<div class="page" id="page-skills">
+  <div class="skills-hero">
+    <h1>🛠️ Skills & Learning Guide</h1>
+    <p>Master the most in-demand IT skills. Explore programming languages, frameworks, tools, and platforms employers are looking for right now.</p>
+  </div>
+  <div class="skills-section container" id="skillsContent"></div>
+</div>
+
+<!-- ==================== QUIZ PAGE ==================== -->
+<div class="page" id="page-quiz">
+  <div class="quiz-hero">
+    <h1>🧪 Career Interest Quiz</h1>
+    <p>Answer 10 quick questions to discover which IT career paths match your interests, strengths, and personality. Takes just 3 minutes!</p>
+  </div>
+  <div class="quiz-container">
+    <div id="quizBox"></div>
+  </div>
+</div>
+
+<!-- ==================== RESOURCES PAGE ==================== -->
+<div class="page" id="page-resources">
+  <div class="resources-hero">
+    <h1>📚 Learning Resources</h1>
+    <p>The best free and paid resources to start and advance your IT career. Curated for Indian students.</p>
+  </div>
+  <div id="resourcesContent"></div>
+</div>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div class="page" id="page-contact">
+  <div class="contact-hero">
+    <h1>📬 Career Guidance Enquiry</h1>
+    <p>Have questions about IT careers? We're here to guide you. Fill the form and we'll get back to you soon.</p>
+  </div>
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Get Personalised Career Guidance</h2>
+        <p>Whether you're a student, parent, or teacher looking for career counselling, we're here to help you make the best decision for your future in IT.</p>
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(37,99,235,0.1)">👨‍🏫</div>
+            <div>
+              <h4>Yadagiri P (MCA)</h4>
+              <p>Computer Science Lecturer & Career Counsellor<br>New Science Degree & PG College, Hanamkonda</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(16,185,129,0.1)">📞</div>
+            <div>
+              <h4>Phone / WhatsApp</h4>
+              <p>7075949046</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(245,158,11,0.1)">🏫</div>
+            <div>
+              <h4>RISE Institute of Computer Science</h4>
+              <p>Hanamkonda, Telangana<br>IT Training & Career Guidance</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(139,92,246,0.1)">🎯</div>
+            <div>
+              <h4>Guidance For</h4>
+              <p>Students (8th–PG), Parents, Teachers,<br>Career Counsellors & Job Seekers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 Career Guidance Enquiry Form</h3>
+        <form onsubmit="submitForm(event)" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label>Mobile Number *</label>
+              <input type="tel" placeholder="10-digit mobile" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Current Education Level *</label>
+              <select required>
+                <option value="">Select Level</option>
+                <option>8th–10th Class</option>
+                <option>Intermediate (11th–12th)</option>
+                <option>Degree (UG)</option>
+                <option>Post Graduation (PG)</option>
+                <option>Working Professional</option>
+                <option>Parent / Teacher</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Area of Interest</label>
+              <select>
+                <option value="">Select Interest</option>
+                <option>Software Development</option>
+                <option>Data Science & AI</option>
+                <option>Cyber Security</option>
+                <option>Cloud Computing</option>
+                <option>Web Development</option>
+                <option>Mobile App Development</option>
+                <option>UI/UX Design</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Your Question or Message *</label>
+            <textarea placeholder="Describe your career question, doubts, or what guidance you need..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">📤 Send Enquiry</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <span class="success-icon">✅</span>
+          <h4>Enquiry Received!</h4>
+          <p>Thank you! Your career guidance enquiry has been recorded. We'll respond within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- END CONTACT -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>💻 IT Career <span>Explorer</span></h3>
+      <p>India's comprehensive IT career guidance platform for school, intermediate, and degree students. Explore 40+ career paths and find your perfect fit in the technology industry.</p>
+      <div class="footer-developer">
+        <h4>👨‍💻 Designed & Developed By</h4>
+        <p>Yadagiri P (MCA) — Computer Science Lecturer<br>📞 7075949046 | RISE Institute, Hanamkonda, Telangana</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('careers')">IT Careers</a></li>
+        <li><a onclick="showPage('roadmap')">Career Roadmap</a></li>
+        <li><a onclick="showPage('skills')">Skills Guide</a></li>
+        <li><a onclick="showPage('quiz')">Career Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Popular Careers</h4>
+      <ul>
+        <li><a onclick="showPage('careers')">Software Developer</a></li>
+        <li><a onclick="showPage('careers')">Data Scientist</a></li>
+        <li><a onclick="showPage('careers')">AI Engineer</a></li>
+        <li><a onclick="showPage('careers')">Cloud Engineer</a></li>
+        <li><a onclick="showPage('careers')">Cyber Security</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a onclick="showPage('resources')">Free Courses</a></li>
+        <li><a onclick="showPage('resources')">Certifications</a></li>
+        <li><a onclick="showPage('resources')">YouTube Channels</a></li>
+        <li><a onclick="showPage('resources')">Study Materials</a></li>
+        <li><a onclick="showPage('contact')">Career Guidance</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 IT Career Explorer. All Rights Reserved. Made with <span class="footer-heart">♥</span> for Indian Students.</p>
+    <p>Powered by Yadagiri P (MCA) — RISE Institute, Hanamkonda</p>
+  </div>
+</footer>
+
+<script>
+// ===================== DATA =====================
+const careerData = [
+  // SOFTWARE DEVELOPMENT
+  { id:'sw1', cat:'software', icon:'💻', color:'#2563EB', colorBg:'rgba(37,99,235,0.1)', title:'Software Developer', desc:'Designs, builds and maintains software applications for businesses and consumers. The backbone of the entire IT industry.', skills:['Python','Java','C++','Problem Solving','Git','Algorithms','Data Structures'], courses:['B.Tech CSE','BCA','NPTEL Python','LeetCode DSA','Udemy Java Masterclass'], salary:'₹3.5 – 30 LPA', growth:'Junior Dev → Senior Dev → Lead Dev → Architect → CTO', scope:'Evergreen career with constant demand. India alone needs 1M+ developers by 2026. Opportunities in every industry from banking to healthcare.', growthSteps:['Junior Dev','Senior Dev','Lead Dev','Architect','CTO'] },
+  { id:'sw2', cat:'software', icon:'🌐', color:'#0D9488', colorBg:'rgba(13,148,136,0.1)', title:'Web Developer', desc:'Creates and maintains websites and web applications. One of the most in-demand and beginner-friendly IT careers.', skills:['HTML','CSS','JavaScript','React','Node.js','MySQL','REST APIs'], courses:['The Odin Project','freeCodeCamp','Coursera Web Dev','Full Stack Udemy'], salary:'₹3 – 25 LPA', growth:'Junior Dev → Mid Dev → Senior Dev → Tech Lead → Architect', scope:'Every business needs a website. Massive freelance opportunities available. Can earn ₹500–5000 per hour as a freelancer with strong skills.', growthSteps:['Junior Dev','Mid Dev','Senior Dev','Tech Lead','Architect'] },
+  { id:'sw3', cat:'software', icon:'🖥️', color:'#7C3AED', colorBg:'rgba(124,58,237,0.1)', title:'Front-End Developer', desc:'Specializes in building the visual user interface of websites and apps that users see and interact with directly.', skills:['HTML/CSS','JavaScript','React','Vue.js','TypeScript','Figma','Responsive Design'], courses:['Scrimba React Course','Meta Front-End Certificate','CSS Tricks','Frontend Masters'], salary:'₹3 – 22 LPA', growth:'Junior FE → Mid FE → Senior FE → Lead FE → Frontend Architect', scope:'High demand as UX becomes a competitive differentiator. React developers are among the most sought-after in the job market.', growthSteps:['Junior FE','Mid FE','Senior FE','Lead FE','Architect'] },
+  { id:'sw4', cat:'software', icon:'⚙️', color:'#065F46', colorBg:'rgba(6,95,70,0.1)', title:'Back-End Developer', desc:'Builds the server-side logic, databases, and APIs that power websites and applications behind the scenes.', skills:['Python','Node.js','Java','MySQL','MongoDB','REST/GraphQL','Docker'], courses:['Node.js Udemy','Python Django Course','MongoDB University','AWS Free Tier'], salary:'₹4 – 28 LPA', growth:'Junior BE → Senior BE → Lead BE → Solutions Architect', scope:'Critical for every application. Higher salary than front-end on average. Strong demand for Python, Java, and Node.js back-end developers.', growthSteps:['Junior BE','Senior BE','Lead BE','Solutions Architect'] },
+  { id:'sw5', cat:'software', icon:'🔗', color:'#B45309', colorBg:'rgba(180,83,9,0.1)', title:'Full Stack Developer', desc:'A versatile developer who handles both front-end and back-end development. The most valuable and flexible web developer profile.', skills:['React','Node.js','MongoDB','Express','SQL','Git','Cloud Basics'], courses:['MERN Stack Udemy','Full Stack Open (Free)','The Odin Project','Coursera IBM Full Stack'], salary:'₹5 – 35 LPA', growth:'Junior FS → Senior FS → Tech Lead → CTO / Startup Founder', scope:'Most-hired web developer type. Startups especially prefer full stack developers who can handle end-to-end development. Great for freelancing.', growthSteps:['Junior FS','Senior FS','Tech Lead','CTO'] },
+  { id:'sw6', cat:'software', icon:'📱', color:'#DC2626', colorBg:'rgba(220,38,38,0.1)', title:'Mobile App Developer', desc:'Creates mobile applications for Android and iOS smartphones. India has 750M+ smartphone users, creating massive app demand.', skills:['Flutter','Kotlin','Swift','React Native','Dart','Firebase','APIs'], courses:['Flutter Udemy','Android Google Codelabs','iOS Swift Course','React Native Udemy'], salary:'₹4 – 30 LPA', growth:'Junior Dev → Senior Dev → Lead Mobile Dev → Mobile Architect', scope:'India\'s mobile app economy is worth $5B+. Gaming, fintech, and edtech apps are booming. Great for entrepreneurship too.', growthSteps:['Junior Dev','Senior Dev','Lead Dev','Mobile Architect'] },
+  { id:'sw7', cat:'software', icon:'🎮', color:'#7C3AED', colorBg:'rgba(124,58,237,0.1)', title:'Game Developer', desc:'Designs and develops video games for mobile, PC, and consoles. India\'s gaming industry is growing at 40% annually.', skills:['Unity/Unreal Engine','C#','C++','3D Modeling','Game Physics','Mobile Gaming'], courses:['Unity Learn (Free)','Unreal Engine Courses','C# for Unity Udemy','Game Dev.tv'], salary:'₹3.5 – 22 LPA', growth:'Junior Game Dev → Mid Dev → Senior Dev → Lead Dev → Game Director', scope:'India gaming market expected to reach $8.6B by 2027. Mobile gaming is exploding. Strong international job opportunities.', growthSteps:['Junior Dev','Mid Dev','Senior Dev','Game Director'] },
+  // DATA & AI
+  { id:'da1', cat:'data', icon:'📊', color:'#0369A1', colorBg:'rgba(3,105,161,0.1)', title:'Data Analyst', desc:'Analyzes data to uncover insights and help businesses make better decisions. One of the most accessible data careers for beginners.', skills:['Excel','SQL','Python/R','Power BI','Tableau','Statistics','Data Cleaning'], courses:['Google Data Analytics (Coursera)','SQL Codecademy','Excel Advanced Udemy','Kaggle Courses'], salary:'₹3 – 18 LPA', growth:'Junior Analyst → Mid Analyst → Senior Analyst → Analytics Manager', scope:'Every business generates data and needs analysts to make sense of it. FMCG, finance, healthcare, and e-commerce are top hiring sectors.', growthSteps:['Junior Analyst','Senior Analyst','Analytics Manager','Head of Analytics'] },
+  { id:'da2', cat:'data', icon:'🔬', color:'#7C3AED', colorBg:'rgba(124,58,237,0.1)', title:'Data Scientist', desc:'Uses advanced statistics, machine learning, and AI to extract deep insights and build predictive models from complex datasets.', skills:['Python','Machine Learning','Deep Learning','SQL','Statistics','Pandas','Scikit-Learn'], courses:['IBM Data Science (Coursera)','Kaggle ML Courses','Fast.ai','Andrew Ng ML (Coursera)'], salary:'₹6 – 40 LPA', growth:'Junior DS → Senior DS → Lead DS → Head of Data Science / CDO', scope:'Top 10 most in-demand jobs globally. Indian companies in fintech, healthcare, and e-commerce are hiring aggressively. High salary growth.', growthSteps:['Junior DS','Senior DS','Lead DS','Head of Data Science'] },
+  { id:'da3', cat:'data', icon:'🏗️', color:'#0D9488', colorBg:'rgba(13,148,136,0.1)', title:'Data Engineer', desc:'Builds and maintains the data infrastructure, pipelines, and warehouses that data scientists and analysts use to do their work.', skills:['Python','Apache Spark','SQL','AWS/GCP','Kafka','Airflow','ETL Pipelines'], courses:['Data Engineering on GCP','Spark Udemy','dbt Learn','Databricks Academy'], salary:'₹5 – 35 LPA', growth:'Junior DE → Senior DE → Lead DE → Data Platform Architect', scope:'Critical role as data volumes explode. Often earns more than Data Scientists. High demand in fintech, logistics, and large enterprises.', growthSteps:['Junior DE','Senior DE','Lead DE','Data Platform Architect'] },
+  { id:'da4', cat:'data', icon:'🤖', color:'#2563EB', colorBg:'rgba(37,99,235,0.1)', title:'Machine Learning Engineer', desc:'Builds, trains, deploys, and scales machine learning models that power AI features in products and applications.', skills:['Python','TensorFlow','PyTorch','MLOps','Docker','Statistics','Cloud ML'], courses:['DeepLearning.AI Specialization','Fast.ai','TensorFlow Certification','Udacity ML Nanodegree'], salary:'₹8 – 45 LPA', growth:'Junior MLE → Senior MLE → Staff MLE → Principal MLE → AI Director', scope:'Fastest growing tech role. OpenAI, Google, Microsoft, and thousands of Indian startups actively hiring. Salary growth is exceptional.', growthSteps:['Junior MLE','Senior MLE','Staff MLE','AI Director'] },
+  { id:'da5', cat:'data', icon:'🧠', color:'#B45309', colorBg:'rgba(180,83,9,0.1)', title:'AI Engineer', desc:'Builds AI-powered applications and systems, integrating large language models, computer vision, and AI APIs into products.', skills:['Python','LLMs/GPT','LangChain','Prompt Engineering','Vector DBs','Cloud AI','APIs'], courses:['Hugging Face Courses','LangChain Docs','DeepLearning.AI','OpenAI API Docs'], salary:'₹8 – 50 LPA', growth:'AI Engineer → Senior AI Engineer → AI Lead → AI Architect → Head of AI', scope:'The hottest tech role of the decade. GenAI is transforming every industry. India needs 1M+ AI professionals by 2027. Exceptional pay.', growthSteps:['AI Engineer','Senior AI Eng','AI Lead','Head of AI'] },
+  // CYBER SECURITY
+  { id:'cs1', cat:'security', icon:'🛡️', color:'#DC2626', colorBg:'rgba(220,38,38,0.1)', title:'Cyber Security Analyst', desc:'Monitors, detects, and responds to cyber threats and attacks to protect an organization\'s digital assets and data.', skills:['Network Security','SIEM Tools','Linux','Python Scripting','Firewalls','Incident Response'], courses:['CompTIA Security+','Google Cyber Security (Coursera)','TryHackMe','Cybrary Free Courses'], salary:'₹4 – 25 LPA', growth:'Junior Analyst → Senior Analyst → Security Lead → CISO', scope:'Cyber attacks cost Indian companies ₹8000 crore annually. Every bank, hospital, and govt agency is hiring security professionals urgently.', growthSteps:['Junior Analyst','Senior Analyst','Security Lead','CISO'] },
+  { id:'cs2', cat:'security', icon:'🔓', color:'#065F46', colorBg:'rgba(6,95,70,0.1)', title:'Ethical Hacker', desc:'Legally tests and breaks into systems to find vulnerabilities before malicious hackers do. Also known as Penetration Testers.', skills:['Kali Linux','Metasploit','Network Protocols','Web Vulnerabilities','Python','OWASP Top 10'], courses:['CEH (EC-Council)','OSCP (Offensive Security)','TryHackMe','HackTheBox Academy'], salary:'₹5 – 30 LPA', growth:'Junior Pentester → Senior Pentester → Lead Pentester → Red Team Lead', scope:'Bug bounty programs pay ₹1L–1 Crore per vulnerability found. Companies like Google, Microsoft, and Facebook run active programs.', growthSteps:['Junior Pentester','Senior Pentester','Lead Pentester','Red Team Lead'] },
+  { id:'cs3', cat:'security', icon:'🔧', color:'#7C3AED', colorBg:'rgba(124,58,237,0.1)', title:'Security Engineer', desc:'Designs and implements security systems, tools, and architectures to protect infrastructure and applications.', skills:['Cloud Security','DevSecOps','Python','SIEM/SOAR','Encryption','IAM','Zero Trust'], courses:['AWS Security Specialty','CISSP','CompTIA CySA+','SANS GIAC Courses'], salary:'₹6 – 35 LPA', growth:'Security Engineer → Senior SE → Security Architect → CISO', scope:'As cloud adoption grows, cloud security engineers are among the highest paid. Strong demand in BFSI, IT, and government sectors.', growthSteps:['Security Eng','Senior SE','Security Architect','CISO'] },
+  { id:'cs4', cat:'security', icon:'👁️', color:'#B45309', colorBg:'rgba(180,83,9,0.1)', title:'SOC Analyst', desc:'Works in a Security Operations Center, monitoring networks 24/7 for security incidents and responding to threats in real time.', skills:['SIEM (Splunk/IBM QRadar)','Network Analysis','Wireshark','Incident Response','MITRE ATT&CK'], courses:['CompTIA Security+','Splunk Free Training','TryHackMe SOC Path','Cybrary SOC Analyst'], salary:'₹3.5 – 20 LPA', growth:'L1 Analyst → L2 Analyst → L3 Analyst → SOC Manager → CISO', scope:'Entry point into cyber security for freshers. Every large enterprise runs a SOC. Shift work with good pay. Strong path to higher roles.', growthSteps:['L1 SOC Analyst','L2 Analyst','L3 Analyst','SOC Manager'] },
+  // CLOUD
+  { id:'cl1', cat:'cloud', icon:'☁️', color:'#0369A1', colorBg:'rgba(3,105,161,0.1)', title:'Cloud Engineer', desc:'Designs, deploys, and manages cloud infrastructure on AWS, GCP, or Azure to help organizations migrate and scale in the cloud.', skills:['AWS/Azure/GCP','Linux','Terraform','Docker','Kubernetes','Networking','Python'], courses:['AWS Cloud Practitioner','Google Associate Cloud Engineer','A Cloud Guru','Linux Foundation Courses'], salary:'₹5 – 35 LPA', growth:'Cloud Engineer → Senior CE → Cloud Architect → Cloud Director', scope:'90% of enterprises are on cloud. Cloud skills are among the most in-demand globally. Remote work opportunities with global companies.', growthSteps:['Cloud Engineer','Senior CE','Cloud Architect','Cloud Director'] },
+  { id:'cl2', cat:'cloud', icon:'🏛️', color:'#065F46', colorBg:'rgba(6,95,70,0.1)', title:'Cloud Architect', desc:'Designs the high-level strategy and blueprint for an organization\'s entire cloud infrastructure. Senior, high-impact role.', skills:['AWS Solutions Architect','Multi-Cloud','Security','Cost Optimization','Microservices','Enterprise Design'], courses:['AWS Solutions Architect Professional','GCP Professional Architect','Azure Expert'], salary:'₹12 – 55 LPA', growth:'Senior Engineer → Cloud Architect → Principal Architect → VP of Engineering', scope:'Top-paying cloud role. Companies pay premium for architects who can design scalable, secure, cost-efficient cloud systems.', growthSteps:['Senior Engineer','Cloud Architect','Principal Architect','VP Engineering'] },
+  { id:'cl3', cat:'cloud', icon:'🔄', color:'#2563EB', colorBg:'rgba(37,99,235,0.1)', title:'DevOps Engineer', desc:'Bridges development and operations by automating software delivery pipelines, enabling faster and more reliable deployment.', skills:['Docker','Kubernetes','Jenkins','Terraform','Git','Linux','CI/CD','Monitoring'], courses:['KodeKloud DevOps','Docker & Kubernetes Udemy','HashiCorp Terraform','Linux Foundation DevOps'], salary:'₹5 – 38 LPA', growth:'DevOps Engineer → Senior DevOps → Lead DevOps → SRE → Engineering Manager', scope:'DevOps engineers are among the highest-paid IT professionals in India. Every modern company running software needs DevOps.', growthSteps:['DevOps Eng','Senior DevOps','Lead DevOps','SRE / EM'] },
+  { id:'cl4', cat:'cloud', icon:'🟠', color:'#D97706', colorBg:'rgba(217,119,6,0.1)', title:'AWS Engineer', desc:'Specializes in Amazon Web Services — the world\'s largest cloud platform used by Netflix, Airbnb, and millions of companies.', skills:['EC2','S3','Lambda','RDS','VPC','IAM','CloudFormation','Cost Management'], courses:['AWS Cloud Practitioner (Free)','AWS Solutions Architect','A Cloud Guru','Stephane Maarek Udemy'], salary:'₹5 – 40 LPA', growth:'AWS Junior → Mid → Senior → Architect → Cloud Director', scope:'AWS holds 32% of global cloud market. India has massive AWS adoption. AWS certification significantly boosts salary by 30–50%.', growthSteps:['AWS Junior','AWS Mid','AWS Senior','AWS Architect'] },
+  { id:'cl5', cat:'cloud', icon:'🔵', color:'#0369A1', colorBg:'rgba(3,105,161,0.1)', title:'Azure Engineer', desc:'Specializes in Microsoft Azure, the cloud platform deeply integrated with Office 365, used widely by enterprises globally.', skills:['Azure VMs','Azure DevOps','Active Directory','Azure Security','ARM Templates','Azure SQL'], courses:['AZ-900 (Free)','AZ-104 Udemy','Microsoft Learn (Free)','SC-900 Security'], salary:'₹5 – 38 LPA', growth:'Azure Junior → Mid → Senior → Azure Architect → Cloud Manager', scope:'Microsoft Azure is the #1 choice for enterprise and government. Large consulting firms (Accenture, Wipro) are hiring Azure engineers heavily.', growthSteps:['Azure Junior','Azure Mid','Azure Senior','Azure Architect'] },
+  // NETWORKING
+  { id:'nw1', cat:'network', icon:'🌐', color:'#0D9488', colorBg:'rgba(13,148,136,0.1)', title:'Network Engineer', desc:'Designs, implements, and manages computer networks including LANs, WANs, and enterprise networks for organizations.', skills:['Cisco Routing/Switching','TCP/IP','CCNA','Firewalls','VPN','Network Monitoring','BGP/OSPF'], courses:['Cisco CCNA','CompTIA Network+','Jeremy\'s IT Lab (Free)','Udemy CCNA Course'], salary:'₹3 – 22 LPA', growth:'Junior NE → Senior NE → Network Architect → IT Manager', scope:'Network infrastructure is the backbone of all digital services. Strong demand in telecom, IT services, banking, and government sectors.', growthSteps:['Junior NE','Senior NE','Network Architect','IT Manager'] },
+  { id:'nw2', cat:'network', icon:'🖧', color:'#B45309', colorBg:'rgba(180,83,9,0.1)', title:'Network Administrator', desc:'Manages day-to-day operations of an organization\'s computer network — installation, maintenance, troubleshooting, and security.', skills:['Windows Server','Active Directory','TCP/IP','Cisco','DHCP/DNS','Virtualization','Help Desk'], courses:['CompTIA A+','CCNA','Microsoft Certified Systems Administrator','MCSA Windows Server'], salary:'₹3 – 18 LPA', growth:'Network Admin → Senior Admin → Network Engineer → IT Manager', scope:'Every company with 50+ employees needs a network administrator. Government institutions and educational sector offer stable jobs.', growthSteps:['Network Admin','Senior Admin','Network Eng','IT Manager'] },
+  // DATABASE
+  { id:'db1', cat:'database', icon:'🗄️', color:'#7C3AED', colorBg:'rgba(124,58,237,0.1)', title:'Database Administrator', desc:'Manages, maintains, and secures organizational databases — ensuring data is available, backed up, and performing optimally.', skills:['MySQL','PostgreSQL','Oracle DB','SQL Server','Performance Tuning','Backup & Recovery','Security'], courses:['Oracle DBA Certification','MySQL Udemy','PostgreSQL Tutorial','Microsoft SQL Server MCSA'], salary:'₹4 – 25 LPA', growth:'Junior DBA → Senior DBA → Lead DBA → Data Architect', scope:'DBAs are needed in every sector — banking, healthcare, e-commerce. Oracle DBAs are particularly well-paid. Stable long-term career.', growthSteps:['Junior DBA','Senior DBA','Lead DBA','Data Architect'] },
+  { id:'db2', cat:'database', icon:'🔍', color:'#0369A1', colorBg:'rgba(3,105,161,0.1)', title:'SQL Developer', desc:'Writes complex SQL queries, stored procedures, and manages relational databases to support application development and reporting.', skills:['Advanced SQL','MySQL','PostgreSQL','Stored Procedures','Query Optimization','SSRS','ETL'], courses:['SQL Codecademy (Free)','Mode Analytics SQL','Udemy Complete SQL','W3Schools SQL'], salary:'₹3 – 20 LPA', growth:'SQL Developer → Senior SQL Dev → Database Architect → Data Engineer', scope:'SQL is a fundamental skill across all data roles. SQL developers are required in almost every IT company. Great entry-level career.', growthSteps:['SQL Developer','Senior SQL Dev','DB Architect','Data Engineer'] },
+  // TESTING
+  { id:'tq1', cat:'testing', icon:'🧪', color:'#DC2626', colorBg:'rgba(220,38,38,0.1)', title:'Software Tester', desc:'Manually tests software applications to find bugs and ensure quality before release. A great entry-level IT role for all graduates.', skills:['Manual Testing','Test Cases','Bug Reporting','SDLC/STLC','Agile/Scrum','Jira','SQL Basics'], courses:['ISTQB Foundation','Testing Udemy','Software Testing Help','Ministry of Testing'], salary:'₹2.5 – 15 LPA', growth:'Junior Tester → Senior Tester → QA Lead → QA Manager → Test Director', scope:'Every software product needs testers. High demand for testers with automation skills. Good entry point even without strong coding background.', growthSteps:['Junior Tester','Senior Tester','QA Lead','Test Director'] },
+  { id:'tq2', cat:'testing', icon:'✅', color:'#065F46', colorBg:'rgba(6,95,70,0.1)', title:'QA Engineer', desc:'Ensures software quality through systematic testing strategies, test planning, and quality assurance processes throughout development.', skills:['Test Planning','Manual & Automation','JIRA','SQL','API Testing (Postman)','Performance Testing'], courses:['ISTQB Advanced','Agile Testing Udemy','Postman API Testing','Software Testing Bootcamp'], salary:'₹3 – 20 LPA', growth:'QA Engineer → Senior QA → QA Lead → QA Manager → Head of Quality', scope:'Quality Assurance is a critical function in every software company. QA managers earn well and have clear career progression.', growthSteps:['QA Engineer','Senior QA','QA Lead','Head of Quality'] },
+  { id:'tq3', cat:'testing', icon:'🤖', color:'#2563EB', colorBg:'rgba(37,99,235,0.1)', title:'Automation Tester', desc:'Uses programming and automation frameworks to write test scripts that automatically run tests, saving time and improving coverage.', skills:['Selenium WebDriver','Java/Python','TestNG/JUnit','Cypress','Appium','CI/CD','BDD/Cucumber'], courses:['Selenium Java Udemy','Cypress Testing Udemy','Appium Mobile Testing','Test Automation University (Free)'], salary:'₹4 – 28 LPA', growth:'Automation Engineer → Senior AE → Automation Lead → QA Architect', scope:'Automation testing skills command 40–60% higher salaries than manual testing. Companies are rapidly automating their test pipelines.', growthSteps:['Automation Eng','Senior AE','Automation Lead','QA Architect'] },
+  // UI/UX
+  { id:'ui1', cat:'design', icon:'🎨', color:'#EC4899', colorBg:'rgba(236,72,153,0.1)', title:'UI Designer', desc:'Creates visually appealing and pixel-perfect user interfaces for websites and apps using design principles and tools like Figma.', skills:['Figma','Adobe XD','Typography','Color Theory','Prototyping','Design Systems','HTML/CSS basics'], courses:['Google UX Design (Coursera)','Figma Crash Course (YouTube)','UI/UX Udemy','Interaction Design Foundation'], salary:'₹3 – 22 LPA', growth:'Junior UI Designer → Senior UI → Lead Designer → Head of Design', scope:'Design-driven companies command premium prices. Indian design talent is in demand globally. Growing freelance market for UI designers.', growthSteps:['Junior UI Designer','Senior UI','Lead Designer','Head of Design'] },
+  { id:'ui2', cat:'design', icon:'🔍', color:'#7C3AED', colorBg:'rgba(124,58,237,0.1)', title:'UX Designer', desc:'Focuses on user research, usability, and creating meaningful experiences. Works to understand user needs and translate them into intuitive designs.', skills:['User Research','Wireframing','Figma','Usability Testing','Information Architecture','Empathy Mapping'], courses:['Google UX Design Coursera','Nielsen Norman Group Courses','UX Collective','Interaction Design Foundation'], salary:'₹4 – 28 LPA', growth:'Junior UX → Senior UX → UX Lead → Head of UX → Chief Design Officer', scope:'UX is increasingly recognized as a business differentiator. Companies with strong UX generate 5× more revenue. Global remote opportunities.', growthSteps:['Junior UX','Senior UX','UX Lead','Chief Design Officer'] },
+  { id:'ui3', cat:'design', icon:'📱', color:'#0369A1', colorBg:'rgba(3,105,161,0.1)', title:'Product Designer', desc:'Combines UX and UI skills to design complete product experiences from research and strategy through to pixel-perfect visual design.', skills:['End-to-End Design','Figma','User Research','Product Thinking','Prototyping','Design Systems','Stakeholder Management'], courses:['Product Design Udemy','Figma Advanced','IDEO Design Thinking','Reforge Product Design'], salary:'₹5 – 35 LPA', growth:'Product Designer → Senior PD → Lead PD → Design Lead → Chief Design Officer', scope:'Product designers at top tech companies earn ₹20–50 LPA. High demand at startups and unicorns. Combines creativity with business strategy.', growthSteps:['Product Designer','Senior PD','Design Lead','Chief Design Officer'] },
+  // MANAGEMENT
+  { id:'mg1', cat:'management', icon:'📋', color:'#065F46', colorBg:'rgba(6,95,70,0.1)', title:'Project Manager', desc:'Plans, executes, and closes IT projects, coordinating teams and resources to deliver projects on time and within budget.', skills:['Agile/Scrum','JIRA','Risk Management','Stakeholder Communication','MS Project','Budget Management','Leadership'], courses:['PMP Certification','PMI Agile Certified','Scrum Master Certification','Udemy PMP Course'], salary:'₹6 – 35 LPA', growth:'Junior PM → Senior PM → Program Manager → PMO Director → CTO', scope:'Every IT company running multiple projects needs PMs. PMP certification boosts salary significantly. Strong demand in large enterprises.', growthSteps:['Junior PM','Senior PM','Program Manager','PMO Director'] },
+  { id:'mg2', cat:'management', icon:'🚀', color:'#DC2626', colorBg:'rgba(220,38,38,0.1)', title:'Product Manager', desc:'Defines product vision and strategy, working with engineering, design, and business teams to build products customers love.', skills:['Product Strategy','Data Analytics','Agile','User Research','Roadmapping','A/B Testing','Business Acumen'], courses:['Product School','PM Exercises','Reforge PM','Coursera Product Management'], salary:'₹8 – 50 LPA', growth:'APM → PM → Senior PM → Group PM → VP Product → CPO', scope:'One of the most coveted roles in tech. Product Managers at top companies like Google, Amazon earn ₹30–80 LPA. Great for IIM/IIT graduates.', growthSteps:['APM','PM','Senior PM','VP Product','CPO'] },
+  // EMERGING
+  { id:'em1', cat:'emerging', icon:'⛓️', color:'#B45309', colorBg:'rgba(180,83,9,0.1)', title:'Blockchain Developer', desc:'Builds decentralized applications (dApps), smart contracts, and blockchain solutions for finance, supply chain, and more.', skills:['Solidity','Ethereum','Web3.js','Smart Contracts','Cryptography','DeFi','NFTs'], courses:['CryptoZombies (Free)','Ethereum.org Docs','Udemy Solidity Bootcamp','Chainlink Developer Docs'], salary:'₹5 – 40 LPA', growth:'Blockchain Dev → Senior Dev → Blockchain Architect → Blockchain Lead', scope:'Blockchain beyond crypto — supply chain, healthcare, banking are adopting it. India has a growing Web3 ecosystem with well-funded startups.', growthSteps:['Blockchain Dev','Senior Dev','Blockchain Architect','Blockchain Lead'] },
+  { id:'em2', cat:'emerging', icon:'🥽', color:'#7C3AED', colorBg:'rgba(124,58,237,0.1)', title:'AR/VR Developer', desc:'Creates immersive augmented and virtual reality experiences for gaming, training, education, retail, and enterprise applications.', skills:['Unity/Unreal','C#/C++','3D Modeling','WebXR','Meta Quest SDK','ARKit/ARCore'], courses:['Unity XR Development','Unreal VR Udemy','ARKit Tutorial','VR Development Academy'], salary:'₹4 – 30 LPA', growth:'AR/VR Dev → Senior Dev → XR Architect → XR Lab Director', scope:'Meta, Google, Apple investing billions in AR/VR. India has growing AR/VR startups in edtech and real estate. Early movers benefit greatly.', growthSteps:['AR/VR Dev','Senior Dev','XR Architect','XR Lab Director'] },
+  { id:'em3', cat:'emerging', icon:'🌐', color:'#0D9488', colorBg:'rgba(13,148,136,0.1)', title:'IoT Engineer', desc:'Builds connected smart device systems that collect data and automate actions — from smart homes to industrial automation.', skills:['Embedded C','Raspberry Pi','Arduino','MQTT','Cloud IoT','Python','Electronics Basics'], courses:['Coursera IoT Specialization','Arduino Projects','AWS IoT Core Docs','IoT Udemy Course'], salary:'₹4 – 28 LPA', growth:'IoT Engineer → Senior IoT → IoT Architect → IoT Solutions Director', scope:'50 billion IoT devices expected by 2030. Smart cities, agriculture, and manufacturing are key sectors. Good for electronics + CS students.', growthSteps:['IoT Engineer','Senior IoT','IoT Architect','IoT Director'] },
+  { id:'em4', cat:'emerging', icon:'🦾', color:'#0369A1', colorBg:'rgba(3,105,161,0.1)', title:'Robotics Engineer', desc:'Designs, builds, and programs robots for manufacturing, healthcare, space exploration, and consumer applications.', skills:['ROS','Python/C++','Electronics','Mechanical Design','Computer Vision','AI/ML','Control Systems'], courses:['ROS for Beginners (Udemy)','MIT OpenCourseware Robotics','Coursera Robotics','Robotics Academy'], salary:'₹5 – 35 LPA', growth:'Robotics Engineer → Senior → Lead → Robotics Architect → CTO', scope:'ISRO, DRDO, Mahindra, Tata hire robotics engineers. Global opportunities are exceptional. Manufacturing automation is booming.', growthSteps:['Robotics Eng','Senior Robotics','Lead Engineer','CTO Robotics'] },
+  { id:'em5', cat:'emerging', icon:'✍️', color:'#D97706', colorBg:'rgba(217,119,6,0.1)', title:'Prompt Engineer', desc:'Designs effective prompts and workflows for AI language models to maximize output quality for specific business use cases.', skills:['LLM Understanding','Prompt Design','Python Basics','API Integration','Chain-of-Thought','Few-Shot Learning'], courses:['DeepLearning.AI Prompt Engineering','OpenAI Prompt Guide','LangChain Docs','Coursera Generative AI'], salary:'₹5 – 35 LPA', growth:'Prompt Engineer → Senior PE → AI Product Designer → Head of AI', scope:'Brand new field with massive demand. Every company integrating AI needs prompt engineers. Can work remotely for global companies.', growthSteps:['Prompt Engineer','Senior PE','AI Product Designer','Head of AI'] },
+  { id:'em6', cat:'emerging', icon:'🌟', color:'#DC2626', colorBg:'rgba(220,38,38,0.1)', title:'Generative AI Specialist', desc:'Builds products and solutions using generative AI — LLMs, image generation, code generation — for real-world business problems.', skills:['LLMs (GPT/Gemini/Claude)','Python','LangChain','Vector DBs','RAG Architecture','Fine-tuning','MLOps'], courses:['Hugging Face Courses (Free)','LangChain Academy','DeepLearning.AI','Google Gemini API'], salary:'₹10 – 60 LPA', growth:'GenAI Engineer → Senior → Lead GenAI → Head of AI → CTO', scope:'The highest-paid emerging role in tech. Every company is building AI features. India needs 500K+ GenAI professionals by 2026.', growthSteps:['GenAI Engineer','Senior GenAI','Lead GenAI','Head of AI'] }
+];
+
+const skillsData = [
+  { cat:'💻 Programming Languages', icon:'💻', iconBg:'rgba(37,99,235,0.1)', iconColor:'#2563EB',
+    items:[
+      {icon:'🐍',name:'Python',level:'Beginner → Expert',demand:'high',bar:95},
+      {icon:'☕',name:'Java',level:'Intermediate → Expert',demand:'high',bar:88},
+      {icon:'🌐',name:'JavaScript',level:'Beginner → Expert',demand:'high',bar:92},
+      {icon:'🔷',name:'TypeScript',level:'Intermediate',demand:'high',bar:80},
+      {icon:'⚡',name:'C++',level:'Intermediate → Advanced',demand:'medium',bar:72},
+      {icon:'🦀',name:'C#',level:'Intermediate',demand:'medium',bar:70},
+      {icon:'🐹',name:'Go (Golang)',level:'Intermediate → Advanced',demand:'high',bar:75},
+      {icon:'💎',name:'Ruby',level:'Intermediate',demand:'medium',bar:60},
+    ]
+  },
+  { cat:'🌐 Web Development', icon:'🌐', iconBg:'rgba(13,148,136,0.1)', iconColor:'#0D9488',
+    items:[
+      {icon:'⚛️',name:'React.js',level:'Intermediate → Expert',demand:'high',bar:93},
+      {icon:'💚',name:'Node.js',level:'Intermediate',demand:'high',bar:85},
+      {icon:'▲',name:'Next.js',level:'Intermediate → Expert',demand:'high',bar:80},
+      {icon:'🖼️',name:'Vue.js',level:'Intermediate',demand:'medium',bar:70},
+      {icon:'🍃',name:'MongoDB',level:'Beginner → Mid',demand:'high',bar:78},
+      {icon:'🐘',name:'PostgreSQL',level:'Intermediate',demand:'high',bar:82},
+      {icon:'📦',name:'Docker',level:'Intermediate',demand:'high',bar:85},
+      {icon:'☸️',name:'Kubernetes',level:'Advanced',demand:'high',bar:80},
+    ]
+  },
+  { cat:'🤖 AI & Machine Learning', icon:'🤖', iconBg:'rgba(139,92,246,0.1)', iconColor:'#7C3AED',
+    items:[
+      {icon:'🔥',name:'TensorFlow',level:'Intermediate → Advanced',demand:'high',bar:85},
+      {icon:'⚡',name:'PyTorch',level:'Intermediate → Advanced',demand:'high',bar:88},
+      {icon:'🐼',name:'Pandas',level:'Beginner → Mid',demand:'high',bar:90},
+      {icon:'📊',name:'Scikit-Learn',level:'Intermediate',demand:'high',bar:85},
+      {icon:'💬',name:'LangChain',level:'Intermediate',demand:'high',bar:82},
+      {icon:'🗃️',name:'Pinecone/Weaviate',level:'Intermediate',demand:'high',bar:75},
+      {icon:'📈',name:'Tableau/Power BI',level:'Beginner → Mid',demand:'high',bar:78},
+      {icon:'🤗',name:'Hugging Face',level:'Intermediate',demand:'high',bar:83},
+    ]
+  },
+  { cat:'☁️ Cloud Platforms', icon:'☁️', iconBg:'rgba(3,105,161,0.1)', iconColor:'#0369A1',
+    items:[
+      {icon:'🟠',name:'AWS',level:'Beginner → Expert',demand:'high',bar:92},
+      {icon:'🔵',name:'Microsoft Azure',level:'Beginner → Expert',demand:'high',bar:85},
+      {icon:'🔴',name:'Google Cloud (GCP)',level:'Beginner → Expert',demand:'high',bar:80},
+      {icon:'🏗️',name:'Terraform',level:'Intermediate',demand:'high',bar:78},
+      {icon:'🔄',name:'Jenkins/GitHub Actions',level:'Intermediate',demand:'high',bar:80},
+      {icon:'📊',name:'CloudWatch/Monitoring',level:'Intermediate',demand:'medium',bar:72},
+    ]
+  },
+  { cat:'🔐 Cyber Security Tools', icon:'🔐', iconBg:'rgba(220,38,38,0.1)', iconColor:'#DC2626',
+    items:[
+      {icon:'🐧',name:'Kali Linux',level:'Intermediate → Expert',demand:'high',bar:85},
+      {icon:'🔫',name:'Metasploit',level:'Intermediate → Expert',demand:'high',bar:75},
+      {icon:'🦈',name:'Wireshark',level:'Beginner → Mid',demand:'high',bar:82},
+      {icon:'🧱',name:'Firewalls (pfSense)',level:'Intermediate',demand:'medium',bar:70},
+      {icon:'🔍',name:'Splunk / SIEM',level:'Intermediate',demand:'high',bar:80},
+      {icon:'🌐',name:'Burp Suite',level:'Intermediate → Expert',demand:'high',bar:78},
+    ]
+  }
+];
+
+const quizQuestions = [
+  { q:"What type of activities do you enjoy most?", opts:["Building things and coding","Analyzing data and finding patterns","Protecting systems from hackers","Designing beautiful interfaces"] },
+  { q:"Which subject did you enjoy most in school?", opts:["Mathematics and Logic","Science and Research","Social Studies / Communication","Art and Creative subjects"] },
+  { q:"How do you prefer to work?", opts:["Independently, deeply focused on code","In teams, collaborative problem solving","Under pressure, quick decisions","Creatively, with design freedom"] },
+  { q:"What motivates you most at work?", opts:["Building products millions of people use","Discovering insights hidden in data","Keeping systems safe from attacks","Creating seamless user experiences"] },
+  { q:"Which technology excites you most?", opts:["Artificial Intelligence and Machine Learning","Web and Mobile Apps","Cyber Security and Hacking","Cloud Computing and Infrastructure"] },
+  { q:"How do you feel about coding every day?", opts:["Love it — the more complex the better","It's okay — mixed with analysis is fine","Prefer light coding — more strategy","Prefer no coding — design/management"] },
+  { q:"What industry would you love to work in?", opts:["Big Tech (Google, Amazon, Microsoft)","Startups and Entrepreneurship","Government / Banking / Defense","Healthcare, Education, or NGOs"] },
+  { q:"What's your ideal work style?", opts:["Remote work, flexible hours","Structured office, clear processes","Field work, incident response","Creative studio environment"] },
+  { q:"How comfortable are you with maths?", opts:["Very comfortable — love advanced maths","Comfortable with statistics and data","Moderate — prefer applied over theory","Not a fan — prefer visual/design work"] },
+  { q:"What's your long-term career goal?", opts:["Build my own tech product or startup","Become an expert data / AI specialist","Lead a cyber security team","Head of Design at a top company"] }
+];
+
+const quizResults = {
+  "0000": { careers:["Software Developer","Full Stack Dev","AI Engineer"], emoji:"💻" },
+  "1000": { careers:["Data Scientist","ML Engineer","Data Analyst"], emoji:"📊" },
+  "2000": { careers:["Cyber Security Analyst","Ethical Hacker","SOC Analyst"], emoji:"🛡️" },
+  "3000": { careers:["UI/UX Designer","Product Designer","Front-End Developer"], emoji:"🎨" },
+  default: { careers:["Software Developer","Data Analyst","Cloud Engineer"], emoji:"🚀" }
+};
+
+const resourcesData = [
+  { section:"🌐 Free Learning Websites", items:[
+    {icon:"🟢",name:"freeCodeCamp",desc:"Complete web development curriculum — HTML, CSS, JS, Python. 100% free with certifications.",tag:"free",tagType:"tag-free"},
+    {icon:"📘",name:"Coursera",desc:"University-level courses from Google, IBM, Stanford. Audit for free, pay only for certificate.",tag:"free/paid",tagType:"tag-free"},
+    {icon:"🔴",name:"edX",desc:"MIT, Harvard, and 150+ universities. Free to audit. Verified certificates for a fee.",tag:"free/paid",tagType:"tag-free"},
+    {icon:"🟡",name:"Khan Academy",desc:"Computer science and programming basics. Perfect for school students. Completely free forever.",tag:"free",tagType:"tag-free"},
+    {icon:"🟠",name:"Udemy",desc:"10,000+ IT courses. Best during sales (₹349–599 per course). Lifetime access.",tag:"paid",tagType:"tag-paid"},
+    {icon:"🐱",name:"GitHub Education",desc:"Free developer tools for students — GitHub Pro, Canva, Figma, AWS credits and more.",tag:"free",tagType:"tag-free"},
+    {icon:"🏅",name:"NPTEL",desc:"Free IIT/IISc courses in CS, programming, and networking with government certification.",tag:"free",tagType:"tag-free"},
+    {icon:"🟣",name:"Kaggle",desc:"Free data science and ML courses, competitions, datasets. Best platform for data learners.",tag:"free",tagType:"tag-free"},
+  ]},
+  { section:"▶️ Best YouTube Channels for IT Learning", items:[
+    {icon:"📺",name:"Traversy Media",desc:"Web development tutorials — HTML, CSS, JavaScript, React, Node.js. Beginner friendly.",tag:"free",tagType:"tag-free"},
+    {icon:"📺",name:"Sentdex",desc:"Python programming and machine learning tutorials. Great for data science learners.",tag:"free",tagType:"tag-free"},
+    {icon:"📺",name:"TechWorld with Nana",desc:"DevOps, Docker, Kubernetes, and cloud tutorials. One of the best for cloud careers.",tag:"free",tagType:"tag-free"},
+    {icon:"📺",name:"NetworkChuck",desc:"Cyber security, networking, hacking, and cloud. Fun, engaging, and very practical.",tag:"free",tagType:"tag-free"},
+    {icon:"📺",name:"Apna College (Hindi)",desc:"DSA, Java, Web Dev in Hindi. Best for Indian students. 2M+ subscribers.",tag:"free",tagType:"tag-free"},
+    {icon:"📺",name:"Code With Harry",desc:"Python, Web Dev, DSA in Hindi. Perfect for Telugu/Hindi speaking students.",tag:"free",tagType:"tag-free"},
+    {icon:"📺",name:"3Blue1Brown",desc:"Beautiful visual explanations of math and linear algebra concepts for ML students.",tag:"free",tagType:"tag-free"},
+    {icon:"📺",name:"TED-Ed Tech",desc:"Short animated videos explaining AI, cyber security, and tech concepts. For all ages.",tag:"free",tagType:"tag-free"},
+  ]},
+  { section:"🏆 Top Certifications for Indian Students", items:[
+    {icon:"🟠",name:"AWS Cloud Practitioner",desc:"Entry-level AWS certification. Best starting point for cloud careers. Exam fee: ₹8000.",tag:"paid cert",tagType:"tag-cert"},
+    {icon:"🔐",name:"CompTIA Security+",desc:"Gold standard entry-level cyber security certification. Globally recognized.",tag:"paid cert",tagType:"tag-cert"},
+    {icon:"🌐",name:"Google IT Support",desc:"Free on Coursera (audit). Professional certificate from Google for IT support roles.",tag:"free",tagType:"tag-free"},
+    {icon:"📊",name:"Google Data Analytics",desc:"Best data analytics certificate for freshers. Covers SQL, R, Tableau. From Google.",tag:"free",tagType:"tag-free"},
+    {icon:"🔴",name:"Oracle Java SE Certification",desc:"Industry-recognized Java programming certification. Valued by enterprise companies.",tag:"paid cert",tagType:"tag-cert"},
+    {icon:"🏆",name:"CCNA (Cisco)",desc:"Industry standard for networking. Required for most network engineering roles.",tag:"paid cert",tagType:"tag-cert"},
+    {icon:"🤖",name:"TensorFlow Developer",desc:"Google certification for ML engineers. Validates deep learning and TF skills.",tag:"paid cert",tagType:"tag-cert"},
+    {icon:"💻",name:"Meta Front-End Developer",desc:"React-focused certificate from Meta. Highly recognized for web dev roles.",tag:"paid cert",tagType:"tag-cert"},
+  ]}
+];
+
+// ===================== STATE =====================
+let currentPage = 'home';
+let isDark = false;
+let currentFilter = 'all';
+let quizAnswers = [];
+let currentQ = 0;
+let comparingRoles = {};
+
+// ===================== NAVIGATION =====================
+function showPage(page, filter) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const pg = document.getElementById('page-' + page);
+  if (pg) pg.classList.add('active');
+  const nav = document.getElementById('nav-' + page);
+  if (nav) nav.classList.add('active');
+  currentPage = page;
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (page === 'careers') {
+    renderRoles();
+    populateCompare();
+    if (filter) { filterRoles(filter, document.querySelector(`[onclick="filterRoles('${filter}',this)"]`)); }
+  }
+  if (page === 'skills') renderSkills();
+  if (page === 'quiz') renderQuiz();
+  if (page === 'resources') renderResources();
+}
+function toggleMenu() {
+  const m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+function toggleTheme() {
+  isDark = !isDark;
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : '');
+  document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+}
+
+// ===================== RENDER ROLES =====================
+function renderRoles(filter) {
+  const grid = document.getElementById('rolesGrid');
+  if (!grid) return;
+  const f = filter || currentFilter;
+  const data = f === 'all' ? careerData : careerData.filter(c => c.cat === f);
+  grid.innerHTML = data.map(r => `
+    <div class="role-card" onclick="openRole('${r.id}')">
+      <div class="role-card-header">
+        <div class="role-icon" style="background:${r.colorBg}">${r.icon}</div>
+        <div>
+          <h3>${r.title}</h3>
+          <span class="role-cat-tag">${getCatName(r.cat)}</span>
+        </div>
+      </div>
+      <div class="role-card-body">
+        <p class="role-desc">${r.desc}</p>
+        <div class="role-salary">💰 ${r.salary}</div>
+        <div class="role-skills">${r.skills.slice(0,4).map(s=>`<span class="skill-tag">${s}</span>`).join('')}</div>
+      </div>
+      <div class="role-card-footer">
+        <span class="role-growth">📈 ${r.growthSteps[0]} → ${r.growthSteps[r.growthSteps.length-1]}</span>
+        <span class="role-arrow">→</span>
+      </div>
+    </div>
+  `).join('');
+}
+function filterRoles(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderRoles(cat);
+}
+function getCatName(cat) {
+  const map = {software:'Software Dev',data:'Data & AI',security:'Cyber Security',cloud:'Cloud',network:'Networking',database:'Database',testing:'Testing',design:'UI/UX',management:'Management',emerging:'Emerging Tech'};
+  return map[cat] || cat;
+}
+
+// ===================== ROLE MODAL =====================
+function openRole(id) {
+  const r = careerData.find(c => c.id === id);
+  if (!r) return;
+  const modal = document.getElementById('modalContent');
+  modal.innerHTML = `
+    <div class="modal-header">
+      <div class="modal-header-top">
+        <div>
+          <div class="modal-icon">${r.icon}</div>
+          <h2 class="modal-title">${r.title}</h2>
+          <div class="modal-cat">📂 ${getCatName(r.cat)}</div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">About This Role</div>
+        <p class="modal-scope">${r.desc}</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Salary Range in India</div>
+        <div class="modal-salary-box">
+          <div class="modal-salary-label">Annual CTC Range (Freshers to Senior)</div>
+          <div class="modal-salary-value">💰 ${r.salary}</div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Required Skills</div>
+        <div class="modal-tags">${r.skills.map(s=>`<span class="modal-tag">${s}</span>`).join('')}</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Recommended Courses</div>
+        <div class="courses-list">${r.courses.map(c=>`<span class="course-item">📚 ${c}</span>`).join('')}</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Career Growth Path</div>
+        <div class="growth-path">${r.growthSteps.map((s,i)=>`<div class="growth-step"><span class="step-name">${s}</span>${i<r.growthSteps.length-1?'<span class="step-arrow">→</span>':''}</div>`).join('')}</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Future Scope</div>
+        <p class="modal-scope">${r.scope}</p>
+      </div>
+    </div>
+  `;
+  document.getElementById('roleModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('roleModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('click', function(e) {
+  if (e.target.id === 'roleModal') closeModal();
+  if (e.target.id === 'searchOverlay') closeSearch();
+});
+
+// ===================== COMPARISON =====================
+function populateCompare() {
+  const sel1 = document.getElementById('compare1');
+  const sel2 = document.getElementById('compare2');
+  if (!sel1 || !sel2) return;
+  const opts = careerData.map(r => `<option value="${r.id}">${r.title}</option>`).join('');
+  sel1.innerHTML = '<option value="">Select Career 1</option>' + opts;
+  sel2.innerHTML = '<option value="">Select Career 2</option>' + opts;
+}
+function updateComparison() {
+  const id1 = document.getElementById('compare1').value;
+  const id2 = document.getElementById('compare2').value;
+  const result = document.getElementById('compareResult');
+  if (!id1 || !id2) { result.innerHTML = '<p class="compare-placeholder">Select two careers above to compare them.</p>'; return; }
+  const r1 = careerData.find(c=>c.id===id1);
+  const r2 = careerData.find(c=>c.id===id2);
+  if (!r1 || !r2) return;
+  result.innerHTML = `
+    <table class="compare-table">
+      <thead><tr><th>Criteria</th><th>${r1.icon} ${r1.title}</th><th>${r2.icon} ${r2.title}</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Category</strong></td><td>${getCatName(r1.cat)}</td><td>${getCatName(r2.cat)}</td></tr>
+        <tr><td><strong>Salary Range</strong></td><td>${r1.salary}</td><td>${r2.salary}</td></tr>
+        <tr><td><strong>Key Skills</strong></td><td>${r1.skills.slice(0,3).join(', ')}</td><td>${r2.skills.slice(0,3).join(', ')}</td></tr>
+        <tr><td><strong>Career Path</strong></td><td>${r1.growthSteps.join(' → ')}</td><td>${r2.growthSteps.join(' → ')}</td></tr>
+        <tr><td><strong>Best Course</strong></td><td>${r1.courses[0]}</td><td>${r2.courses[0]}</td></tr>
+        <tr><td><strong>Future Scope</strong></td><td>${r1.scope.slice(0,80)}...</td><td>${r2.scope.slice(0,80)}...</td></tr>
+      </tbody>
+    </table>
+  `;
+}
+
+// ===================== SKILLS =====================
+function renderSkills() {
+  const cont = document.getElementById('skillsContent');
+  if (!cont || cont.innerHTML.trim()) return;
+  cont.innerHTML = skillsData.map(cat => `
+    <div class="skills-category">
+      <div class="skills-cat-header">
+        <div class="skills-cat-icon" style="background:${cat.iconBg}">${cat.icon}</div>
+        <div>
+          <div class="skills-cat-title">${cat.cat}</div>
+          <div class="skills-cat-sub">${cat.items.length} skills listed • Click cards to learn more</div>
+        </div>
+      </div>
+      <div class="skill-cards-grid">
+        ${cat.items.map(s=>`
+          <div class="skill-card">
+            <div class="skill-card-icon">${s.icon}</div>
+            <div class="skill-card-name">${s.name}</div>
+            <div class="skill-card-level">${s.level}</div>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:${s.bar}%"></div></div>
+            <span class="skill-demand demand-${s.demand}">${s.demand === 'high' ? '🔥 High Demand' : '📊 Medium Demand'}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===================== QUIZ =====================
+function renderQuiz() {
+  quizAnswers = [];
+  currentQ = 0;
+  renderQuizQuestion();
+}
+function renderQuizQuestion() {
+  const box = document.getElementById('quizBox');
+  if (!box) return;
+  if (currentQ >= quizQuestions.length) { showQuizResults(); return; }
+  const q = quizQuestions[currentQ];
+  const letters = ['A','B','C','D'];
+  box.innerHTML = `
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-label"><span>Question ${currentQ+1} of ${quizQuestions.length}</span><span>${currentQ+1}/${quizQuestions.length}</span></div>
+      <div class="quiz-progress-bar-track"><div class="quiz-progress-bar" style="width:${((currentQ)/quizQuestions.length)*100}%"></div></div>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-q-num">Question ${currentQ+1} of ${quizQuestions.length}</div>
+      <div class="quiz-question">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt,i)=>`
+          <button class="quiz-option" onclick="selectQuizOpt(this,${i})">
+            <span class="opt-letter">${letters[i]}</span>
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" onclick="prevQ()" ${currentQ===0?'disabled style="opacity:0.4"':''}>← Previous</button>
+        <button class="btn btn-primary" id="nextQBtn" onclick="nextQ()" disabled style="opacity:0.4">Next →</button>
+      </div>
+    </div>
+  `;
+}
+function selectQuizOpt(el, idx) {
+  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  quizAnswers[currentQ] = idx;
+  const nextBtn = document.getElementById('nextQBtn');
+  nextBtn.disabled = false;
+  nextBtn.style.opacity = '1';
+  if (currentQ === quizQuestions.length - 1) nextBtn.textContent = 'Get Results 🎯';
+}
+function nextQ() {
+  if (quizAnswers[currentQ] === undefined) return;
+  currentQ++;
+  renderQuizQuestion();
+}
+function prevQ() {
+  if (currentQ > 0) { currentQ--; renderQuizQuestion(); }
+}
+function showQuizResults() {
+  const key = quizAnswers.slice(0,1).join('') + '000';
+  const res = quizResults[key] || quizResults['default'];
+  const topCareers = careerData.filter(c => res.careers.includes(c.title));
+  const box = document.getElementById('quizBox');
+  box.innerHTML = `
+    <div class="quiz-card quiz-results">
+      <div class="quiz-results-icon">${res.emoji}</div>
+      <h2>Your IT Career Matches!</h2>
+      <p>Based on your interests and preferences, here are the IT careers best suited for you:</p>
+      <div class="quiz-career-cards">
+        ${topCareers.map((c,i)=>`
+          <div class="quiz-career-card">
+            <div class="qcc-icon">${c.icon}</div>
+            <div class="qcc-name">${c.title}</div>
+            <div class="qcc-match">${i===0?'⭐ Best Match':'✅ Great Match'}</div>
+            <div style="font-size:0.75rem;color:var(--gray-500);margin-top:4px">${c.salary}</div>
+          </div>
+        `).join('')}
+      </div>
+      <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:24px">These are starting suggestions. Explore all IT careers to find what truly excites you!</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="showPage('careers')">🔍 Explore These Careers</button>
+        <button class="btn btn-ghost" onclick="renderQuiz()">🔄 Retake Quiz</button>
+      </div>
+    </div>
+  `;
+}
+
+// ===================== RESOURCES =====================
+function renderResources() {
+  const cont = document.getElementById('resourcesContent');
+  if (!cont || cont.innerHTML.trim()) return;
+  let html = '';
+  resourcesData.forEach(sec => {
+    html += `
+      <section class="resource-section">
+        <div class="container">
+          <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:6px">${sec.section}</h2>
+          <p style="color:var(--gray-500);font-size:0.9rem;margin-bottom:24px">Curated resources to help Indian students learn IT skills effectively.</p>
+          <div class="resource-cards">
+            ${sec.items.map(item=>`
+              <div class="resource-card">
+                <div class="resource-icon">${item.icon}</div>
+                <div class="resource-name">${item.name}</div>
+                <p class="resource-desc">${item.desc}</p>
+                <span class="resource-tag ${item.tagType}">${item.tag}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  });
+  html += `
+    <section class="pdf-section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:32px">
+          <h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:white;margin-bottom:8px">📥 Downloadable Study Guides</h2>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem">Free PDF guides for students, parents, and teachers. Print or share with friends!</p>
+        </div>
+        <div class="pdf-cards">
+          <div class="pdf-card" onclick="downloadPDF('it-career-overview')">
+            <span class="pdf-icon">📄</span>
+            <h4>IT Career Overview Guide</h4>
+            <p>All 40+ IT careers explained in one printable guide.</p>
+            <span class="pdf-btn">⬇️ Download PDF</span>
+          </div>
+          <div class="pdf-card" onclick="downloadPDF('10th-roadmap')">
+            <span class="pdf-icon">🗺️</span>
+            <h4>Roadmap After 10th Class</h4>
+            <p>Step-by-step IT career path for school students.</p>
+            <span class="pdf-btn">⬇️ Download PDF</span>
+          </div>
+          <div class="pdf-card" onclick="downloadPDF('salary-guide')">
+            <span class="pdf-icon">💰</span>
+            <h4>IT Salary Guide India 2026</h4>
+            <p>Comprehensive salary data for all IT roles in India.</p>
+            <span class="pdf-btn">⬇️ Download PDF</span>
+          </div>
+          <div class="pdf-card" onclick="downloadPDF('top-skills')">
+            <span class="pdf-icon">🛠️</span>
+            <h4>Top 50 IT Skills to Learn</h4>
+            <p>Most in-demand IT skills with learning resources.</p>
+            <span class="pdf-btn">⬇️ Download PDF</span>
+          </div>
+          <div class="pdf-card" onclick="downloadPDF('certifications')">
+            <span class="pdf-icon">🏆</span>
+            <h4>IT Certifications Handbook</h4>
+            <p>Complete guide to certifications by role and level.</p>
+            <span class="pdf-btn">⬇️ Download PDF</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+  cont.innerHTML = html;
+}
+function downloadPDF(name) {
+  const titles = {
+    'it-career-overview':'IT Career Overview Guide',
+    '10th-roadmap':'Roadmap After 10th Class',
+    'salary-guide':'IT Salary Guide India 2026',
+    'top-skills':'Top 50 IT Skills to Learn',
+    'certifications':'IT Certifications Handbook'
+  };
+  // Generate a simple text PDF-like download
+  const content = `IT Career Explorer\n===================\n${titles[name]}\n\nGenerated by IT Career Explorer\nDesigned by Yadagiri P (MCA) | 7075949046\nRISE Institute of Computer Science, Hanamkonda\n\nVisit IT Career Explorer for complete career guidance.\n\n© 2026 IT Career Explorer. All Rights Reserved.`;
+  const blob = new Blob([content], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name + '.txt';
+  a.click();
+}
+
+// ===================== SEARCH =====================
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('searchInput').focus(), 100);
+}
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.getElementById('searchInput').value = '';
+  document.getElementById('search-results').innerHTML = '';
+}
+function doSearch(val) {
+  const q = val.toLowerCase().trim();
+  const res = document.getElementById('search-results');
+  if (!q) { res.innerHTML = ''; return; }
+  const matches = careerData.filter(c =>
+    c.title.toLowerCase().includes(q) ||
+    c.desc.toLowerCase().includes(q) ||
+    c.skills.some(s=>s.toLowerCase().includes(q)) ||
+    getCatName(c.cat).toLowerCase().includes(q)
+  );
+  if (!matches.length) { res.innerHTML = '<p style="color:var(--gray-500);font-size:0.85rem;padding:12px">No careers found. Try "Developer", "Data", "Security" etc.</p>'; return; }
+  res.innerHTML = matches.slice(0,8).map(c=>`
+    <div class="search-result-item" onclick="closeSearch();showPage('careers');setTimeout(()=>openRole('${c.id}'),400)">
+      <h4>${c.icon} ${c.title}</h4>
+      <p>${getCatName(c.cat)} • ${c.salary}</p>
+    </div>
+  `).join('');
+}
+
+// ===================== FAQ =====================
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ===================== ROADMAP TABS =====================
+function switchRoadmap(id, btn) {
+  document.querySelectorAll('.roadmap-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.roadmap-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===================== FORM =====================
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+}
+
+// ===================== HERO CANVAS =====================
+function initCanvas() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, nodes;
+  function resize() {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+    createNodes();
+  }
+  function createNodes() {
+    nodes = Array.from({length:35}, () => ({
+      x: Math.random()*w, y: Math.random()*h,
+      vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4,
+      r: Math.random()*3+1.5
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0,0,w,h);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x<0||n.x>w) n.vx*=-1;
+      if (n.y<0||n.y>h) n.vy*=-1;
+    });
+    for (let i=0;i<nodes.length;i++) {
+      for (let j=i+1;j<nodes.length;j++) {
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if (dist<160) {
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(96,165,250,${0.35*(1-dist/160)})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(96,165,250,0.6)';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  // Respect reduced motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) draw();
+}
+
+// ===================== MARQUEE =====================
+function initMarquee() {
+  const items = ['Software Development','Data Science & AI','Cyber Security','Cloud Computing','Web Development','Mobile App Development','Machine Learning','DevOps','UI/UX Design','Blockchain','Networking','Ethical Hacking'];
+  const track = document.getElementById('marqueeTrack');
+  if (!track) return;
+  const html = items.map(i=>`<span class="marquee-item"><span class="dot">⬡</span>${i}</span>`).join('');
+  track.innerHTML = html + html; // duplicate for seamless loop
+}
+
+// ===================== BACK TO TOP =====================
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// ===================== KEYBOARD NAV =====================
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeSearch();
+  }
+});
+
+// ===================== INIT =====================
+window.addEventListener('DOMContentLoaded', function() {
+  initCanvas();
+  initMarquee();
+  // Animate skill bars when page loads
+  document.addEventListener('scroll', function() {
+    document.querySelectorAll('.skill-bar').forEach(bar => {
+      const rect = bar.getBoundingClientRect();
+      if (rect.top < window.innerHeight) bar.style.width = bar.style.width;
+    });
+  }, {passive: true});
+});
+</script>
+</body>
+</html>
