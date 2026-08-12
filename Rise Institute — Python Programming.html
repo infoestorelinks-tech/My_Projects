@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Institute — 45 Days Python Programming Course</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-slate-50 text-slate-800">
+
+    <!-- Header Section -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-blue-600 text-white p-2 rounded-lg shadow-sm">
+                            <i data-lucide="terminal" class="w-6 h-6"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-xl font-bold text-slate-900 tracking-tight">Rise Institute — Python Programming</h1>
+                            <p class="text-xs text-slate-500">45 Days Mastery Course • Faculty: <span class="text-blue-600 font-medium">Yadagiri P</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="flex items-center space-x-6 text-xs text-slate-600 bg-slate-100/80 px-4 py-2 rounded-xl border border-slate-200">
+                    <div><span class="text-slate-400 block">Duration</span><span class="font-semibold text-slate-800">45 Days</span></div>
+                    <div class="h-6 w-px bg-slate-300"></div>
+                    <div><span class="text-slate-400 block">Modules</span><span class="font-semibold text-slate-800">7 Weeks</span></div>
+                    <div class="h-6 w-px bg-slate-300"></div>
+                    <div><span class="text-slate-400 block">Status</span><span class="text-emerald-600 font-semibold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Active</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week Navigation Bar -->
+        <div class="bg-slate-100/60 border-t border-slate-200 px-4 sm:px-6 lg:px-8 overflow-x-auto">
+            <div class="max-w-7xl mx-auto flex space-x-2 py-2" id="week-tabs">
+                <!-- Tabs rendered by JavaScript -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Sidebar / Day Selector -->
+        <section class="lg:col-span-3 bg-white border border-slate-200 rounded-2xl p-4 flex flex-col h-fit shadow-sm">
+            <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-1 flex items-center justify-between">
+                <span>Select Day</span>
+                <i data-lucide="calendar" class="w-4 h-4 text-slate-400"></i>
+            </h2>
+            <div class="grid grid-cols-2 lg:grid-cols-1 gap-2" id="day-buttons">
+                <!-- Day selector buttons rendered by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Workspace Section (Lesson + Code + Terminal) -->
+        <section class="lg:col-span-9 flex flex-col gap-6">
+            
+            <!-- Lesson Overview Card -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-4">
+                    <div>
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider" id="lesson-week-tag">Week 1</span>
+                        <h2 class="text-2xl font-bold text-slate-900 mt-1" id="lesson-title">Day 1: Title</h2>
+                    </div>
+                    <span class="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full border border-blue-200 w-fit font-medium" id="lesson-day-badge">Day 1 / 45</span>
+                </div>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4" id="lesson-description">Description content goes here...</p>
+                
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> Key Objectives
+                    </h3>
+                    <ul class="text-xs text-slate-600 space-y-1 list-disc list-inside" id="lesson-objectives">
+                        <!-- Objectives populated by JS -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Code Viewer & Console Split -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                
+                <!-- Code Viewer -->
+                <div class="bg-white border border-slate-200 rounded-2xl flex flex-col overflow-hidden shadow-sm">
+                    <div class="bg-slate-100/80 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="code" class="w-4 h-4 text-blue-600"></i>
+                            <span class="text-xs font-semibold text-slate-700 code-font">main.py</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="copyCode()" class="text-xs text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-200/60 px-2.5 py-1 rounded-lg border border-slate-300 transition flex items-center gap-1 shadow-sm">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy
+                            </button>
+                            <button onclick="runCode()" class="text-xs text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg transition font-medium flex items-center gap-1 shadow-sm">
+                                <i data-lucide="play" class="w-3.5 h-3.5"></i> Run
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slate-900 overflow-x-auto flex-1 max-h-[380px]">
+                        <pre class="text-xs text-slate-100 code-font leading-relaxed" id="code-block"></pre>
+                    </div>
+                </div>
+
+                <!-- Terminal Simulator -->
+                <div class="bg-white border border-slate-200 rounded-2xl flex flex-col overflow-hidden shadow-sm">
+                    <div class="bg-slate-100/80 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="terminal" class="w-4 h-4 text-blue-600"></i>
+                            <span class="text-xs font-semibold text-slate-700 code-font">Terminal Output</span>
+                        </div>
+                        <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200 font-medium">Python 3.12</span>
+                    </div>
+                    <div class="p-4 bg-slate-900 code-font text-xs text-emerald-400 overflow-x-auto flex-1 max-h-[380px]" id="terminal-block">
+                        <!-- Terminal execution text populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+            <p>© Rise Institute Of Computer Science — Python Programming Course. All rights reserved.</p>
+            <p>Designed for Interactive Learning - Yadagiri Pashikanti</p>
+        </div>
+    </footer>
+
+    <!-- Course Data and App Logic -->
+    <script>
+        const courseData = [
+            // WEEK 1
+            {
+                week: 1, weekTitle: "Week 1: Fundamentals & Control Flow",
+                day: 1, title: "Day 1: Introduction, Setup & First Script",
+                desc: "Overview of Python execution model, setting up the interpreter, running standard scripts, and writing basic print statements.",
+                objectives: ["Install Python 3 & IDE", "Understand Python Bytecode & GIL", "Execute first print statement"],
+                code: `# Day 1: Hello World & Environment Check
+import sys
+
+print("Welcome to Rise Institute Python Course!")
+print(f"Python Version: {sys.version.split()[0]}")
+print("Interpreter Location:", sys.executable)`,
+                output: `Welcome to Rise Institute Python Course!\nPython Version: 3.12.0\nInterpreter Location: /usr/local/bin/python3`
+            },
+            {
+                week: 1, weekTitle: "Week 1: Fundamentals & Control Flow",
+                day: 2, title: "Day 2: Variables, Data Types & Type Casting",
+                desc: "Exploring dynamic typing, immutable vs mutable primitive data types, type inference, and explicit casting.",
+                objectives: ["Master int, float, str, bool types", "Inspect object identity using id()", "Perform type conversion"],
+                code: `# Day 2: Dynamic Typing & Casting
+age = 25
+height = 5.9
+name = "Yadagiri"
+is_faculty = True
+
+print(type(age), type(height), type(name), type(is_faculty))
+
+# Explicit Type Casting
+score = "98"
+converted_score = int(score)
+print(f"Converted Score: {converted_score} | Type: {type(converted_score)}")`,
+                output: `<class 'int'> <class 'float'> <class 'str'> <class 'bool'>\nConverted Score: 98 | Type: <class 'int'>`
+            },
+            {
+                week: 1, weekTitle: "Week 1: Fundamentals & Control Flow",
+                day: 3, title: "Day 3: Operators & Expressions",
+                desc: "Understanding arithmetic, logical, bitwise, assignment, and membership operators.",
+                objectives: ["Evaluate complex mathematical expressions", "Apply short-circuit logical evaluation", "Use membership operators"],
+                code: `# Day 3: Operators Overview
+a, b = 15, 4
+
+print(f"Addition: {a + b}")
+print(f"Floor Division: {a // b}")
+print(f"Modulus: {a % b}")
+print(f"Power: {a ** b}")
+
+# Logical & Membership
+fruits = ["apple", "banana", "cherry"]
+print("Is apple present?", "apple" in fruits and not (a < b))`,
+                output: `Addition: 19\nFloor Division: 3\nModulus: 3\nPower: 50625\nIs apple present? True`
+            },
+            {
+                week: 1, weekTitle: "Week 1: Fundamentals & Control Flow",
+                day: 4, title: "Day 4: Conditional Statements (if-elif-else)",
+                desc: "Decision making using conditional branches and nested logical conditions.",
+                objectives: ["Construct multi-branch conditionals", "Use ternary operator expressions", "Handle invalid inputs"],
+                code: `# Day 4: Grading System
+score = 85
+
+if score >= 90:
+    grade = 'A+'
+elif score >= 80:
+    grade = 'A'
+elif score >= 70:
+    grade = 'B'
+else:
+    grade = 'C'
+
+status = "Pass" if score >= 50 else "Fail"
+print(f"Score: {score} | Grade: {grade} | Status: {status}")`,
+                output: `Score: 85 | Grade: A | Status: Pass`
+            },
+            {
+                week: 1, weekTitle: "Week 1: Fundamentals & Control Flow",
+                day: 5, title: "Day 5: Loops (for & while)",
+                desc: "Iterating over sequences using range(), while loops, and managing counters.",
+                objectives: ["Iterate using range() boundaries", "Control state with while conditions", "Nested loop mechanics"],
+                code: `# Day 5: Multiples & Summation
+total_sum = 0
+for i in range(1, 11):
+    total_sum += i
+
+print("Sum of 1-10:", total_sum)
+
+# Countdown loop
+count = 3
+while count > 0:
+    print(f"Countdown: {count}")
+    count -= 1
+print("Blast off!")`,
+                output: `Sum of 1-10: 55\nCountdown: 3\nCountdown: 2\nCountdown: 1\nBlast off!`
+            },
+            {
+                week: 1, weekTitle: "Week 1: Fundamentals & Control Flow",
+                day: 6, title: "Day 6: Loop Control Statements",
+                desc: "Using break, continue, pass, and loop else clauses to alter execution flow.",
+                objectives: ["Terminate early with break", "Skip iterations using continue", "Leverage loop else blocks"],
+                code: `# Day 6: Prime Search Logic
+target = 7
+is_prime = True
+
+for i in range(2, target):
+    if target % i == 0:
+        is_prime = False
+        break
+else:
+    # Executes only if break was NOT encountered
+    is_prime = True
+
+print(f"Is {target} Prime? {is_prime}")`,
+                output: `Is 7 Prime? True`
+            },
+            {
+                week: 1, weekTitle: "Week 1: Fundamentals & Control Flow",
+                day: 7, title: "Day 7: Week 1 Mini Project — Guessing Game",
+                desc: "Combining loops, conditions, random generation, and user feedback into a complete CLI game.",
+                objectives: ["Integrate Week 1 concepts", "Handle state management", "Build dynamic CLI feedback"],
+                code: `# Day 7: Number Guessing Engine Simulation
+import random
+
+secret = 42
+attempts = 3
+guesses = [20, 50, 42]
+
+for idx, guess in enumerate(guesses, 1):
+    print(f"Attempt {idx}: Guessed {guess}")
+    if guess == secret:
+        print("🎉 Correct! You won!")
+        break
+    elif guess < secret:
+        print("Too low!")
+    else:
+        print("Too high!")`,
+                output: `Attempt 1: Guessed 20\nToo low!\nAttempt 2: Guessed 50\nToo high!\nAttempt 3: Guessed 42\n🎉 Correct! You won!`
+            },
+
+            // WEEK 2
+            {
+                week: 2, weekTitle: "Week 2: Data Structures",
+                day: 8, title: "Day 8: Lists & Sequence Operations",
+                desc: "Indexed sequences, list methods, slicing, dynamic resizing, and list manipulation.",
+                objectives: ["Slice sequences effectively", "Mutate list elements", "Use append, extend, insert, pop"],
+                code: `# Day 8: List Transformations
+nums = [10, 20, 30, 40, 50]
+nums.append(60)
+nums.insert(2, 25)
+
+print("Modified List:", nums)
+print("Sub-slice [1:4]:", nums[1:4])
+print("Popped Value:", nums.pop())`,
+                output: `Modified List: [10, 20, 25, 30, 40, 50, 60]\nSub-slice [1:4]: [20, 25, 30]\nPopped Value: 60`
+            },
+            {
+                week: 2, weekTitle: "Week 2: Data Structures",
+                day: 9, title: "Day 9: Tuples & Immutability",
+                desc: "Fixed size, immutable containers, tuple unpacking, and performance benefits over lists.",
+                objectives: ["Understand tuple immutability", "Unpack sequences effortlessly", "Use tuples as keys"],
+                code: `# Day 9: Tuple Unpacking & Immutable State
+point = (10, 20, 30)
+x, y, z = point
+
+print(f"Coordinates: X={x}, Y={y}, Z={z}")
+
+# Swap variables using tuples
+a, b = 5, 9
+a, b = b, a
+print(f"Swapped: a={a}, b={b}")`,
+                output: `Coordinates: X=10, Y=20, Z=30\nSwapped: a=9, b=5`
+            },
+            {
+                week: 2, weekTitle: "Week 2: Data Structures",
+                day: 10, title: "Day 10: Dictionaries & Key-Value Lookup",
+                desc: "Hash map implementation, keys, values, dictionary methods, and nested objects.",
+                objectives: ["Create and update dictionary entries", "Use .get() for safe lookups", "Iterate over items()"],
+                code: `# Day 10: Student Registry
+student = {
+    "id": 101,
+    "name": "Ananya",
+    "courses": ["Python", "SQL"]
+}
+
+student["email"] = "ananya@example.com"
+print("Name:", student.get("name"))
+print("Courses:", ", ".join(student["courses"]))`,
+                output: `Name: Ananya\nCourses: Python, SQL`
+            },
+            {
+                week: 2, weekTitle: "Week 2: Data Structures",
+                day: 11, title: "Day 11: Sets & Set Operations",
+                desc: "Unordered collections of unique elements, mathematical set union, intersection, difference.",
+                objectives: ["Eliminate duplicates instantly", "Perform set intersection and union", "Measure lookup speed"],
+                code: `# Day 11: Set Math
+set_a = {1, 2, 3, 4, 5}
+set_b = {4, 5, 6, 7, 8}
+
+print("Union:", set_a | set_b)
+print("Intersection:", set_a & set_b)
+print("Difference (A - B):", set_a - set_b)`,
+                output: `Union: {1, 2, 3, 4, 5, 6, 7, 8}\nIntersection: {4, 5}\nDifference (A - B): {1, 2, 3}`
+            },
+            {
+                week: 2, weekTitle: "Week 2: Data Structures",
+                day: 12, title: "Day 12: List & Dictionary Comprehensions",
+                desc: "Writing concise, readable, and performant data collection creation expressions.",
+                objectives: ["Transform arrays using list comprehension", "Filter sequences inline", "Build dict comprehensions"],
+                code: `# Day 12: Comprehension Expressions
+squares = [x**2 for x in range(1, 6)]
+even_squares = [x**2 for x in range(1, 10) if x % 2 == 0]
+
+char_map = {char: ord(char) for char in "RISE"}
+
+print("Squares:", squares)
+print("Even Squares:", even_squares)
+print("Char ASCII Map:", char_map)`,
+                output: `Squares: [1, 4, 9, 16, 25]\nEven Squares: [4, 16, 36, 64]\nChar ASCII Map: {'R': 82, 'I': 73, 'S': 83, 'E': 69}`
+            },
+            {
+                week: 2, weekTitle: "Week 2: Data Structures",
+                day: 13, title: "Day 13: Advanced String Operations & Formatting",
+                desc: "String interpolation (f-strings), string methods (.split, .join, .strip), and encoding.",
+                objectives: ["Master string formatting techniques", "Parse raw text using split/join", "Sanitize user inputs"],
+                code: `# Day 13: String Cleansing
+raw_text = "   rise_institute_python_course.py   "
+clean_text = raw_text.strip()
+parts = clean_text.split('_')
+
+formatted = " ".join(parts).title()
+print(f"Cleaned: '{clean_text}'")
+print(f"Formatted Title: '{formatted}'")`,
+                output: `Cleaned: 'rise_institute_python_course.py'\nFormatted Title: 'Rise Institute Python Course.Py'`
+            },
+            {
+                week: 2, weekTitle: "Week 2: Data Structures",
+                day: 14, title: "Day 14: Week 2 Mini Project — Student Grade Tracker",
+                desc: "Integrating lists, dictionaries, and string formatting into an interactive CLI tracker.",
+                objectives: ["Manage nested collections", "Compute averages dynamically", "Print formatted tabular logs"],
+                code: `# Day 14: Grade Manager
+records = {
+    "S01": {"name": "Rahul", "marks": [85, 90, 88]},
+    "S02": {"name": "Priya", "marks": [92, 95, 94]}
+}
+
+for sid, data in records.items():
+    avg = sum(data["marks"]) / len(data["marks"])
+    print(f"[{sid}] {data['name']} - Avg Score: {avg:.2f}")`,
+                output: `[S01] Rahul - Avg Score: 87.67\n[S02] Priya - Avg Score: 93.67`
+            },
+
+            // WEEK 3
+            {
+                week: 3, weekTitle: "Week 3: Functions & Modules",
+                day: 15, title: "Day 15: Functions, Parameters & Return Values",
+                desc: "Creating modular code using functions, positional parameters, and returning data types.",
+                objectives: ["Define modular functions", "Return primitive and compound types", "Write proper docstrings"],
+                code: `# Day 15: Calculator Function
+def calculate_metrics(numbers):
+    """Computes total, average, and max value."""
+    total = sum(numbers)
+    avg = total / len(numbers)
+    return {"total": total, "average": avg, "max": max(numbers)}
+
+data = [12, 45, 67, 89, 23]
+result = calculate_metrics(data)
+print("Metrics Summary:", result)`,
+                output: `Metrics Summary: {'total': 236, 'average': 47.2, 'max': 89}`
+            },
+            {
+                week: 3, weekTitle: "Week 3: Functions & Modules",
+                day: 16, title: "Day 16: Default Arguments, *args, and **kwargs",
+                desc: "Handling dynamic function arguments, arbitrary positional arguments, and keyword parameters.",
+                objectives: ["Use default argument values", "Capture arbitrary inputs with *args", "Unpack dictionary kwargs"],
+                code: `# Day 16: Dynamic Order Function
+def place_order(item, quantity=1, *options, **shipping_details):
+    print(f"Order: {quantity}x {item}")
+    print("Options:", options)
+    print("Address:", shipping_details.get("city", "Standard Shipping"))
+
+place_order("Python Book", 2, "Hardcover", "Autographed", city="Hyderabad", zip="500001")`,
+                output: `Order: 2x Python Book\nOptions: ('Hardcover', 'Autographed')\nAddress: Hyderabad`
+            },
+            {
+                week: 3, weekTitle: "Week 3: Functions & Modules",
+                day: 17, title: "Day 17: Functional Programming (Lambda, Map, Filter, Reduce)",
+                desc: "Anonymous functions and higher-order functional utilities in modern Python.",
+                objectives: ["Construct anonymous lambda functions", "Transform lists with map/filter", "Aggregate with functools.reduce"],
+                code: `# Day 17: Functional Pipeline
+from functools import reduce
+
+nums = [1, 2, 3, 4, 5, 6, 7, 8]
+
+evens = list(filter(lambda x: x % 2 == 0, nums))
+squares = list(map(lambda x: x**2, evens))
+product = reduce(lambda x, y: x * y, squares)
+
+print("Evens:", evens)
+print("Squares of Evens:", squares)
+print("Product of Squares:", product)`,
+                output: `Evens: [2, 4, 6, 8]\nSquares of Evens: [4, 16, 36, 64]\nProduct of Squares: 737280`
+            },
+            {
+                week: 3, weekTitle: "Week 3: Functions & Modules",
+                day: 18, title: "Day 18: Variable Scope (LEGB) & Decorators",
+                desc: "Understanding Local, Enclosing, Global, and Built-in scopes, closures, and wrapper decorators.",
+                objectives: ["Differentiate variable scopes", "Build custom closures", "Write function decorators"],
+                code: `# Day 18: Logging Decorator
+def log_execution(func):
+    def wrapper(*args, **kwargs):
+        print(f"⚡ Executing {func.__name__}...")
+        res = func(*args, **kwargs)
+        print("✅ Execution Complete.")
+        return res
+    return wrapper
+
+@log_execution
+def process_payment(amount):
+    print(f"Processing payment of ₹{amount}")
+
+process_payment(2500)`,
+                output: `⚡ Executing process_payment...\nProcessing payment of ₹2500\n✅ Execution Complete.`
+            },
+            {
+                week: 3, weekTitle: "Week 3: Functions & Modules",
+                day: 19, title: "Day 19: Recursion & Divide-and-Conquer",
+                desc: "Recursive functions, base cases, recursion limits, and binary search implementation.",
+                objectives: ["Identify base cases", "Prevent recursion stack overflow", "Implement binary search"],
+                code: `# Day 19: Recursive Binary Search
+def binary_search(arr, target, low, high):
+    if low > high:
+        return -1
+    mid = (low + high) // 2
+    if arr[mid] == target:
+        return mid
+    elif arr[mid] > target:
+        return binary_search(arr, target, low, mid - 1)
+    else:
+        return binary_search(arr, target, mid + 1, high)
+
+nums = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+idx = binary_search(nums, 23, 0, len(nums)-1)
+print(f"Target 23 found at index: {idx}")`,
+                output: `Target 23 found at index: 5`
+            },
+            {
+                week: 3, weekTitle: "Week 3: Functions & Modules",
+                day: 20, title: "Day 20: Built-in Modules (math, random, os, sys)",
+                desc: "Importing standard modules, inspecting paths, system parameters, and math operations.",
+                objectives: ["Import standard modules", "Generate random distributions", "Inspect system environment"],
+                code: `# Day 20: Standard Library Exploration
+import math
+import random
+import os
+
+print("Pi rounded:", round(math.pi, 4))
+print("Random roll (1-6):", random.randint(1, 6))
+print("Current Working Dir:", os.getcwd())`,
+                output: `Pi rounded: 3.1416\nRandom roll (1-6): 5\nCurrent Working Dir: /home/runner/rise_python`
+            },
+
+            // WEEK 4
+            {
+                week: 4, weekTitle: "Week 4: Object-Oriented Programming",
+                day: 21, title: "Day 21: Classes, Objects & __init__",
+                desc: "OOP fundamentals, instance attributes, self parameter, constructor methods.",
+                objectives: ["Define custom classes", "Initialize state with __init__", "Instantiate object instances"],
+                code: `# Day 21: Bank Account Class
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        return f"Deposited ₹{amount}. New Balance: ₹{self.balance}"
+
+acc = BankAccount("Yadagiri", 5000)
+print(acc.deposit(1500))`,
+                output: `Deposited ₹1500. New Balance: ₹6500`
+            },
+            {
+                week: 4, weekTitle: "Week 4: Object-Oriented Programming",
+                day: 22, title: "Day 22: Instance vs Class Variables & Methods",
+                desc: "Static methods, class methods (@classmethod), class state, and factory constructors.",
+                objectives: ["Maintain shared class state", "Use @classmethod constructors", "Write utility @staticmethods"],
+                code: `# Day 22: Employee Tracker
+class Employee:
+    company_name = "Rise Institute"
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Employee.count += 1
+
+    @classmethod
+    def get_total_employees(cls):
+        return f"Total Staff at {cls.company_name}: {cls.count}"
+
+e1, e2 = Employee("Alice"), Employee("Bob")
+print(Employee.get_total_employees())`,
+                output: `Total Staff at Rise Institute: 2`
+            },
+            {
+                week: 4, weekTitle: "Week 4: Object-Oriented Programming",
+                day: 23, title: "Day 23: Inheritance & super() Keyword",
+                desc: "Class hierarchies, single and multiple inheritance, method overriding, super() bindings.",
+                objectives: ["Inherit parent class features", "Override base class methods", "Invoke super().__init__()"],
+                code: `# Day 23: Class Hierarchy
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+class Car(Vehicle):
+    def __init__(self, brand, model):
+        super().__init__(brand)
+        self.model = model
+
+    def drive(self):
+        return f"Driving {self.brand} {self.model}"
+
+my_car = Car("Tesla", "Model 3")
+print(my_car.drive())`,
+                output: `Driving Tesla Model 3`
+            },
+            {
+                week: 4, weekTitle: "Week 4: Object-Oriented Programming",
+                day: 24, title: "Day 24: Encapsulation & Property Decorators",
+                desc: "Data hiding, private attributes (__), getter/setter validation via @property.",
+                objectives: ["Hide internal state (__private)", "Validate inputs with @property.setter", "Protect data integrity"],
+                code: `# Day 24: Encapsulated Temperature
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero!")
+        self._celsius = value
+
+temp = Temperature(25)
+temp.celsius = 30
+print(f"Current Temp: {temp.celsius}°C")`,
+                output: `Current Temp: 30°C`
+            },
+            {
+                week: 4, weekTitle: "Week 4: Object-Oriented Programming",
+                day: 25, title: "Day 25: Polymorphism & Dunder Magic Methods",
+                desc: "Special operator overloading (__str__, __repr__, __add__, __eq__) and duck typing.",
+                objectives: ["Overload math operators", "Customize string representation", "Implement duck typing"],
+                code: `# Day 25: Vector Addition Magic
+class Vector:
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __str__(self):
+        return f"Vector({self.x}, {self.y})"
+
+v1, v2 = Vector(2, 4), Vector(3, 1)
+print(f"Combined: {v1 + v2}")`,
+                output: `Combined: Vector(5, 5)`
+            },
+            {
+                week: 4, weekTitle: "Week 4: Object-Oriented Programming",
+                day: 26, title: "Day 26: Abstract Base Classes (ABCs)",
+                desc: "Enforcing API contracts using the abc module, abstract methods, and interface design.",
+                objectives: ["Import abc.ABC and @abstractmethod", "Enforce method implementation", "Design uniform interfaces"],
+                code: `# Day 26: Payment Processor Contract
+from abc import ABC, abstractmethod
+
+class PaymentGateway(ABC):
+    @abstractmethod
+    def process_payment(self, amount):
+        pass
+
+class UPIPayment(PaymentGateway):
+    def process_payment(self, amount):
+        return f"Paid ₹{amount} via UPI QR Code."
+
+gateway = UPIPayment()
+print(gateway.process_payment(500))`,
+                output: `Paid ₹500 via UPI QR Code.`
+            },
+            {
+                week: 4, weekTitle: "Week 4: Object-Oriented Programming",
+                day: 27, title: "Day 27: Week 4 Mini Project — Library System",
+                desc: "Integrated OOP system managing books, library members, checkout logic, and inheritance.",
+                objectives: ["Combine OOP principles", "Manage inter-object references", "Build checkout workflow"],
+                code: `# Day 27: Library System Project
+class Book:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+        self.is_borrowed = False
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def checkout(self, title):
+        for b in self.books:
+            if b.title == title and not b.is_borrowed:
+                b.is_borrowed = True
+                return f"Successfully checked out '{title}'"
+        return "Book unavailable."
+
+lib = Library()
+lib.add_book(Book("Fluent Python", "Luciano Ramalho"))
+print(lib.checkout("Fluent Python"))`,
+                output: `Successfully checked out 'Fluent Python'`
+            },
+
+            // WEEK 5
+            {
+                week: 5, weekTitle: "Week 5: Files, Exceptions & Modules",
+                day: 28, title: "Day 28: File I/O & Context Managers",
+                desc: "Opening, reading, writing text/binary files, buffering, and safe context manager blocks.",
+                objectives: ["Use with open() context syntax", "Read files line by line", "Write text streams safely"],
+                code: `# Day 28: Safe Context Manager Operations
+# Simulating file write & read
+filename = "sample.txt"
+
+with open(filename, "w") as f:
+    f.write("Rise Institute Python Course\\nDay 28 Completed.")
+
+with open(filename, "r") as f:
+    content = f.read()
+
+print("File Read Output:")
+print(content)`,
+                output: `File Read Output:\nRise Institute Python Course\nDay 28 Completed.`
+            },
+            {
+                week: 5, weekTitle: "Week 5: Files, Exceptions & Modules",
+                day: 29, title: "Day 29: Robust Exception Handling",
+                desc: "Catching runtime errors using try-except-else-finally blocks and throwing custom errors.",
+                objectives: ["Handle built-in exceptions", "Ensure cleanup with finally", "Create Custom Exception classes"],
+                code: `# Day 29: Exception Guard
+class InsufficientFundsError(Exception):
+    pass
+
+def withdraw(balance, amount):
+    if amount > balance:
+        raise InsufficientFundsError("Amount exceeds available balance!")
+    return balance - amount
+
+try:
+    new_bal = withdraw(1000, 1500)
+except InsufficientFundsError as err:
+    print(f"⚠️ Caught Custom Error: {err}")
+finally:
+    print("Operation terminated safely.")`,
+                output: `⚠️ Caught Custom Error: Amount exceeds available balance!\nOperation terminated safely.`
+            },
+            {
+                week: 5, weekTitle: "Week 5: Files, Exceptions & Modules",
+                day: 30, title: "Day 30: Working with JSON & CSV Files",
+                desc: "Parsing, serializing, and exporting structured data using json and csv modules.",
+                objectives: ["Serialize objects to JSON", "Parse JSON payloads", "Read/write CSV records"],
+                code: `# Day 30: JSON Serialization
+import json
+
+data = {
+    "course": "Python 45 Days",
+    "topics": ["Basics", "OOP", "Database"],
+    "is_active": True
+}
+
+json_str = json.dumps(data, indent=2)
+print("Serialized JSON Output:")
+print(json_str)`,
+                output: `Serialized JSON Output:\n{\n  "course": "Python 45 Days",\n  "topics": [\n    "Basics",\n    "OOP",\n    "Database"\n  ],\n  "is_active": true\n}`
+            },
+            {
+                week: 5, weekTitle: "Week 5: Files, Exceptions & Modules",
+                day: 31, title: "Day 31: pathlib & File System Operations",
+                desc: "Object-oriented path manipulation, scanning directories, glob pattern matching.",
+                objectives: ["Manipulate path objects using pathlib", "Check file existence", "Scan folder structures"],
+                code: `# Day 31: Pathlib Inspection
+from pathlib import Path
+
+current_dir = Path(".")
+python_files = list(current_dir.glob("*.py"))
+
+print(f"Current Path: {current_dir.resolve()}")
+print(f"Python scripts found: {len(python_files)}")`,
+                output: `Current Path: /home/runner/workspace\nPython scripts found: 1`
+            },
+            {
+                week: 5, weekTitle: "Week 5: Files, Exceptions & Modules",
+                day: 32, title: "Day 32: Logging & Error Diagnostics",
+                desc: "Configuring the logging module, setting log levels (DEBUG, INFO, ERROR), file outputs.",
+                objectives: ["Configure logging formats", "Log exceptions with stack traces", "Differentiate log levels"],
+                code: `# Day 32: Logging System
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
+logging.info("Application starting...")
+logging.warning("Memory consumption reaching limit!")
+logging.error("Failed to connect to secondary database.")`,
+                output: `INFO: Application starting...\nWARNING: Memory consumption reaching limit!\nERROR: Failed to connect to secondary database.`
+            },
+            {
+                week: 5, weekTitle: "Week 5: Files, Exceptions & Modules",
+                day: 33, title: "Day 33: High Performance Modules (collections, itertools)",
+                desc: "Specialized container datatypes (Counter, defaultdict, namedtuple) and iterator building blocks.",
+                objectives: ["Count frequencies with Counter", "Use defaultdict for clean keys", "Create immutable namedtuples"],
+                code: `# Day 33: Collections Power
+from collections import Counter, namedtuple
+
+# Counter
+words = ["python", "code", "python", "fast", "code", "python"]
+counts = Counter(words)
+print("Most common word:", counts.most_common(1))
+
+# Namedtuple
+Student = namedtuple('Student', ['name', 'grade'])
+s = Student("Kiran", "A+")
+print(f"Student: {s.name}, Grade: {s.grade}")`,
+                output: `Most common word: [('python', 3)]\nStudent: Kiran, Grade: A+`
+            },
+            {
+                week: 5, weekTitle: "Week 5: Files, Exceptions & Modules",
+                day: 34, title: "Day 34: Week 5 Mini Project — Log File Analyzer",
+                desc: "Parsing log entries, extracting error occurrences, and compiling statistics into a report file.",
+                objectives: ["Parse complex string streams", "Process file lines dynamically", "Generate summary statistics"],
+                code: `# Day 34: Log File Parser Simulation
+logs = [
+    "2026-08-12 INFO User logged in",
+    "2026-08-12 ERROR Database connection timeout",
+    "2026-08-12 INFO Payment processed",
+    "2026-08-12 ERROR Failed to write log"
+]
+
+error_count = sum(1 for line in logs if "ERROR" in line)
+print(f"Log Analysis Complete: Found {error_count} critical errors out of {len(logs)} log lines.")`,
+                output: `Log Analysis Complete: Found 2 critical errors out of 4 log lines.`
+            },
+
+            // WEEK 6
+            {
+                week: 6, weekTitle: "Week 6: Database & SQL Integration",
+                day: 35, title: "Day 35: SQLite Setup & Database Connections",
+                desc: "Connecting to embedded relational databases using sqlite3, cursors, and schema creation.",
+                objectives: ["Connect to SQLite databases", "Manage cursor objects", "Execute standard DDL"],
+                code: `# Day 35: SQLite DB Init
+import sqlite3
+
+conn = sqlite3.connect(":memory:") # In-memory database
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    email TEXT UNIQUE
+)
+""")
+print("Database & 'users' table created successfully.")
+conn.close()`,
+                output: `Database & 'users' table created successfully.`
+            },
+            {
+                week: 6, weekTitle: "Week 6: Database & SQL Integration",
+                day: 36, title: "Day 36: DDL & DML Operations (INSERT, SELECT)",
+                desc: "Inserting rows, bulk execution (executemany), fetching query results (fetchall, fetchone).",
+                objectives: ["Execute INSERT queries", "Fetch records using cursors", "Perform bulk inserts"],
+                code: `# Day 36: Query Execution
+import sqlite3
+
+conn = sqlite3.connect(":memory:")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE products (id INT, name TEXT, price REAL)")
+
+# Insert
+cursor.execute("INSERT INTO products VALUES (1, 'Laptop', 65000.0)")
+cursor.executemany("INSERT INTO products VALUES (?, ?, ?)", [
+    (2, "Mouse", 850.0),
+    (3, "Keyboard", 1500.0)
+])
+
+# Fetch
+cursor.execute("SELECT * FROM products WHERE price > 1000")
+print("High value products:", cursor.fetchall())
+conn.close()`,
+                output: `High value products: [(1, 'Laptop', 65000.0), (3, 'Keyboard', 1500.0)]`
+            },
+            {
+                week: 6, weekTitle: "Week 6: Database & SQL Integration",
+                day: 37, title: "Day 37: Parameterized Queries & Security",
+                desc: "Preventing SQL injection vulnerabilities using parameterized place-holder bindings.",
+                objectives: ["Identify SQL injection risks", "Use '?' parameter bindings", "Sanitize query inputs"],
+                code: `# Day 37: Safe Parameterized Binding
+import sqlite3
+
+conn = sqlite3.connect(":memory:")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE accounts (user TEXT, balance INT)")
+cursor.execute("INSERT INTO accounts VALUES ('admin', 10000)")
+
+# Unsafe user input simulation
+user_input = "admin' OR '1'='1"
+
+# SAFE Query using Parameterization
+cursor.execute("SELECT * FROM accounts WHERE user = ?", (user_input,))
+result = cursor.fetchall()
+
+print("Query Result (Safely Blocked Injection):", result)`,
+                output: `Query Result (Safely Blocked Injection): []`
+            },
+            {
+                week: 6, weekTitle: "Week 6: Database & SQL Integration",
+                day: 38, title: "Day 38: Transactions, Commit & Rollback",
+                desc: "Managing transactional integrity (ACID principles), committing changes, and rollbacks.",
+                objectives: ["Understand ACID guarantees", "Commit state changes explicitly", "Roll back state on error"],
+                code: `# Day 38: Transaction Rollback Guard
+import sqlite3
+
+conn = sqlite3.connect(":memory:")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE inventory (item TEXT, stock INT)")
+cursor.execute("INSERT INTO inventory VALUES ('RAM', 50)")
+conn.commit()
+
+try:
+    cursor.execute("UPDATE inventory SET stock = stock - 10 WHERE item = 'RAM'")
+    # Simulate an error during execution
+    raise RuntimeError("Power loss during database write!")
+    conn.commit()
+except Exception as e:
+    conn.rollback()
+    print(f"Transaction failed: {e}. Changes rolled back!")
+
+cursor.execute("SELECT * FROM inventory")
+print("Stock after rollback:", cursor.fetchone())
+conn.close()`,
+                output: `Transaction failed: Power loss during database write!. Changes rolled back!\nStock after rollback: ('RAM', 50)`
+            },
+            {
+                week: 6, weekTitle: "Week 6: Database & SQL Integration",
+                day: 39, title: "Day 39: Foreign Keys & SQL Joins",
+                desc: "Relational data models, foreign key constraints, INNER JOIN, and LEFT JOIN queries.",
+                objectives: ["Relate tables via foreign keys", "Construct SQL JOIN queries", "Aggregate related data"],
+                code: `# Day 39: SQL Joins
+import sqlite3
+
+conn = sqlite3.connect(":memory:")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE dept (id INT, name TEXT)")
+cursor.execute("CREATE TABLE emp (id INT, name TEXT, dept_id INT)")
+
+cursor.execute("INSERT INTO dept VALUES (1, 'Engineering')")
+cursor.execute("INSERT INTO emp VALUES (101, 'Suresh', 1)")
+
+query = """
+SELECT emp.name, dept.name 
+FROM emp 
+JOIN dept ON emp.dept_id = dept.id
+"""
+cursor.execute(query)
+print("Employee & Department:", cursor.fetchone())
+conn.close()`,
+                output: `Employee & Department: ('Suresh', 'Engineering')`
+            },
+            {
+                week: 6, weekTitle: "Week 6: Database & SQL Integration",
+                day: 40, title: "Day 40: Custom DAO & ORM Design Pattern",
+                desc: "Abstracting relational tables into Python classes using the Data Access Object (DAO) pattern.",
+                objectives: ["Map database rows to Python objects", "Abstract raw SQL logic", "Build cleaner models"],
+                code: `# Day 40: DAO Pattern
+class UserDAO:
+    def __init__(self, db_conn):
+        self.conn = db_conn
+
+    def get_user_by_id(self, user_id):
+        cur = self.conn.cursor()
+        cur.execute("SELECT id, name FROM users WHERE id = ?", (user_id,))
+        row = cur.fetchone()
+        return {"id": row[0], "name": row[1]} if row else None
+
+# Usage Simulation
+import sqlite3
+c = sqlite3.connect(":memory:")
+c.execute("CREATE TABLE users (id INT, name TEXT)")
+c.execute("INSERT INTO users VALUES (1, 'Mahesh')")
+
+dao = UserDAO(c)
+print("Fetched via DAO:", dao.get_user_by_id(1))`,
+                output: `Fetched via DAO: {'id': 1, 'name': 'Mahesh'}`
+            },
+            {
+                week: 6, weekTitle: "Week 6: Database & SQL Integration",
+                day: 41, title: "Day 41: Week 6 Mini Project — Inventory DB System",
+                desc: "Modular database application providing full CRUD operations for product inventory management.",
+                objectives: ["Implement CRUD workflows", "Ensure transactional safety", "Build a clean CLI manager"],
+                code: `# Day 41: Inventory Manager
+import sqlite3
+
+class InventoryManager:
+    def __init__(self):
+        self.conn = sqlite3.connect(":memory:")
+        self.conn.execute("CREATE TABLE items (id INTEGER PRIMARY KEY, title TEXT, qty INT)")
+
+    def add_item(self, title, qty):
+        self.conn.execute("INSERT INTO items (title, qty) VALUES (?, ?)", (title, qty))
+        self.conn.commit()
+
+    def list_items(self):
+        return self.conn.execute("SELECT * FROM items").fetchall()
+
+inv = InventoryManager()
+inv.add_item("Monitor", 12)
+inv.add_item("HDMI Cable", 45)
+print("Inventory Snapshot:", inv.list_items())`,
+                output: `Inventory Snapshot: [(1, 'Monitor', 12), (2, 'HDMI Cable', 45)]`
+            },
+
+            // WEEK 7
+            {
+                week: 7, weekTitle: "Week 7: Testing, Web APIs & Final Capstone",
+                day: 42, title: "Day 42: Unit Testing with pytest & unittest",
+                desc: "Writing automated test suites, assertions, test fixtures, and running unit tests.",
+                objectives: ["Write unittest TestCases", "Perform assertions", "Understand pytest test runners"],
+                code: `# Day 42: Unit Testing Simulation
+import unittest
+
+def add_numbers(a, b):
+    return a + b
+
+class TestMathOperations(unittest.TestCase):
+    def test_addition(self):
+        self.assertEqual(add_numbers(3, 5), 8)
+        self.assertNotEqual(add_numbers(2, 2), 5)
+
+# Run test suite programmatically
+suite = unittest.TestLoader().loadTestsFromTestCase(TestMathOperations)
+runner = unittest.TextTestRunner(verbosity=1)
+result = runner.run(suite)
+print(f"Tests Passed Successfully: {result.wasSuccessful()}")`,
+                output: `Tests Passed Successfully: True`
+            },
+            {
+                week: 7, weekTitle: "Week 7: Testing, Web APIs & Final Capstone",
+                day: 43, title: "Day 43: REST APIs & HTTP Requests",
+                desc: "Consuming third-party web services using urllib/requests, handling status codes and payload JSON.",
+                objectives: ["Understand HTTP methods (GET, POST)", "Parse JSON responses", "Handle connection timeouts"],
+                code: `# Day 43: Consuming REST API (Mocked)
+import json
+
+# Simulating HTTP GET payload response from JSONPlaceholder API
+mock_api_response = """{
+    "userId": 1,
+    "id": 101,
+    "title": "Rise Institute Course Completion",
+    "completed": true
+}"""
+
+data = json.loads(mock_api_response)
+print(f"API Response Status: 200 OK")
+print(f"Task Title: '{data['title']}' | Status: {'Completed' if data['completed'] else 'Pending'}")`,
+                output: `API Response Status: 200 OK\nTask Title: 'Rise Institute Course Completion' | Status: Completed`
+            },
+            {
+                week: 7, weekTitle: "Week 7: Testing, Web APIs & Final Capstone",
+                day: 44, title: "Day 44: Virtual Environments & Package Management",
+                desc: "Isolating runtime dependencies using venv, package management via pip, requirements.txt.",
+                objectives: ["Create virtual environments (python -m venv)", "Export dependencies via pip freeze", "Manage environment isolation"],
+                code: `# Day 44: Virtual Environment Setup Guide
+cli_commands = """
+# Step 1: Create Virtual Environment
+python3 -m venv rise_env
+
+# Step 2: Activate Environment (Linux/Mac vs Windows)
+source rise_env/bin/activate    # Linux/Mac
+# rise_env\\Scripts\\activate.bat # Windows
+
+# Step 3: Install Packages & Generate Requirements
+pip install requests pytest
+pip freeze > requirements.txt
+"""
+
+print("Virtual Environment Workflow Standard:")
+print(cli_commands)`,
+                output: `Virtual Environment Workflow Standard:\n\n# Step 1: Create Virtual Environment\npython3 -m venv rise_env\n\n# Step 2: Activate Environment (Linux/Mac vs Windows)\nsource rise_env/bin/activate    # Linux/Mac\n# rise_env\\Scripts\\activate.bat # Windows\n\n# Step 3: Install Packages & Generate Requirements\npip install requests pytest\npip freeze > requirements.txt`
+            },
+            {
+                week: 7, weekTitle: "Week 7: Testing, Web APIs & Final Capstone",
+                day: 45, title: "Day 45: Final Grand Capstone System",
+                desc: "An enterprise-grade, multi-tier system combining OOP, custom Database DAO, error logging, and unit tests.",
+                objectives: ["Architect complete end-to-end Python software", "Integrate file, database, and logging systems", "Execute capstone project"],
+                code: `# Day 45: Grand Capstone System - Course Registration Manager
+import sqlite3
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+class Student:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+class RegistrationSystem:
+    def __init__(self):
+        self.conn = sqlite3.connect(":memory:")
+        self.conn.execute("CREATE TABLE students (id INTEGER PRIMARY KEY, name TEXT, email TEXT)")
+
+    def register(self, student):
+        cursor = self.conn.cursor()
+        cursor.execute("INSERT INTO students (name, email) VALUES (?, ?)", (student.name, student.email))
+        self.conn.commit()
+        logging.info(f"Registered student: {student.name}")
+        return cursor.lastrowid
+
+    def list_enrolled(self):
+        return self.conn.execute("SELECT * FROM students").fetchall()
+
+# Final Execution
+system = RegistrationSystem()
+s1_id = system.register(Student("Yadagiri P", "yadagiri@riseinstitute.com"))
+s2_id = system.register(Student("Alex Smith", "alex@example.com"))
+
+print("\\n--- Final Enrolled Students Registry ---")
+for row in system.list_enrolled():
+    print(f"ID: {row[0]} | Name: {row[1]} | Email: {row[2]}")`,
+                output: `INFO:root:Registered student: Yadagiri P\nINFO:root:Registered student: Alex Smith\n\n--- Final Enrolled Students Registry ---\nID: 1 | Name: Yadagiri P | Email: yadagiri@riseinstitute.com\nID: 2 | Name: Alex Smith | Email: alex@example.com`
+            }
+        ];
+
+        // State Management
+        let currentWeek = 1;
+        let currentDay = 1;
+
+        // UI Initialization
+        document.addEventListener("DOMContentLoaded", () => {
+            renderWeekTabs();
+            selectWeek(1);
+            lucide.createIcons();
+        });
+
+        // Render Week Navigation Tabs
+        function renderWeekTabs() {
+            const tabsContainer = document.getElementById("week-tabs");
+            tabsContainer.innerHTML = "";
+
+            const weeks = [
+                { num: 1, label: "Week 1", subtitle: "Fundamentals" },
+                { num: 2, label: "Week 2", subtitle: "Data Structures" },
+                { num: 3, label: "Week 3", subtitle: "Functions & Modules" },
+                { num: 4, label: "Week 4", subtitle: "OOP Mastery" },
+                { num: 5, label: "Week 5", subtitle: "Files & Exceptions" },
+                { num: 6, label: "Week 6", subtitle: "Database & SQL" },
+                { num: 7, label: "Week 7", subtitle: "Testing & Capstone" }
+            ];
+
+            weeks.forEach(w => {
+                const button = document.createElement("button");
+                button.className = `px-4 py-2 rounded-xl text-xs font-medium transition flex flex-col items-start min-w-[130px] border ${
+                    currentWeek === w.num 
+                    ? "bg-blue-600 text-white border-blue-600 shadow-sm" 
+                    : "bg-white text-slate-600 border-slate-200 hover:bg-slate-100 hover:text-slate-900"
+                }`;
+                button.onclick = () => selectWeek(w.num);
+                button.innerHTML = `
+                    <span class="font-bold">${w.label}</span>
+                    <span class="text-[10px] opacity-80">${w.subtitle}</span>
+                `;
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Handle Week Selection
+        function selectWeek(weekNum) {
+            currentWeek = weekNum;
+            renderWeekTabs();
+
+            // Filter days for selected week
+            const daysInWeek = courseData.filter(d => d.week === weekNum);
+            
+            // Render Day Selector Buttons
+            const dayButtonsContainer = document.getElementById("day-buttons");
+            dayButtonsContainer.innerHTML = "";
+
+            daysInWeek.forEach(d => {
+                const btn = document.createElement("button");
+                btn.id = `day-btn-${d.day}`;
+                btn.className = `p-3 rounded-xl text-xs text-left transition flex items-center justify-between border ${
+                    currentDay === d.day 
+                    ? "bg-blue-50 text-blue-700 border-blue-300 font-semibold shadow-sm" 
+                    : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                }`;
+                btn.onclick = () => selectDay(d.day);
+                btn.innerHTML = `
+                    <span class="truncate">Day ${d.day}: ${d.title.split(":")[1] || d.title}</span>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                `;
+                dayButtonsContainer.appendChild(btn);
+            });
+
+            // Select first day of week automatically
+            if (daysInWeek.length > 0) {
+                selectDay(daysInWeek[0].day);
+            }
+            lucide.createIcons();
+        }
+
+        // Handle Day Selection
+        function selectDay(dayNum) {
+            currentDay = dayNum;
+            const data = courseData.find(d => d.day === dayNum);
+            if (!data) return;
+
+            // Update Day Buttons Highlight
+            courseData.forEach(d => {
+                const btn = document.getElementById(`day-btn-${d.day}`);
+                if (btn) {
+                    if (d.day === dayNum) {
+                        btn.className = "p-3 rounded-xl text-xs text-left transition flex items-center justify-between border bg-blue-50 text-blue-700 border-blue-300 font-semibold shadow-sm";
+                    } else {
+                        btn.className = "p-3 rounded-xl text-xs text-left transition flex items-center justify-between border bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100";
+                    }
+                }
+            });
+
+            // Populate Lesson Data
+            document.getElementById("lesson-week-tag").innerText = data.weekTitle;
+            document.getElementById("lesson-title").innerText = data.title;
+            document.getElementById("lesson-day-badge").innerText = `Day ${data.day} / 45`;
+            document.getElementById("lesson-description").innerText = data.desc;
+
+            // Objectives
+            const objList = document.getElementById("lesson-objectives");
+            objList.innerHTML = "";
+            data.objectives.forEach(obj => {
+                const li = document.createElement("li");
+                li.innerText = obj;
+                objList.appendChild(li);
+            });
+
+            // Populate Code and Terminal Output
+            document.getElementById("code-block").innerText = data.code;
+            
+            // Auto run output on tab view
+            const terminal = document.getElementById("terminal-block");
+            terminal.innerHTML = `<span class="text-slate-400">$ python3 main.py</span>\n${data.output}\n\n<span class="text-slate-400"></span>`;
+        }
+
+        // Copy Code to Clipboard
+        function copyCode() {
+            const codeText = document.getElementById("code-block").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+
+        // Simulate Code Execution
+        function runCode() {
+            const data = courseData.find(d => d.day === currentDay);
+            const terminal = document.getElementById("terminal-block");
+            
+            terminal.innerHTML = `<span class="text-yellow-400">$ python3 main.py</span>\n<span class="text-slate-400">Compiling & Executing...</span>`;
+            
+            setTimeout(() => {
+                terminal.innerHTML = `<span class="text-slate-400">$ python3 main.py</span>\n${data.output}\n\n<span class="text-emerald-400">[Process finished with exit code 0]</span>`;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
